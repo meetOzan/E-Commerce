@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "329453058095",
+    "project_id": "e-commerce-app-7944c",
+    "storage_bucket": "e-commerce-app-7944c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329453058095:android:12089f1582c59ec65b6eda",
+        "android_client_info": {
+          "package_name": "com.meetozan.e_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329453058095-c06frc1h93uchp49ntam44augkrjf57n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcd9W8zExwWGVfnYE5DFGr75ElnancUik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329453058095-c06frc1h93uchp49ntam44augkrjf57n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
