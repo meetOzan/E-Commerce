@@ -2,4 +2,13 @@
     <string name="app_name">E-Commerce</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_in">Sign In</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="you_don_t_have_an_account_s_gn_up_now">You don\'t have an account? Sıgn Up Now</string>
+    <string name="go_back_to">Go back to,</string>
 </resources>
