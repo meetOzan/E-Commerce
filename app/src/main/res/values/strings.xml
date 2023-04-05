@@ -11,4 +11,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="you_don_t_have_an_account_s_gn_up_now">You don\'t have an account? Sıgn Up Now</string>
     <string name="go_back_to">Go back to,</string>
+    <string name="choose_your_gender">Choose Your Gender</string>
+    <string name="imagemale">imageMale</string>
+    <string name="imagefemale">imageFemale</string>
 </resources>

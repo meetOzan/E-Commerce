@@ -5,14 +5,22 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
 
+    <!--Primary-->
     <color name="primaryColor">#FFC107</color>
     <color name="primaryLightColor">#FFEB3B</color>
     <color name="primaryDarkColor">#FF5722</color>
 
+    <!--Secondary-->
     <color name="secondaryColor">#2196F3</color>
     <color name="secondaryLightColor">#00BCD4</color>
     <color name="secondaryDarkColor">#0226F1</color>
+
+    <!--Others-->
+    <color name="transparent">#00000000</color>
+    <color name="gray">#6E6D6D</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="pink">#9C27B0</color>
+
 </resources>
