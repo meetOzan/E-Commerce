@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_signInFragment_to_main_graph"
             app:destination="@id/main_graph" />
+        <action
+            android:id="@+id/action_signInFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -32,6 +35,14 @@
         <action
             android:id="@+id/action_signUpFragment_to_main_graph"
             app:destination="@id/main_graph" />
+        <action
+            android:id="@+id/action_signUpFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
     </fragment>
     <include app:graph="@navigation/main_graph" />
+    <fragment
+        android:id="@+id/mainFragment2"
+        android:name="com.meetozan.e_commerce.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
 </navigation>

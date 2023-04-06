@@ -14,4 +14,5 @@
     <string name="choose_your_gender">Choose Your Gender</string>
     <string name="imagemale">imageMale</string>
     <string name="imagefemale">imageFemale</string>
+    <string name="register">Register</string>
 </resources>
