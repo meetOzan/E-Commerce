@@ -7,8 +7,10 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.meetozan.e_commerce.ui.MainFragment"
+        android:name="com.meetozan.e_commerce.ui.home.HomeFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
+
+
 
 </navigation>

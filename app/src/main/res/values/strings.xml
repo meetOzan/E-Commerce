@@ -15,4 +15,11 @@
     <string name="imagemale">imageMale</string>
     <string name="imagefemale">imageFemale</string>
     <string name="register">Register</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
+    <string name="newest">Newest🔥</string>
+    <string name="fashion">Fashion</string>
+    <string name="electronics">Electronics</string>
+    <string name="home_amp_furniture"><![CDATA[Home & Furniture]]></string>
+    <string name="cosmetic">Cosmetic</string>
 </resources>

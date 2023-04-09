@@ -14,8 +14,6 @@ import com.meetozan.e_commerce.R
 import com.meetozan.e_commerce.data.User
 import com.meetozan.e_commerce.databinding.FragmentSignUpBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 @AndroidEntryPoint
 class SignUpFragment : Fragment() {
@@ -25,9 +23,6 @@ class SignUpFragment : Fragment() {
     private var isFemaleClicked: Boolean = false
     private var isMaleClicked: Boolean = false
     private var gender: String = ""
-
-    @Inject
-    lateinit var ioDispatcher: CoroutineContext
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -136,15 +131,13 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun observer(){
-        signUpViewModel.checkCurrentUser.observe(viewLifecycleOwner){
-            if (it == true){
+    private fun observer() {
+        signUpViewModel.checkCurrentUser.observe(viewLifecycleOwner) {
+            if (it == true) {
                 findNavController().navigate(R.id.action_signUpFragment_to_main_graph)
-            }
-            else{
+            } else {
                 //
             }
         }
     }
-
 }
