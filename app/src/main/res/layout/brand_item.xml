@@ -17,6 +17,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         app:cardCornerRadius="20dp"
+        app:cardElevation="3dp"
         android:elevation="30dp"
         android:layout_marginHorizontal="5dp"
         android:layout_marginVertical="3dp">
