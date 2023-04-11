@@ -22,4 +22,5 @@
     <string name="electronics">Electronics</string>
     <string name="home_amp_furniture"><![CDATA[Home & Furniture]]></string>
     <string name="cosmetic">Cosmetic</string>
+    <string name="brandpic">brandPic</string>
 </resources>
