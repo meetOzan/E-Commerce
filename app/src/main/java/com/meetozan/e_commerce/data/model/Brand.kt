@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.data
+package com.meetozan.e_commerce.data.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

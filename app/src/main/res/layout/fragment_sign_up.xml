@@ -4,267 +4,271 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.sign_up.SignUpFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageBackToSignIn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_arrow_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/go_back_to" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvGoBackTo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/go_back_to"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/imageBackToSignIn"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/imageBackToSignIn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
+                android:contentDescription="@string/go_back_to"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvBackToSignIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5.8dp"
-            android:layout_marginStart="1dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/sign_in"
-            android:textColor="@color/primaryDarkColor"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/tvGoBackTo"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvSignUpTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/sign_up"
-            android:textColor="@color/secondaryColor"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSignUpName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardElevation="-2sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSignUpTitle">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signUpName"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="280sp"
+            <TextView
+                android:id="@+id/tvGoBackTo"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/name"
-                android:maxLines="1"
-                app:errorEnabled="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/alata"
+                android:text="@string/go_back_to"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/imageBackToSignIn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvBackToSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="5.8dp"
+                android:fontFamily="@font/alata"
+                android:text="@string/sign_in"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/tvGoBackTo"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSignUpTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:fontFamily="@font/alata"
+                android:text="@string/sign_up"
+                android:textColor="@color/secondaryColor"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSignUpName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardElevation="-2sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
-                app:startIconDrawable="@drawable/ic_person"
-                app:startIconTint="@color/primaryDarkColor">
+                app:layout_constraintTop_toBottomOf="@id/tvSignUpTitle">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etSignUpName"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="text"
-                    android:maxLength="30"
-                    android:textColorHint="@color/secondaryDarkColor"
-                    tools:ignore="TextContrastCheck,TextContrastCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.cardview.widget.CardView>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/signUpName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:maxLines="1"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
+                    app:startIconDrawable="@drawable/ic_person"
+                    app:startIconTint="@color/primaryDarkColor">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSignUpEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardElevation="-2sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardSignUpName">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSignUpName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:textColorHint="@color/secondaryDarkColor"
+                        tools:ignore="TextContrastCheck,TextContrastCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signUpEmail"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="280dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSignUpEmail"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/e_mail"
-                android:maxLines="1"
-                app:errorEnabled="true"
+                android:layout_marginTop="10dp"
+                app:cardElevation="-2sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
-                app:startIconDrawable="@drawable/ic_email"
-                app:startIconTint="@color/primaryDarkColor">
+                app:layout_constraintTop_toBottomOf="@id/cardSignUpName">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etSignUpEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="textEmailAddress"
-                    android:maxLength="30"
-                    android:textColorHint="@color/secondaryDarkColor" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.cardview.widget.CardView>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/signUpEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/e_mail"
+                    android:maxLines="1"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
+                    app:startIconDrawable="@drawable/ic_email"
+                    app:startIconTint="@color/primaryDarkColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSignUpEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="30"
+                        android:textColorHint="@color/secondaryDarkColor" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSignUpNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardElevation="-2sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardSignUpEmail">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signUpNumber"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="280dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSignUpNumber"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/phone_number"
-                android:maxLines="1"
-                app:endIconTint="@color/secondaryColor"
-                app:errorEnabled="true"
-                app:prefixText="+90 "
-                app:prefixTextColor="@color/black"
+                android:layout_marginTop="10dp"
+                app:cardElevation="-2sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
-                app:startIconDrawable="@drawable/ic_phone"
-                app:startIconTint="@color/primaryDarkColor">
+                app:layout_constraintTop_toBottomOf="@id/cardSignUpEmail">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etSignUpNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:maxLength="10"
-                    android:inputType="number"
-                    android:textColorHint="@color/secondaryDarkColor"
-                    tools:ignore="TextContrastCheck,TextContrastCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.cardview.widget.CardView>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/signUpNumber"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone_number"
+                    android:maxLines="1"
+                    app:endIconTint="@color/secondaryColor"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
+                    app:prefixText="+90 "
+                    app:prefixTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_phone"
+                    app:startIconTint="@color/primaryDarkColor">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSignUpPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardElevation="-2sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardSignUpNumber">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSignUpNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColorHint="@color/secondaryDarkColor"
+                        tools:ignore="TextContrastCheck,TextContrastCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signUpPassword"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="280dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSignUpPassword"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:maxLines="1"
-                app:endIconMode="password_toggle"
-                app:endIconTint="@color/primaryDarkColor"
-                app:errorEnabled="true"
-                app:counterEnabled="true"
-                app:counterMaxLength="16"
+                android:layout_marginTop="10dp"
+                app:cardElevation="-2sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
-                app:startIconDrawable="@drawable/ic_lock"
-                app:startIconTint="@color/primaryDarkColor">
+                app:layout_constraintTop_toBottomOf="@id/cardSignUpNumber">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etSignUpPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="numberPassword"
-                    android:maxLength="16"
-                    android:textColorHint="@color/secondaryDarkColor"
-                    tools:ignore="TextContrastCheck,TextContrastCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.cardview.widget.CardView>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/signUpPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:maxLines="1"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="16"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/primaryDarkColor"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
+                    app:startIconDrawable="@drawable/ic_lock"
+                    app:startIconTint="@color/primaryDarkColor">
 
-        <ImageView
-            android:id="@+id/imageFemale"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="2dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_female"
-            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-            app:layout_constraintEnd_toStartOf="@id/tvChooseGender"
-            app:layout_constraintStart_toStartOf="@+id/cardSignUpPassword"
-            app:layout_constraintTop_toBottomOf="@id/cardSignUpPassword"
-            android:contentDescription="@string/imagefemale" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSignUpPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="numberPassword"
+                        android:maxLength="16"
+                        android:textColorHint="@color/secondaryDarkColor"
+                        tools:ignore="TextContrastCheck,TextContrastCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/tvChooseGender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/choose_your_gender"
-            android:textStyle="bold"
-            android:fontFamily="@font/alata"
-            android:textColor="@color/primaryDarkColor"
-            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-            app:layout_constraintEnd_toStartOf="@id/imageMale"
-            app:layout_constraintStart_toEndOf="@id/imageFemale"
-            app:layout_constraintTop_toBottomOf="@id/cardSignUpPassword" />
+            <ImageView
+                android:id="@+id/imageFemale"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/transparent"
+                android:contentDescription="@string/imagefemale"
+                android:src="@drawable/ic_female"
+                app:layout_constraintEnd_toStartOf="@id/tvChooseGender"
+                app:layout_constraintStart_toStartOf="@+id/cardSignUpPassword"
+                app:layout_constraintTop_toBottomOf="@id/cardSignUpPassword" />
 
-        <ImageView
-            android:id="@+id/imageMale"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="2dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_male"
-            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-            app:layout_constraintEnd_toEndOf="@+id/cardSignUpPassword"
-            app:layout_constraintStart_toEndOf="@id/tvChooseGender"
-            app:layout_constraintTop_toBottomOf="@id/cardSignUpPassword"
-            android:contentDescription="@string/imagemale" />
+            <TextView
+                android:id="@+id/tvChooseGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alata"
+                android:text="@string/choose_your_gender"
+                android:textColor="@color/primaryDarkColor"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageFemale"
+                app:layout_constraintEnd_toStartOf="@id/imageMale"
+                app:layout_constraintStart_toEndOf="@id/imageFemale"
+                app:layout_constraintTop_toBottomOf="@id/cardSignUpPassword" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRegister"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#B22196F3"
-            android:elevation="4dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/register"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:cornerRadius="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="56dp"
-            app:strokeColor="@color/secondaryLightColor"
-            app:strokeWidth="1dp" />
+            <ImageView
+                android:id="@+id/imageMale"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/transparent"
+                android:contentDescription="@string/imagemale"
+                android:src="@drawable/ic_male"
+                app:layout_constraintEnd_toEndOf="@+id/cardSignUpPassword"
+                app:layout_constraintStart_toEndOf="@id/tvChooseGender"
+                app:layout_constraintTop_toBottomOf="@id/cardSignUpPassword" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegister"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#B22196F3"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:elevation="10dp"
+                android:fontFamily="@font/alata"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:cornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvChooseGender"
+                app:strokeColor="@color/secondaryLightColor"
+                app:strokeWidth="1dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

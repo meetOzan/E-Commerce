@@ -62,6 +62,9 @@ dependencies {
     // Glide
     implementation 'com.github.skydoves:landscapist-glide:1.6.1'
 
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation 'com.google.code.gson:gson:2.9.1'
@@ -85,4 +88,7 @@ dependencies {
 
     // Lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
+
+    //ImageSlider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 }

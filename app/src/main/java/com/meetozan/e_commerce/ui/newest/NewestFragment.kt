@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.ui.home.newest
+package com.meetozan.e_commerce.ui.newest
 
 import android.os.Bundle
 import android.view.LayoutInflater

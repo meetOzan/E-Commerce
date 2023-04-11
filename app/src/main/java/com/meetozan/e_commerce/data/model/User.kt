@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.data
+package com.meetozan.e_commerce.data.model
 
 data class User(
 

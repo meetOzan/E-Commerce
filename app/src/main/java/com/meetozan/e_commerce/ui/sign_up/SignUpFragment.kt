@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.meetozan.e_commerce.R
-import com.meetozan.e_commerce.data.User
+import com.meetozan.e_commerce.data.model.User
 import com.meetozan.e_commerce.databinding.FragmentSignUpBinding
 import dagger.hilt.android.AndroidEntryPoint
 
