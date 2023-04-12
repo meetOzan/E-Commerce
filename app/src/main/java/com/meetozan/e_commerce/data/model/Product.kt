@@ -39,7 +39,15 @@ data class Product(
 
     @SerializedName("isFavorite")
     @Expose
-    val isFavorite : String
+    val isFavorite : String,
+
+    @SerializedName("rate")
+    @Expose
+    val rate : Int,
+
+    @SerializedName("stock")
+    @Expose
+    val stock : Int
 
 ) {
 }

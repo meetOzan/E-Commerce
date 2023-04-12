@@ -39,6 +39,5 @@ class HomeViewModel @Inject constructor(
                 Log.e("Brand Failure:", t.message.orEmpty())
             }
         })
-
     }
 }

@@ -23,4 +23,6 @@
     <string name="home_amp_furniture"><![CDATA[Home & Furniture]]></string>
     <string name="cosmetic">Cosmetic</string>
     <string name="brandPic">brandPic</string>
+    <string name="turkish_lira">₺</string>
+    <string name="productcardimage">productCardImage</string>
 </resources>

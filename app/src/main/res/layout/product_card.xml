@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="productCard"
+            type="com.meetozan.e_commerce.data.model.Product" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvProduct"
+        android:layout_width="170dp"
+        android:layout_height="230dp"
+        android:layout_marginVertical="8dp"
+        android:padding="5dp"
+        android:background="@color/lightGray"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:strokeColor="@color/lightGray"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/productCardImage"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/productcardimage" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/productCardDivider"
+                android:layout_width="130dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="3dp"
+                android:elevation="20dp"
+                app:dividerColor="@color/primaryColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productCardImage" />
+
+            <TextView
+                android:id="@+id/productCardProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/primaryDarkColor"
+                android:text="@{productCard.name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productCardDivider" />
+
+            <TextView
+                android:id="@+id/productCardBrandName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/alata"
+                android:text="@{productCard.brand}"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productCardProductName" />
+
+            <TextView
+                android:id="@+id/productCardPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(productCard.price)}"
+                android:fontFamily="@font/alata"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/productCardLira"
+                app:layout_constraintTop_toBottomOf="@id/productCardProductName" />
+
+            <TextView
+                android:id="@+id/productCardLira"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/turkish_lira"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productCardProductName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
