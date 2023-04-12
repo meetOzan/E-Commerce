@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.tabs.TabLayoutMediator
 import com.meetozan.e_commerce.databinding.FragmentHomeBinding
+import com.meetozan.e_commerce.ui.adapter.BrandAdapter
 import com.meetozan.e_commerce.ui.home.viewpager.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

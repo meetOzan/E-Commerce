@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.ui.newest
+package com.meetozan.e_commerce.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,8 @@ import com.meetozan.e_commerce.data.model.Product
 import com.meetozan.e_commerce.databinding.ProductCardBinding
 import com.squareup.picasso.Picasso
 
-class NewestAdapter(private val newList: List<Product>) :
-    RecyclerView.Adapter<NewestAdapter.ViewHolder>() {
+class ProductAdapter(private val productList: List<Product>) :
+    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     class ViewHolder(binding: ProductCardBinding) : RecyclerView.ViewHolder(binding.root) {
         val productItemCard: ProductCardBinding = binding
@@ -19,11 +19,11 @@ class NewestAdapter(private val newList: List<Product>) :
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = newList.size
+    override fun getItemCount(): Int = productList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val productItem = newList[position]
+        val productItem = productList[position]
         holder.productItemCard.productCard = productItem
 
         Picasso.get().load(productItem.picUrl)

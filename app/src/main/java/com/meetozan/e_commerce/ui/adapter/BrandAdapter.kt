@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.ui.home
+package com.meetozan.e_commerce.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
