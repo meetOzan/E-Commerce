@@ -60,12 +60,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tabGravity="fill"
-                    android:background="@color/primaryColor"
-                    app:tabIndicatorColor="@color/white"
-                    app:tabMode="fixed"
-                    app:tabSelectedTextColor="@color/white"
+                    android:background="@color/lightGray"
+                    app:tabIndicatorColor="@color/primaryDarkColor"
+                    app:tabMode="scrollable"
+                    app:tabSelectedTextColor="@color/primaryDarkColor"
                     app:tabTextColor="@color/gray"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

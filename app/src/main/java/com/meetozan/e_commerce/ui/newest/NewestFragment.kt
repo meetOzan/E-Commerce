@@ -25,13 +25,13 @@ class NewestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNewestBinding.inflate(inflater, container, false)
+        observer()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observer()
 
     }
 

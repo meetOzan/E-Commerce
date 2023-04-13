@@ -25,14 +25,8 @@ class ManFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentManBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         observer()
-
+        return binding.root
     }
 
     private fun observer() {
