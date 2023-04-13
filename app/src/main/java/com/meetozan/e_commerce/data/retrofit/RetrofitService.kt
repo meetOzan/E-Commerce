@@ -22,7 +22,7 @@ interface RetrofitService {
     @GET("ecommerce/fashion_products.php")
     fun fashionProducts() : Call<ProductResponse>
 
-    @GET("ecommerce/electronic_products.php")
+    @GET("ecommerce/electronic_product.php")
     fun electronicProducts() : Call<ProductResponse>
 
     @GET("ecommerce/household_products.php")

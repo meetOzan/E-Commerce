@@ -23,10 +23,10 @@ class WomanViewModel @Inject constructor(
         get() = _womanList
 
     init {
-        womanProducts()
+        getWomanProducts()
     }
 
-    private fun womanProducts(){
+    private fun getWomanProducts(){
         retrofitService.womanProducts().enqueue(object : Callback<ProductResponse>{
 
             override fun onResponse(

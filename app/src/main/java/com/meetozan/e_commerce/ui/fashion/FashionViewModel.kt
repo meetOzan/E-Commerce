@@ -22,10 +22,10 @@ class FashionViewModel @Inject constructor(
     get() = _fashionList
 
     init {
-        fashionProducts()
+        getFashionProducts()
     }
 
-    private fun fashionProducts() {
+    private fun getFashionProducts() {
         retrofitService.fashionProducts().enqueue(object : Callback<ProductResponse>{
             override fun onResponse(
                 call: Call<ProductResponse>,
