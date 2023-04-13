@@ -16,13 +16,13 @@ interface RetrofitService {
     @GET("ecommerce/woman_products.php")
     fun womanProducts() : Call<ProductResponse>
 
-    @GET("ecommerce/man_prodcuts.php")
+    @GET("ecommerce/man_products.php")
     fun manProducts() : Call<ProductResponse>
 
     @GET("ecommerce/fashion_products.php")
     fun fashionProducts() : Call<ProductResponse>
 
-    @GET("ecommerce/electronic_product.php")
+    @GET("ecommerce/electronic_products.php")
     fun electronicProducts() : Call<ProductResponse>
 
     @GET("ecommerce/household_products.php")
