@@ -31,8 +31,4 @@ interface RetrofitService {
     @GET("ecommerce/cosmetic_products.php")
     fun cosmeticProducts() : Call<ProductResponse>
 
-
-
-
-
 }
