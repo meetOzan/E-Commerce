@@ -50,7 +50,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
-                        app:startIconDrawable="@drawable/ic_email"
+                        app:startIconDrawable="@drawable/ic_email_24"
                         app:startIconTint="@color/secondaryColor">
 
                         <com.google.android.material.textfield.TextInputEditText

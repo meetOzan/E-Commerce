@@ -73,6 +73,10 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.1'
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:30.2.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
@@ -89,13 +93,14 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4"
 
+    //Material Design
+    implementation 'com.google.android.material:material:1.8.0'
+
+
     // Lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
 
     //ImageSlider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
-    //Room
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
 }

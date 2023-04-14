@@ -25,4 +25,10 @@
     <string name="brandPic">brandPic</string>
     <string name="turkish_lira">₺</string>
     <string name="productcardimage">productCardImage</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="basket">Basket</string>
+    <string name="profile">Profile</string>
+    <string name="cart">Cart</string>
+    <string name="search">Search</string>
 </resources>
