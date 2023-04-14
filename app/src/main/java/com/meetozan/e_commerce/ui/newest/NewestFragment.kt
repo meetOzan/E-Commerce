@@ -29,12 +29,6 @@ class NewestFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }
-
     private fun observer() {
         viewModel.productList.observe(viewLifecycleOwner) {
             adapter = ProductAdapter(it)
