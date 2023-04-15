@@ -31,4 +31,7 @@
     <string name="profile">Profile</string>
     <string name="cart">Cart</string>
     <string name="search">Search</string>
+    <string name="hurry_up_last">Hurry up last </string>
+    <string name="addtothebasketbutton">addToTheBasketButton</string>
+    <string name="addtothefavbutton">addToTheFavButton</string>
 </resources>

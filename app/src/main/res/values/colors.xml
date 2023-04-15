@@ -19,7 +19,7 @@
     <!--Others-->
     <color name="transparent">#00000000</color>
     <color name="gray">#6E6D6D</color>
-    <color name="lightGray">#DCF3F2F2</color>
+    <color name="lightGray">#DCB6B5B5</color>
     <color name="transparentGray">#FBFBFB</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

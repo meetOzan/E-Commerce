@@ -2,7 +2,9 @@ package com.meetozan.e_commerce.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.meetozan.e_commerce.R
 import com.meetozan.e_commerce.data.model.Product
 import com.meetozan.e_commerce.databinding.ProductCardBinding
 import com.squareup.picasso.Picasso
@@ -30,6 +32,10 @@ class ProductAdapter(private val productList: List<Product>) :
             .centerCrop()
             .resize(500, 500)
             .into(holder.productItemCard.productCardImage)
+
+        holder.productItemCard.cvProduct.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
+        }
 
     }
 }
