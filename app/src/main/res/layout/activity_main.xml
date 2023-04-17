@@ -11,40 +11,41 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
         android:layout_marginBottom="55dp"
+        android:elevation="8dp"
+        app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="bottom"
-        android:visibility="gone"
-        app:fabCradleMargin="10dp"
-        android:backgroundTint="@color/primaryColor"
-        app:fabCradleRoundedCornerRadius="10dp"
-        app:fabCradleVerticalOffset="10dp">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNav"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:itemIconTint="@color/white"
-            android:background="@color/transparent"
-            app:itemTextColor="@color/black"
-            app:menu="@menu/bottom_menu" />
-
-    </com.google.android.material.bottomappbar.BottomAppBar>
+        android:background="@color/primaryColor"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:contentDescription="@string/app_name"
         android:elevation="5dp"
         android:src="@drawable/ic_shopping_cart"
-        app:layout_anchor="@+id/bottomAppBar"
+        android:translationZ="90dp"
+        app:elevation="8sp"
+        app:fabCustomSize="48dp"
+        app:layout_anchor="@+id/bottomNav"
+        app:layout_anchorGravity="top|center"
+        app:layout_constraintBottom_toBottomOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="@id/bottomNav"
+        app:layout_constraintStart_toStartOf="@id/bottomNav"
+        app:layout_constraintTop_toTopOf="@id/bottomNav"
         app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

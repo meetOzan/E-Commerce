@@ -1,8 +1,11 @@
 package com.meetozan.e_commerce.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Product(
 
     @SerializedName("id")
@@ -47,7 +50,6 @@ data class Product(
 
     @SerializedName("stock")
     @Expose
-    val stock : Int
+    var stock : Int
 
-) {
-}
+) : Parcelable

@@ -72,4 +72,8 @@ class HomeFragment : Fragment() {
             rv.adapter = adapter
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
 }

@@ -31,7 +31,7 @@ class CosmeticFragment : Fragment() {
 
     private fun observer() {
         viewModel.cosmeticList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it)
+            adapter = ProductAdapter(it,requireContext(),layoutInflater)
             rv = binding.cosmeticRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter

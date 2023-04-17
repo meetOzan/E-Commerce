@@ -31,7 +31,7 @@ class NewestFragment : Fragment() {
 
     private fun observer() {
         viewModel.productList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it)
+            adapter = ProductAdapter(it,requireContext(),layoutInflater)
             rv = binding.newestRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter

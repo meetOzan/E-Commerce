@@ -31,7 +31,7 @@ class HouseholdFragment : Fragment() {
 
     private fun observer() {
         viewModel.householdList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it)
+            adapter = ProductAdapter(it,requireContext(),layoutInflater)
             rv = binding.electronicRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter

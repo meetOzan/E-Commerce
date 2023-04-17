@@ -1,19 +1,69 @@
 package com.meetozan.e_commerce.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.models.SlideModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.meetozan.e_commerce.R
 import com.meetozan.e_commerce.data.model.Product
 import com.meetozan.e_commerce.databinding.ProductCardBinding
 import com.squareup.picasso.Picasso
 
-class ProductAdapter(private val productList: List<Product>) :
+class ProductAdapter(
+    private val productList: List<Product>,
+    private val context: Context,
+    private val layoutInflater: LayoutInflater
+) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
-    class ViewHolder(binding: ProductCardBinding) : RecyclerView.ViewHolder(binding.root) {
-        val productItemCard: ProductCardBinding = binding
+    inner class ViewHolder(private var binding: ProductCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(product: Product) {
+            with(binding) {
+                productCard = product
+
+                cvProduct.setOnClickListener {
+                    val imageList = ArrayList<SlideModel>()
+                    val dialog = BottomSheetDialog(context)
+                    val view = layoutInflater.inflate(R.layout.bottom_sheet_detail,null)
+
+                    imageList.add(SlideModel(product.picUrl))
+                    imageList.add(SlideModel(product.secondPicUrl))
+                    imageList.add(SlideModel(product.thirdPicUrl))
+
+                    dialog.setContentView(view)
+
+                    view.findViewById<TextView>(R.id.tvDetailName).text = product.name
+                    view.findViewById<TextView>(R.id.tvDetailPrice).text = product.price.toString()
+                    view.findViewById<TextView>(R.id.tvDetailBrand).text = product.brand
+                    view.findViewById<TextView>(R.id.tvDetailDescription).text = product.description
+                    view.findViewById<ImageSlider>(R.id.imageSliderDetail).setImageList(imageList)
+
+                    val stock = view.findViewById<TextView>(R.id.tvDetailStock)
+                    stock.text = product.stock.toString()
+
+                    if (this.productCard?.stock!! <= 10) {
+                        stock.visibility = View.VISIBLE
+                        view.findViewById<TextView>(R.id.tvStock).visibility = View.VISIBLE
+                    }
+
+                    dialog.show()
+
+                }
+
+                Picasso.get().load(product.picUrl)
+                    .centerCrop()
+                    .resize(500, 500)
+                    .into(productCardImage)
+
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,19 +73,7 @@ class ProductAdapter(private val productList: List<Product>) :
 
     override fun getItemCount(): Int = productList.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
+        holder.bind(productList[position])
 
-        val productItem = productList[position]
-        holder.productItemCard.productCard = productItem
-
-        Picasso.get().load(productItem.picUrl)
-            .centerCrop()
-            .resize(500, 500)
-            .into(holder.productItemCard.productCardImage)
-
-        holder.productItemCard.cvProduct.setOnClickListener {
-            it.findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
-        }
-
-    }
 }

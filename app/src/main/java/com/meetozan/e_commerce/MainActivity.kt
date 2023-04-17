@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,16 +32,13 @@ class MainActivity : AppCompatActivity() {
         )
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
-        val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             if ((destination.id == R.id.signInFragment) || (destination.id == R.id.signUpFragment)) {
                 bottomBar.visibility = View.GONE
-                bottomAppBar.visibility = View.GONE
                 fab.visibility = View.GONE
             } else {
                 bottomBar.visibility = View.VISIBLE
-                bottomAppBar.visibility = View.VISIBLE
                 fab.visibility = View.VISIBLE
             }
         }

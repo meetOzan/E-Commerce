@@ -30,7 +30,7 @@ class FashionFragment : Fragment() {
 
     private fun observer() {
         viewModel.fashionList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it)
+            adapter = ProductAdapter(it,requireContext(),layoutInflater)
             rv = binding.fashionRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter

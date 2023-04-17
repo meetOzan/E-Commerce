@@ -31,7 +31,7 @@ class ManFragment : Fragment() {
 
     private fun observer() {
         viewModel.manList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it)
+            adapter = ProductAdapter(it,requireContext(),layoutInflater)
             rv = binding.manRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter
