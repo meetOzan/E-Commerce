@@ -1,10 +1,13 @@
 package com.meetozan.e_commerce.data.model
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+@Entity
 @Parcelize
 data class Product(
 
@@ -40,9 +43,8 @@ data class Product(
     @Expose
     val description : String,
 
-    @SerializedName("isFavorite")
-    @Expose
-    val isFavorite : String,
+    @ColumnInfo("is_favorite")
+    val isFavorite : Boolean?,
 
     @SerializedName("rate")
     @Expose

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.meetozan.e_commerce.data.model.Brand
 import com.meetozan.e_commerce.data.response.BrandResponse
-import com.meetozan.e_commerce.data.retrofit.RetrofitService
+import com.meetozan.e_commerce.data.remote.RetrofitService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
