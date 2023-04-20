@@ -15,7 +15,7 @@ interface RoomDao {
     @Delete
     suspend fun deleteFavorite(product: Product)
 
-    @Query("SELECT * FROM product WHERE is_favorite = 'true'")
-    suspend fun getFavorites() : List<Product>
+    @Query("SELECT * FROM product WHERE is_favorite LIKE 1")
+    suspend fun getFavorites(): List<Product>
 
 }

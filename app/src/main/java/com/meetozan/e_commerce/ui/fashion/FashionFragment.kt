@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.meetozan.e_commerce.databinding.FragmentFashionBinding
 import com.meetozan.e_commerce.ui.adapter.ProductAdapter
+import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +20,7 @@ class FashionFragment : Fragment() {
     private lateinit var rv: RecyclerView
     private lateinit var adapter: ProductAdapter
     private lateinit var binding: FragmentFashionBinding
+    private val favoritesViewModel: FavoritesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -30,7 +32,7 @@ class FashionFragment : Fragment() {
 
     private fun observer() {
         viewModel.fashionList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it,requireContext(),layoutInflater)
+            adapter = ProductAdapter(it,requireContext(),layoutInflater,favoritesViewModel)
             rv = binding.fashionRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter

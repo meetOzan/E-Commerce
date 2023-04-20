@@ -49,7 +49,12 @@ class HomeFragment : Fragment() {
         binding.productViewPager.adapter = ViewPagerAdapter(parentFragmentManager, lifecycle)
         binding.productViewPager.offscreenPageLimit = 100
 
-        TabLayoutMediator(binding.homeTabLayout, binding.productViewPager,true,true) { tab, position ->
+        TabLayoutMediator(
+            binding.homeTabLayout,
+            binding.productViewPager,
+            true,
+            true
+        ) { tab, position ->
             tab.text = tabLayoutList[position]
         }.attach()
 
@@ -73,7 +78,4 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
 }

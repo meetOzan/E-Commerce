@@ -3,6 +3,7 @@ package com.meetozan.e_commerce.data.model
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -13,6 +14,7 @@ data class Product(
 
     @SerializedName("id")
     @Expose
+    @PrimaryKey
     val id: Int,
 
     @SerializedName("name")
@@ -44,11 +46,11 @@ data class Product(
     val description : String,
 
     @ColumnInfo("is_favorite")
-    val isFavorite : Boolean?,
+    var isFavorite : Boolean? = false,
 
     @SerializedName("rate")
     @Expose
-    val rate : Int,
+    var rate : Int,
 
     @SerializedName("stock")
     @Expose
