@@ -8,7 +8,7 @@
 
         <variable
             name="productCard"
-            type="com.meetozan.e_commerce.data.model.Product" />
+            type="com.meetozan.e_commerce.data.model.model.Product" />
 
     </data>
 

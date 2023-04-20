@@ -3,7 +3,8 @@ package com.meetozan.e_commerce.ui.favorites
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.model.Product
+import com.google.firebase.auth.FirebaseAuth
+import com.meetozan.e_commerce.data.model.model.Product
 import com.meetozan.e_commerce.data.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -14,7 +15,7 @@ import kotlin.coroutines.CoroutineContext
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
     private val productRepository: ProductRepository,
-    private val ioDispatcher: CoroutineContext
+    private val ioDispatcher: CoroutineContext,
 ) : ViewModel() {
 
     private val _favoritesList = MutableLiveData<List<Product>>()
@@ -30,6 +31,12 @@ class FavoritesViewModel @Inject constructor(
             productRepository.getFavorites().let {
                 _favoritesList.postValue(it)
             }
+        }
+    }
+
+    fun updateProduct(product: Product) {
+        CoroutineScope(ioDispatcher).launch {
+            productRepository.updateProduct(product)
         }
     }
 

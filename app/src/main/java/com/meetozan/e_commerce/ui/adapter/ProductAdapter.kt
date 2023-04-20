@@ -14,7 +14,7 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.meetozan.e_commerce.R
-import com.meetozan.e_commerce.data.model.Product
+import com.meetozan.e_commerce.data.model.model.Product
 import com.meetozan.e_commerce.databinding.ProductCardBinding
 import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
 import com.squareup.picasso.Picasso
@@ -64,8 +64,8 @@ class ProductAdapter(
                         if (product.isFavorite == true) {
                             setImageResource(R.drawable.ic_filled_favorite)
                             colorFilter = PorterDuffColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
-                        }
 
+                        }
                         if (product.isFavorite == false) {
                             setImageResource(R.drawable.ic_empty_favorite)
                             colorFilter =
@@ -78,16 +78,17 @@ class ProductAdapter(
                                 setImageResource(R.drawable.ic_empty_favorite)
                                 colorFilter =
                                     PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP)
-                                product.isFavorite = false
+                                favoritesViewModel.updateProduct(product)
+                                return@setOnClickListener
                             } else {
                                 favoritesViewModel.addToFavorites(product)
                                 setImageResource(R.drawable.ic_filled_favorite)
                                 colorFilter =
                                     PorterDuffColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
-                                product.isFavorite = true
+                                favoritesViewModel.updateProduct(product)
+                                return@setOnClickListener
                             }
                         }
-
                     }
 
                     dialog.show()

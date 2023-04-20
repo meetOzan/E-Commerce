@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.data.model
+package com.meetozan.e_commerce.data.model.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -17,5 +17,4 @@ data class Brand(
     @Expose
     val picUrl: String,
 
-) {
-}
+)

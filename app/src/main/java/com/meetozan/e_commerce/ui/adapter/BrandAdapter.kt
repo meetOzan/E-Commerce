@@ -3,7 +3,7 @@ package com.meetozan.e_commerce.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.meetozan.e_commerce.data.model.Brand
+import com.meetozan.e_commerce.data.model.model.Brand
 import com.meetozan.e_commerce.databinding.BrandItemBinding
 import com.squareup.picasso.Picasso
 

@@ -1,7 +1,7 @@
-package com.meetozan.e_commerce.data.remote
+package com.meetozan.e_commerce.data.resources.remote
 
-import com.meetozan.e_commerce.data.response.BrandResponse
-import com.meetozan.e_commerce.data.response.ProductResponse
+import com.meetozan.e_commerce.data.model.response.BrandResponse
+import com.meetozan.e_commerce.data.model.response.ProductResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

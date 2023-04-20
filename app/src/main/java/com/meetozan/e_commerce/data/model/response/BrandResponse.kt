@@ -1,7 +1,7 @@
-package com.meetozan.e_commerce.data.response
+package com.meetozan.e_commerce.data.model.response
 
 import com.google.gson.annotations.SerializedName
-import com.meetozan.e_commerce.data.model.Brand
+import com.meetozan.e_commerce.data.model.model.Brand
 
 data class BrandResponse(
     @SerializedName("success")

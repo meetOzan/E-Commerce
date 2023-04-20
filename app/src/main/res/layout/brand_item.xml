@@ -8,7 +8,7 @@
 
         <variable
             name="brandItemCard"
-            type="com.meetozan.e_commerce.data.model.Brand" />
+            type="com.meetozan.e_commerce.data.model.model.Brand" />
 
     </data>
 

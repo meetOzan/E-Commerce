@@ -11,7 +11,6 @@ import com.meetozan.e_commerce.R
 import com.meetozan.e_commerce.databinding.FragmentSignInBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class SignInFragment : Fragment() {
 

@@ -2,8 +2,8 @@ package com.meetozan.e_commerce.di
 
 import android.content.Context
 import androidx.room.Room
-import com.meetozan.e_commerce.data.local.ProductDatabase
-import com.meetozan.e_commerce.data.local.RoomDao
+import com.meetozan.e_commerce.data.resources.local.ProductDatabase
+import com.meetozan.e_commerce.data.resources.local.RoomDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,10 +27,8 @@ class RoomDbModule {
             .allowMainThreadQueries()
             .build()
 
-
     @Provides
     @Singleton
     fun provideProductDao(productDatabase: ProductDatabase): RoomDao =
         productDatabase.productDao()
-
 }
