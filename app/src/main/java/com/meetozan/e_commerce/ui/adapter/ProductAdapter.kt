@@ -26,7 +26,6 @@ class ProductAdapter(
     private val favoritesViewModel: FavoritesViewModel
 ) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
-
     inner class ViewHolder(private var binding: ProductCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
