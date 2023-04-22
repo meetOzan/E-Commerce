@@ -34,4 +34,6 @@
     <string name="hurry_up_last">Hurry up last </string>
     <string name="addtothebasketbutton">addToTheBasketButton</string>
     <string name="addtothefavbutton">addToTheFavButton</string>
+    <string name="favorite">Favorite ?</string>
+    <string name="favorite_unicode">♥   </string>
 </resources>

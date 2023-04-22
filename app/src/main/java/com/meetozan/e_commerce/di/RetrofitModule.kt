@@ -1,7 +1,7 @@
 package com.meetozan.e_commerce.di
 
 import com.meetozan.e_commerce.common.Constants.BASE_URL
-import com.meetozan.e_commerce.data.resources.remote.RetrofitService
+import com.meetozan.e_commerce.data.retrofit.RetrofitService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

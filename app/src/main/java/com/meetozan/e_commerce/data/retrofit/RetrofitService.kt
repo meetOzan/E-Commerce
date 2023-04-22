@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.data.resources.remote
+package com.meetozan.e_commerce.data.retrofit
 
 import com.meetozan.e_commerce.data.model.response.BrandResponse
 import com.meetozan.e_commerce.data.model.response.ProductResponse

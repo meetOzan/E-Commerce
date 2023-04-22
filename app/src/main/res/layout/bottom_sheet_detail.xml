@@ -25,18 +25,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/btnAddToFav"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/pink_circle"
-                android:backgroundTint="@color/realGray"
-                android:contentDescription="@string/addtothefavbutton"
-                android:src="@drawable/ic_empty_favorite"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/favoriteSwitch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:checked="false"
+                android:elevation="8dp"
+                android:text=""
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageSliderDetail"
                 app:layout_constraintTop_toTopOf="@id/imageSliderDetail"
-                app:tint="@color/white" />
+                app:thumbTint="@color/black"
+                app:trackTint="@android:color/holo_red_light"
+                app:useMaterialThemeColors="true" />
 
             <TextView
                 android:id="@+id/tvDetailName"

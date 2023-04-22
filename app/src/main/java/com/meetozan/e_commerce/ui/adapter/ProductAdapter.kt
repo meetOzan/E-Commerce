@@ -1,18 +1,16 @@
 package com.meetozan.e_commerce.ui.adapter
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.meetozan.e_commerce.R
 import com.meetozan.e_commerce.data.model.model.Product
 import com.meetozan.e_commerce.databinding.ProductCardBinding
@@ -49,8 +47,7 @@ class ProductAdapter(
                     view.findViewById<TextView>(R.id.tvDetailBrand).text = product.brand
                     view.findViewById<TextView>(R.id.tvDetailDescription).text = product.description
                     view.findViewById<ImageSlider>(R.id.imageSliderDetail).setImageList(imageList)
-
-                    val favButton = view.findViewById<ImageButton>(R.id.btnAddToFav)
+                    val favSwitch = view.findViewById<SwitchMaterial>(R.id.favoriteSwitch)
                     val stock = view.findViewById<TextView>(R.id.tvDetailStock)
                     stock.text = product.stock.toString()
 
@@ -59,46 +56,39 @@ class ProductAdapter(
                         view.findViewById<TextView>(R.id.tvStock).visibility = View.VISIBLE
                     }
 
-                    with(favButton) {
+                    favSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+                        if (isChecked) {
+                            val productHashMap = hashMapOf<Any, Any>(
+                                "id" to product.id,
+                                "name" to product.name,
+                                "price" to product.price,
+                                "brand" to product.brand,
+                                "picUrl" to product.picUrl,
+                                "secondPicUrl" to product.secondPicUrl,
+                                "thirdPicUrl" to product.thirdPicUrl,
+                                "description" to product.description,
+                                "isFavorite" to true,
+                                "rate" to product.rate,
+                                "stock" to product.stock
+                            )
 
-                        if (product.isFavorite == true) {
-                            setImageResource(R.drawable.ic_filled_favorite)
-                            colorFilter = PorterDuffColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
+                            buttonView.text = "♥"
 
-                        }
-                        if (product.isFavorite == false) {
-                            setImageResource(R.drawable.ic_empty_favorite)
-                            colorFilter =
-                                PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP)
-                        }
-
-                        setOnClickListener {
-                            if (product.isFavorite == true) {
-                                favoritesViewModel.deleteFromFavorites(product)
-                                setImageResource(R.drawable.ic_empty_favorite)
-                                colorFilter =
-                                    PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP)
-                                favoritesViewModel.updateProduct(product)
-                                return@setOnClickListener
-                            } else {
-                                favoritesViewModel.addToFavorites(product)
-                                setImageResource(R.drawable.ic_filled_favorite)
-                                colorFilter =
-                                    PorterDuffColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
-                                favoritesViewModel.updateProduct(product)
-                                return@setOnClickListener
-                            }
+                            favoritesViewModel.addToFavorites(product, productHashMap)
+                            Toast.makeText(context, "Added to Favs", Toast.LENGTH_SHORT).show()
+                        }else{
+                            favoritesViewModel.deleteFromFavorites(product)
+                            buttonView.text = ""
+                            Toast.makeText(context,"Removed from Favs",Toast.LENGTH_SHORT).show()
                         }
                     }
-
                     dialog.show()
+
+                    Picasso.get().load(product.picUrl)
+                        .centerCrop()
+                        .resize(500, 500)
+                        .into(productCardImage)
                 }
-
-                Picasso.get().load(product.picUrl)
-                    .centerCrop()
-                    .resize(500, 500)
-                    .into(productCardImage)
-
             }
         }
     }

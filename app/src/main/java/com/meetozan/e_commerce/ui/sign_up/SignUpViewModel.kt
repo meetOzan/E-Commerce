@@ -50,7 +50,7 @@ class SignUpViewModel @Inject constructor(
                 if (email.isNotEmpty() || password.isNotEmpty() || user.username.isNotEmpty() || user.number.isNotEmpty() || user.gender.isNotEmpty()) {
                     firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnSuccessListener {
-                            firebaseFirestore.collection("users").document(user.username)
+                            firebaseFirestore.collection("users").document(firebaseAuth.currentUser?.email.toString())
                                 .set(user)
                                 .addOnSuccessListener {
                                     Toast.makeText(appContext, "Successful", Toast.LENGTH_LONG)
