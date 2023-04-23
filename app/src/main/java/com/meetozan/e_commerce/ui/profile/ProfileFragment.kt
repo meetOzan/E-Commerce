@@ -28,9 +28,17 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.imageCurrentOrders.playAnimation()
+
+        binding.imageNoCurrentOrders.playAnimation()
+
         binding.btnSignOut.setOnClickListener {
             viewModel.signOut()
             it.findNavController().navigate(R.id.nav_graph)
+        }
+
+        binding.btnGoHome.setOnClickListener{
+            it.findNavController().navigate(R.id.homeFragment)
         }
     }
 }

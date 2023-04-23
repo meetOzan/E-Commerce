@@ -10,7 +10,7 @@ class ProfileViewModel @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : ViewModel() {
 
-    fun signOut(){
+    fun signOut() {
         firebaseAuth.signOut()
     }
 

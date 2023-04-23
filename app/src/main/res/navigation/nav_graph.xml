@@ -16,7 +16,9 @@
             app:enterAnim="@android:anim/slide_in_left" />
         <action
             android:id="@+id/action_signInFragment_to_main_graph"
-            app:destination="@id/main_graph" />
+            app:destination="@id/main_graph"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -31,7 +33,9 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_signUpFragment_to_main_graph"
-            app:destination="@id/main_graph" />
+            app:destination="@id/main_graph"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <include app:graph="@navigation/main_graph" />
 </navigation>
