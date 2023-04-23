@@ -1,46 +1,33 @@
 package com.meetozan.e_commerce.ui.electronic
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.meetozan.e_commerce.data.model.model.Product
-import com.meetozan.e_commerce.data.model.response.ProductResponse
-import com.meetozan.e_commerce.data.retrofit.RetrofitService
+import com.meetozan.e_commerce.data.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 @HiltViewModel
 class ElectronicViewModel @Inject constructor(
-    private val retrofitService: RetrofitService
+    private val productRepository: ProductRepository,
+    private val ioDispatcher: CoroutineContext
 ) : ViewModel() {
 
     private val _electronicList = MutableLiveData<List<Product>>()
-    val electronicList : LiveData<List<Product>>
-    get() = _electronicList
+    val electronicList: LiveData<List<Product>>
+        get() = _electronicList
 
     init {
         getElectronicProducts()
     }
 
-    private fun getElectronicProducts(){
-
-            retrofitService.electronicProducts().enqueue(object : Callback<ProductResponse> {
-                override fun onResponse(
-                    call: Call<ProductResponse>,
-                    response: Response<ProductResponse>
-                ) {
-                    response.body()?.productResponse.let {
-                        _electronicList.value = it
-                    }
-                }
-
-                override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
-                    Log.e("Electronic ViewModel Error: ",t.message.orEmpty())
-                }
-            })
+    private fun getElectronicProducts() {
+        CoroutineScope(ioDispatcher).launch {
+            productRepository.getElectronic(_electronicList)
         }
+    }
 }

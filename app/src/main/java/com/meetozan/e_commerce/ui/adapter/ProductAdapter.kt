@@ -31,6 +31,11 @@ class ProductAdapter(
             with(binding) {
                 productCard = product
 
+                Picasso.get().load(product.picUrl)
+                    .centerCrop()
+                    .resize(1000, 1000)
+                    .into(productCardImage)
+
                 cvProduct.setOnClickListener {
                     val imageList = ArrayList<SlideModel>()
                     val dialog = BottomSheetDialog(context)
@@ -83,11 +88,6 @@ class ProductAdapter(
                         }
                     }
                     dialog.show()
-
-                    Picasso.get().load(product.picUrl)
-                        .centerCrop()
-                        .resize(500, 500)
-                        .into(productCardImage)
                 }
             }
         }

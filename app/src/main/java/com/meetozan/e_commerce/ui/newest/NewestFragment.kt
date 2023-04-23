@@ -32,7 +32,7 @@ class NewestFragment : Fragment() {
     }
 
     private fun observer() {
-        viewModel.productList.observe(viewLifecycleOwner) {
+        viewModel.newestList.observe(viewLifecycleOwner) {
             adapter = ProductAdapter(it,requireContext(),layoutInflater,favoritesViewModel)
             rv = binding.newestRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)

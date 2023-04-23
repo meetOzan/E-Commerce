@@ -33,13 +33,11 @@ class ElectronicFragment : Fragment() {
     }
 
     private fun observer() {
-        viewModel.electronicList.observe(viewLifecycleOwner){
-            adapter = ProductAdapter(it,requireContext(),layoutInflater,favoritesViewModel)
+        viewModel.electronicList.observe(viewLifecycleOwner) {
+            adapter = ProductAdapter(it, requireContext(), layoutInflater, favoritesViewModel)
             rv = binding.electronicRv
-            rv.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+            rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter
         }
-
     }
-
 }

@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce
+package com.meetozan.e_commerce.ui
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.meetozan.e_commerce.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +42,5 @@ class MainActivity : AppCompatActivity() {
                 fab.visibility = View.VISIBLE
             }
         }
-
     }
 }
