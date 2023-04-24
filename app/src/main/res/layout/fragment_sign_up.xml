@@ -156,7 +156,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/loginEmailLayout"
-                    app:prefixText="+90 "
+                    app:prefixText="+90 | "
                     app:prefixTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_phone"
                     app:startIconTint="@color/primaryDarkColor">

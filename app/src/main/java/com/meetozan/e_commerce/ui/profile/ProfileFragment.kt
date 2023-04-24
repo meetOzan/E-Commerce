@@ -11,7 +11,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.isNotEmpty
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -51,7 +50,6 @@ class ProfileFragment : Fragment() {
         binding.btnGoHome.setOnClickListener {
             it.findNavController().navigate(R.id.homeFragment)
         }
-
     }
 
     private fun observer() {
@@ -79,6 +77,17 @@ class ProfileFragment : Fragment() {
                 }
             }
 
+            binding.btnOpenOrders.setOnClickListener {
+                if (binding.nestedCvOrders.visibility == View.GONE){
+                    binding.nestedCvOrders.visibility = View.VISIBLE
+                    return@setOnClickListener
+                }
+                if (binding.nestedCvOrders.visibility == View.VISIBLE){
+                    binding.nestedCvOrders.visibility = View.GONE
+                    return@setOnClickListener
+                }
+            }
+
             binding.buttonProfileEditProfile.setOnClickListener {
 
                 val dialog =
@@ -89,7 +98,6 @@ class ProfileFragment : Fragment() {
 
                 val etName = dialog.findViewById<TextInputLayout>(R.id.etEditName)
                 etName.editText?.setText(user.username)
-
                 val etNumber = dialog.findViewById<TextInputLayout>(R.id.etEditNumber)
                 etNumber.editText?.setText(user.number)
 
@@ -98,23 +106,26 @@ class ProfileFragment : Fragment() {
                 }
 
                 dialog.findViewById<Button>(R.id.btnEditProfile).setOnClickListener {
-                    if (etName.isNotEmpty() && etNumber.isNotEmpty()) {
-
-                        val updatedUser = hashMapOf<String,Any>(
+                    if (etName.editText?.text.toString() != "" && etNumber.editText?.text.toString() != "") {
+                        val updatedUser = hashMapOf<String, Any>(
                             "email" to user.email,
                             "username" to etName.editText?.text.toString(),
                             "password" to user.password,
                             "number" to etNumber.editText?.text.toString(),
                             "gender" to user.gender
                         )
-
                         viewModel.updateUser(updatedUser)
-
                         builder.dismiss()
                         Toast.makeText(
                             requireContext(), "Updated!!!", Toast.LENGTH_SHORT
                         ).show()
                     } else {
+                        if (etName.editText?.text.toString() == "") {
+                            etName.error = "Please Enter Your Name"
+                        }
+                        if (etNumber.editText?.text.toString() == "") {
+                            etNumber.error = "Please Enter Your Number"
+                        }
                         Toast.makeText(
                             requireContext(),
                             "You have to fill all blanks",

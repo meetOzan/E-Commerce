@@ -38,10 +38,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/blue_circle"
                 android:contentDescription="@string/profilepic"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_person"
                 app:tint="@color/white" />
 
             <TextView
@@ -140,15 +138,15 @@
                         android:id="@+id/btnOpenOrders"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="10dp"
+                        android:layout_margin="10dp"
                         android:contentDescription="@string/buttonopenorders"
                         android:src="@drawable/ic_arrow_circle_down" />
 
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/nestedCvOrder"
+                        android:id="@+id/nestedCvOrders"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/imageOrders"
@@ -157,8 +155,7 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvOrders"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_below="@id/cvOrderView"
+                            android:layout_height="200dp"
                             android:layout_marginHorizontal="8dp"
                             android:layout_marginTop="5dp" />
 
