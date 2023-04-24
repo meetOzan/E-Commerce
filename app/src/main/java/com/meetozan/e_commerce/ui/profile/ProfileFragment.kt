@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -28,6 +29,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observer()
+
         binding.imageCurrentOrders.playAnimation()
 
         binding.imageNoCurrentOrders.playAnimation()
@@ -39,6 +42,28 @@ class ProfileFragment : Fragment() {
 
         binding.btnGoHome.setOnClickListener{
             it.findNavController().navigate(R.id.homeFragment)
+        }
+
+    }
+
+    private fun observer(){
+        viewModel.user.observe(viewLifecycleOwner){
+            binding.tvProfileName.text = it.username
+
+            binding.tvProfileGender.let {gender->
+                if(it.gender == "Male"){
+                    gender.text = it.gender
+                    gender.setTextColor(ContextCompat.getColor(requireContext(),R.color.secondaryColor))
+                    binding.profileImageView.setBackgroundResource(R.drawable.blue_circle)
+                    binding.profileImageView.setImageResource(R.drawable.ic_person)
+                }
+                if(it.gender == "Female"){
+                    gender.text = it.gender
+                    gender.setTextColor(ContextCompat.getColor(requireContext(),R.color.pink))
+                    binding.profileImageView.setBackgroundResource(R.drawable.pink_circle)
+                    binding.profileImageView.setImageResource(R.drawable.ic_person_woman)
+                }
+            }
         }
     }
 }

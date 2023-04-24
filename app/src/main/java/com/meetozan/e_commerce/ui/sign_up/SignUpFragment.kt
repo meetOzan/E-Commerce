@@ -124,7 +124,7 @@ class SignUpFragment : Fragment() {
                     .show()
             }
 
-            val user = User(etName, etPassword, etMail, etNumber, gender)
+            val user = User(etMail, etName, etPassword, etNumber, gender)
 
             signUpViewModel.signUpWithEmail(etMail, etPassword, user)
 

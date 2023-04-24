@@ -9,6 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.meetozan.e_commerce.data.model.model.Brand
 import com.meetozan.e_commerce.data.model.model.Product
+import com.meetozan.e_commerce.data.model.model.User
 import com.meetozan.e_commerce.data.model.response.BrandResponse
 import com.meetozan.e_commerce.data.model.response.ProductResponse
 import com.meetozan.e_commerce.data.retrofit.RetrofitService
@@ -177,4 +178,25 @@ class ProductRepository @Inject constructor(
                     }
                 }
             }
+
+    fun getUser(_user: MutableLiveData<User>) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .get()
+            .addOnSuccessListener {
+                if(it.exists()){
+                    val user = it.toObject<User>()!!
+                    _user.postValue(user)
+                }else{
+                    Log.e("Get User Error: ","User doesn't exist")
+                }
+            }
+            .addOnFailureListener {
+                Log.e("Get User Exception: ", it.message.orEmpty())
+            }
+
+    fun signOut() {
+        firebaseAuth.signOut()
+    }
+
 }

@@ -17,8 +17,7 @@
         <action
             android:id="@+id/action_signInFragment_to_main_graph"
             app:destination="@id/main_graph"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -34,8 +33,7 @@
         <action
             android:id="@+id/action_signUpFragment_to_main_graph"
             app:destination="@id/main_graph"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
     <include app:graph="@navigation/main_graph" />
 </navigation>

@@ -43,7 +43,7 @@
                 android:contentDescription="@string/profilepic" />
 
             <TextView
-                android:id="@+id/nameTextView"
+                android:id="@+id/tvProfileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/profileImageView"
@@ -56,10 +56,10 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/emailTextView"
+                android:id="@+id/tvProfileGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/nameTextView"
+                android:layout_below="@id/tvProfileName"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
                 android:text=""
@@ -71,7 +71,7 @@
                 android:id="@+id/editProfileButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/emailTextView"
+                android:layout_below="@id/tvProfileGender"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 android:background="@color/primaryColor"

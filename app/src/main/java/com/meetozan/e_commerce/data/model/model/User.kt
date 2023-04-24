@@ -9,20 +9,21 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "user")
 @Parcelize
 data class User(
+
     @PrimaryKey
     @ColumnInfo(name = "email")
-    val email: String,
+    val email: String = "",
 
     @ColumnInfo(name = "username")
-    val username: String,
+    val username: String = "",
 
     @ColumnInfo(name = "password")
-    val password: String,
+    val password: String = "",
 
     @ColumnInfo(name = "number")
-    val number: String,
+    val number: String = "",
 
     @ColumnInfo(name = "gender")
-    val gender: String
+    val gender: String = "",
 
-) : Parcelable
+) :Parcelable
