@@ -26,6 +26,7 @@ class FavoritesFragment : Fragment() {
     ): View {
         binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         observer()
+        binding.favoritesLayout.invalidate()
         return binding.root
     }
 

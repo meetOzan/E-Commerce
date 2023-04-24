@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
@@ -7,6 +8,7 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/profileFragmentLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -37,10 +39,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/blue_circle"
+                android:contentDescription="@string/profilepic"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_person"
-                app:tint="@color/white"
-                android:contentDescription="@string/profilepic" />
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/tvProfileName"
@@ -67,30 +69,40 @@
                 android:textColor="@color/secondaryColor"
                 android:textSize="18sp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/editProfileButton"
+            <Button
+                android:id="@+id/buttonProfileEditProfile"
+                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvProfileGender"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:background="@color/primaryColor"
-                android:fontFamily="@font/alata"
+                android:backgroundTint="@color/primaryColor"
+                android:elevation="8dp"
+                android:clickable="true"
                 android:text="@string/edit_profile"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:icon="@drawable/ic_edit"
+                app:iconSize="26dp"
+                app:iconTint="@color/white"
+                app:strokeColor="@color/black"
+                app:strokeWidth="0.5dp"
+                android:focusable="true" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvOrders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editProfileButton"
+                android:layout_below="@id/buttonProfileEditProfile"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
-                app:strokeWidth="0.5dp"
                 android:background="@color/secondaryDarkColor"
+                android:elevation="8dp"
                 android:textColor="@android:color/white"
-                app:strokeColor="@color/primaryColor">
+                app:strokeColor="@color/primaryColor"
+                app:strokeWidth="0.5dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -104,12 +116,13 @@
 
                     <ImageView
                         android:id="@+id/imageOrders"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="6dp"
+                        android:contentDescription="@string/imagehistory"
                         android:src="@drawable/ic_history_24"
-                        android:contentDescription="@string/imagehistory" />
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/tvOrders"
@@ -121,33 +134,33 @@
                         android:fontFamily="@font/alata"
                         android:text="@string/orders"
                         android:textColor="@color/secondaryColor"
-                        android:textSize="24sp"/>
+                        android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/btnOpenOrders"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_marginEnd="10dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_circle_down"
-                        android:contentDescription="@string/buttonopenorders" />
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="@string/buttonopenorders"
+                        android:src="@drawable/ic_arrow_circle_down" />
 
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/nestedCvOrder"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:visibility="gone"
-                        android:layout_below="@id/imageOrders">
+                        android:layout_below="@id/imageOrders"
+                        android:visibility="gone">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvOrders"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="5dp"
                             android:layout_below="@id/cvOrderView"
-                            android:layout_marginHorizontal="8dp" />
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_marginTop="5dp" />
 
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
@@ -158,9 +171,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cvOrders"
-                android:visibility="gone"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginBottom="64dp"
+                android:elevation="8dp"
+                android:visibility="gone"
                 app:strokeColor="@color/secondaryDarkColor"
                 app:strokeWidth="0.5dp">
 
@@ -174,8 +189,8 @@
                         android:layout_height="72dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginStart="8dp"
-                        app:lottie_loop="true"
                         android:layout_marginTop="8dp"
+                        app:lottie_loop="true"
                         app:lottie_rawRes="@raw/delivering" />
 
                     <TextView
@@ -201,9 +216,9 @@
                             android:id="@+id/rvCurrentOrders"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="5dp"
                             android:layout_below="@id/cvOrderView"
-                            android:layout_marginHorizontal="8dp" />
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_marginTop="5dp" />
 
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
@@ -216,6 +231,8 @@
                 android:layout_below="@id/cvOrders"
                 android:layout_marginHorizontal="50dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginBottom="64dp"
+                android:elevation="8dp"
                 app:strokeColor="@color/primaryDarkColor"
                 app:strokeWidth="0.5dp">
 
@@ -229,8 +246,8 @@
                         android:layout_height="72dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginStart="8dp"
-                        app:lottie_loop="true"
                         android:layout_marginTop="8dp"
+                        app:lottie_loop="true"
                         app:lottie_rawRes="@raw/noorder" />
 
                     <TextView
@@ -259,22 +276,25 @@
                         android:textColor="@color/secondaryColor"
                         android:textSize="16sp" />
 
-                    <com.google.android.material.button.MaterialButton
+                    <Button
                         android:id="@+id/btnGoHome"
+                        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/tvNoCurrentOrderGoHome"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
-                        android:text="@string/go_shop"
-                        android:fontFamily="@font/alata"
-                        android:textColor="@color/secondaryColor"
-                        android:elevation="8dp"
-                        app:strokeWidth="0.4dp"
-                        app:strokeColor="@color/primaryDarkColor"
-                        android:layout_centerHorizontal="true"
                         android:backgroundTint="@color/white"
-                        android:layout_below="@id/tvNoCurrentOrderGoHome"/>
-
+                        android:elevation="8dp"
+                        android:fontFamily="@font/alata"
+                        android:text="@string/go_shop"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="16sp"
+                        app:icon="@drawable/ic_shopping_basket"
+                        app:iconTint="@color/primaryColor"
+                        app:strokeColor="@color/primaryDarkColor"
+                        app:strokeWidth="0.4dp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
         </RelativeLayout>

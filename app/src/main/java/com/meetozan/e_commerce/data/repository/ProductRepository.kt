@@ -40,6 +40,11 @@ class ProductRepository @Inject constructor(
         .document(product.name)
         .delete().await()
 
+    suspend fun updateUser(hashMap: HashMap<String, Any>) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .update(hashMap).await()
+
     fun getCosmetic(list: MutableLiveData<List<Product>>) =
         retrofitService.cosmeticProducts().enqueue(object :
             Callback<ProductResponse> {

@@ -47,4 +47,8 @@
     <string name="go_shop">Go Shop!</string>
     <string name="signout">signOut</string>
     <string name="buttonopenorders">buttonOpenOrders</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_number">Enter Number</string>
+    <string name="go">Go!</string>
+    <string name="closedialog">closeDialog</string>
 </resources>

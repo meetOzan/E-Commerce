@@ -31,14 +31,15 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="12dp"
                 android:checked="false"
+                android:minHeight="50dp"
                 android:elevation="8dp"
                 android:text=""
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageSliderDetail"
                 app:layout_constraintTop_toTopOf="@id/imageSliderDetail"
-                app:thumbTint="@color/black"
+                app:thumbTint="@color/gray"
                 app:trackTint="@android:color/holo_red_light"
-                app:useMaterialThemeColors="true" />
+                app:useMaterialThemeColors="false" />
 
             <TextView
                 android:id="@+id/tvDetailName"

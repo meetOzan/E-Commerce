@@ -37,4 +37,10 @@ class ProfileViewModel @Inject constructor(
             productRepository.signOut()
         }
     }
+
+    fun updateUser(hashMap: HashMap<String,Any>){
+        CoroutineScope(ioDispatcher).launch {
+            productRepository.updateUser(hashMap)
+        }
+    }
 }
