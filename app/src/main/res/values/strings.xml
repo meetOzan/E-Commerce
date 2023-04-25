@@ -51,4 +51,6 @@
     <string name="enter_number">Enter Number</string>
     <string name="go">Go!</string>
     <string name="closedialog">closeDialog</string>
+    <string name="profile_edit_successful">Profile Edit Successful !</string>
+    <string name="snackbar_success">snackbar_success</string>
 </resources>

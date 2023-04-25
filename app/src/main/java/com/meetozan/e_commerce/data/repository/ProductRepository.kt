@@ -31,13 +31,13 @@ class ProductRepository @Inject constructor(
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("favorites")
-            .document(product.name)
+            .document(product.productName)
             .set(hashMap).await()
 
     suspend fun deleteFromFavorites(product: Product) = firebaseFirestore.collection("users")
         .document(firebaseAuth.currentUser?.email.toString())
         .collection("favorites")
-        .document(product.name)
+        .document(product.productName)
         .delete().await()
 
     suspend fun updateUser(hashMap: HashMap<String, Any>) =
@@ -203,5 +203,26 @@ class ProductRepository @Inject constructor(
     fun signOut() {
         firebaseAuth.signOut()
     }
+
+    fun searchProducts(productName : String, list: MutableLiveData<List<Product>>) =
+        retrofitService.searchProducts(productName).enqueue(object : Callback<ProductResponse>{
+            override fun onResponse(
+                call: Call<ProductResponse>,
+                response: Response<ProductResponse>
+            ) {
+                response.body()?.productResponse.let {
+                    if (it != null) {
+                        list.postValue(it)
+                    }
+                    else{
+                        Toast.makeText(appContext,"Sorry, we couldn't find the product you were looking for",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                Log.e("Search Product Error: ", t.message.orEmpty())
+            }
+        })
 
 }

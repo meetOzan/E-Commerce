@@ -47,7 +47,7 @@ class ProductAdapter(
 
                     dialog.setContentView(view)
 
-                    view.findViewById<TextView>(R.id.tvDetailName).text = product.name
+                    view.findViewById<TextView>(R.id.tvDetailName).text = product.productName
                     view.findViewById<TextView>(R.id.tvDetailPrice).text = product.price.toString()
                     view.findViewById<TextView>(R.id.tvDetailBrand).text = product.brand
                     view.findViewById<TextView>(R.id.tvDetailDescription).text = product.description
@@ -65,7 +65,7 @@ class ProductAdapter(
                         if (isChecked) {
                             val productHashMap = hashMapOf<Any, Any>(
                                 "id" to product.id,
-                                "name" to product.name,
+                                "name" to product.productName,
                                 "price" to product.price,
                                 "brand" to product.brand,
                                 "picUrl" to product.picUrl,

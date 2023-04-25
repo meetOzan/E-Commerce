@@ -21,7 +21,7 @@ data class Product(
     @SerializedName("name")
     @ColumnInfo(name = "name")
     @Expose
-    val name: String = "",
+    val productName: String = "",
 
     @SerializedName("price")
     @ColumnInfo(name = "price")

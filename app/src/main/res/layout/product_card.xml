@@ -58,7 +58,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/alata"
                 android:textColor="@color/primaryDarkColor"
-                android:text="@{productCard.name}"
+                android:text="@{productCard.productName}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/productCardDivider" />
