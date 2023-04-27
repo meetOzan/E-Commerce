@@ -55,4 +55,7 @@
     <string name="snackbar_success">snackbar_success</string>
     <string name="not_found_text_message">We didn\'t find what you want. What you are looking for will be in stock one day</string>
     <string name="imageerrornotfound">imageErrorNotFound</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="total_price">Total Price</string>
+    <string name="confirm_cart">Confirm Cart</string>
 </resources>

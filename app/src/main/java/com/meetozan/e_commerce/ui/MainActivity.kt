@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
 
+        fab.setOnClickListener {
+            navHostFragment.navController.navigate(R.id.shoppingCartFragment2)
+        }
+
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             if ((destination.id == R.id.signInFragment) || (destination.id == R.id.signUpFragment)) {
                 bottomBar.visibility = View.GONE

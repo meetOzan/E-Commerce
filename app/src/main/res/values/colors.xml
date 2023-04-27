@@ -27,5 +27,6 @@
     <color name="pink">#9C27B0</color>
     <color name="lightGreen">#8D8BC34A</color>
     <color name="lightRed">#9FFF0000</color>
+    <color name="transparentBlue">#9200BCD4</color>
 
 </resources>

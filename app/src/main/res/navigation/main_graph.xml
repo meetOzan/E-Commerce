@@ -25,5 +25,10 @@
         android:name="com.meetozan.e_commerce.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/shoppingCartFragment2"
+        android:name="com.meetozan.e_commerce.ui.shopping_cart.ShoppingCartFragment"
+        android:label="fragment_shopping_cart"
+        tools:layout="@layout/fragment_shopping_cart" />
 
 </navigation>
