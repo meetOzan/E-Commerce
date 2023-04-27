@@ -55,13 +55,49 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchRv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="24dp" />
+                android:layout_marginTop="24dp"
+                android:visibility="visible"
+                android:layout_marginHorizontal="8dp"/>
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvSearchNotFound"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageNotFoundError"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:alpha="0.8"
+                        android:src="@drawable/ic_error"
+                        app:tint="@color/lightRed"
+                        android:contentDescription="@string/imageerrornotfound" />
+
+                    <TextView
+                        android:id="@+id/tvNotFoundError"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/alata"
+                        android:text="@string/not_found_text_message"
+                        android:textColor="@color/gray"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 </layout>

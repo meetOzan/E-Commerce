@@ -24,7 +24,7 @@ class ProductRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
     private val retrofitService: RetrofitService,
-    @ApplicationContext val appContext : Context
+    @ApplicationContext val appContext: Context
 ) {
 
     suspend fun addToFavorites(product: Product, hashMap: HashMap<Any, Any>) =
@@ -107,64 +107,72 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getHousehold(list: MutableLiveData<List<Product>>) = retrofitService.householdProducts().enqueue(object : Callback<ProductResponse> {
-        override fun onResponse(
-            call: Call<ProductResponse>,
-            response: Response<ProductResponse>
-        ) {
-            response.body()?.productResponse.let {
-                list.value = it
+    fun getHousehold(list: MutableLiveData<List<Product>>) =
+        retrofitService.householdProducts().enqueue(object : Callback<ProductResponse> {
+            override fun onResponse(
+                call: Call<ProductResponse>,
+                response: Response<ProductResponse>
+            ) {
+                response.body()?.productResponse.let {
+                    list.value = it
+                }
             }
-        }
-        override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
-            Log.e("Household ViewModel Error: ",t.message.orEmpty())
-        }
-    })
 
-    fun getMan(list: MutableLiveData<List<Product>>) = retrofitService.manProducts().enqueue(object : Callback<ProductResponse> {
-        override fun onResponse(
-            call: Call<ProductResponse>,
-            response: Response<ProductResponse>
-        ) {
-            response.body()?.productResponse.let {
-                list.value = it
-
+            override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                Log.e("Household ViewModel Error: ", t.message.orEmpty())
             }
-        }
-        override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
-            Log.e("Man Product Failure:", t.message.orEmpty())
-        }
-    })
+        })
 
-    fun getNewest(list: MutableLiveData<List<Product>>) = retrofitService.allProducts().enqueue(object : Callback<ProductResponse> {
-        override fun onResponse(
-            call: Call<ProductResponse>,
-            response: Response<ProductResponse>
-        ) {
-            response.body()?.productResponse.let {
-                list.value = it
+    fun getMan(list: MutableLiveData<List<Product>>) =
+        retrofitService.manProducts().enqueue(object : Callback<ProductResponse> {
+            override fun onResponse(
+                call: Call<ProductResponse>,
+                response: Response<ProductResponse>
+            ) {
+                response.body()?.productResponse.let {
+                    list.value = it
+
+                }
             }
-        }
-        override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
-            Log.e("Product Failure:", t.message.orEmpty())
-        }
-    })
 
-    fun getWoman(list: MutableLiveData<List<Product>>) = retrofitService.womanProducts().enqueue(object : Callback<ProductResponse>{
-        override fun onResponse(
-            call: Call<ProductResponse>,
-            response: Response<ProductResponse>
-        ) {
-            response.body()?.productResponse.let {
-                list.value = it
+            override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                Log.e("Man Product Failure:", t.message.orEmpty())
             }
-        }
-        override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
-            Log.e("Woman Product",t.message.orEmpty())
-        }
-    })
+        })
 
-    fun getFavorites(list: MutableLiveData<List<Product>>,product: MutableLiveData<Product>) =
+    fun getNewest(list: MutableLiveData<List<Product>>) =
+        retrofitService.allProducts().enqueue(object : Callback<ProductResponse> {
+            override fun onResponse(
+                call: Call<ProductResponse>,
+                response: Response<ProductResponse>
+            ) {
+                response.body()?.productResponse.let {
+                    list.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                Log.e("Product Failure:", t.message.orEmpty())
+            }
+        })
+
+    fun getWoman(list: MutableLiveData<List<Product>>) =
+        retrofitService.womanProducts().enqueue(object : Callback<ProductResponse> {
+            override fun onResponse(
+                call: Call<ProductResponse>,
+                response: Response<ProductResponse>
+            ) {
+                response.body()?.productResponse.let {
+                    list.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                Log.e("Woman Product", t.message.orEmpty())
+            }
+        })
+
+    fun getFavorites(list: MutableLiveData<List<Product>>, product: MutableLiveData<Product>) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("favorites")
@@ -189,11 +197,11 @@ class ProductRepository @Inject constructor(
             .document(firebaseAuth.currentUser?.email.toString())
             .get()
             .addOnSuccessListener {
-                if(it.exists()){
+                if (it.exists()) {
                     val user = it.toObject<User>()!!
                     _user.postValue(user)
-                }else{
-                    Log.e("Get User Error: ","User doesn't exist")
+                } else {
+                    Log.e("Get User Error: ", "User doesn't exist")
                 }
             }
             .addOnFailureListener {
@@ -204,19 +212,14 @@ class ProductRepository @Inject constructor(
         firebaseAuth.signOut()
     }
 
-    fun searchProducts(productName : String, list: MutableLiveData<List<Product>>) =
-        retrofitService.searchProducts(productName).enqueue(object : Callback<ProductResponse>{
+    fun searchProducts(productName: String, list: MutableLiveData<List<Product>>) =
+        retrofitService.searchProducts(productName).enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
                 response.body()?.productResponse.let {
-                    if (it != null) {
-                        list.postValue(it)
-                    }
-                    else{
-                        Toast.makeText(appContext,"Sorry, we couldn't find the product you were looking for",Toast.LENGTH_SHORT).show()
-                    }
+                    list.postValue(it)
                 }
             }
 

@@ -26,5 +26,4 @@ class SearchViewModel @Inject constructor(
             productRepository.searchProducts(productName,_searchList)
         }
     }
-
 }

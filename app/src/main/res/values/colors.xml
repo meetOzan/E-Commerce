@@ -25,5 +25,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#9C27B0</color>
+    <color name="lightGreen">#8D8BC34A</color>
+    <color name="lightRed">#9FFF0000</color>
 
 </resources>

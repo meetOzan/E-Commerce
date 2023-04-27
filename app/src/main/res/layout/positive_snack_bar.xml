@@ -8,7 +8,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/snackbar_container"
-            android:layout_width="250dp"
+            android:layout_width="300dp"
             android:layout_height="60dp"
             app:strokeWidth="1dp"
             android:elevation="15dp"
@@ -26,6 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
                     android:layout_toStartOf="@id/snackbar_text_success"
                     android:src="@drawable/ic_beenhere"
                     app:tint="@color/white"
@@ -37,20 +38,17 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginStart="5dp"
                     android:layout_marginTop="18dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/alata"
                     android:text="@string/profile_edit_successful"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
-
             </RelativeLayout>
-
-
         </com.google.android.material.card.MaterialCardView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

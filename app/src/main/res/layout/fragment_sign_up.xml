@@ -215,7 +215,7 @@
                 android:id="@+id/imageFemale"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="8dp"
                 android:background="@color/transparent"
                 android:contentDescription="@string/imagefemale"
                 android:src="@drawable/ic_female"
@@ -234,13 +234,13 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imageFemale"
                 app:layout_constraintEnd_toStartOf="@id/imageMale"
                 app:layout_constraintStart_toEndOf="@id/imageFemale"
-                app:layout_constraintTop_toBottomOf="@id/cardSignUpPassword" />
+                app:layout_constraintTop_toTopOf="@id/imageMale" />
 
             <ImageView
                 android:id="@+id/imageMale"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="8dp"
                 android:background="@color/transparent"
                 android:contentDescription="@string/imagemale"
                 android:src="@drawable/ic_male"

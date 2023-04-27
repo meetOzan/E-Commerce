@@ -53,4 +53,6 @@
     <string name="closedialog">closeDialog</string>
     <string name="profile_edit_successful">Profile Edit Successful !</string>
     <string name="snackbar_success">snackbar_success</string>
+    <string name="not_found_text_message">We didn\'t find what you want. What you are looking for will be in stock one day</string>
+    <string name="imageerrornotfound">imageErrorNotFound</string>
 </resources>
