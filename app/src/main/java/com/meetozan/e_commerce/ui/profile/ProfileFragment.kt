@@ -78,11 +78,11 @@ class ProfileFragment : Fragment() {
             }
 
             binding.btnOpenOrders.setOnClickListener {
-                if (binding.nestedCvOrders.visibility == View.GONE){
+                if (binding.nestedCvOrders.visibility == View.GONE) {
                     binding.nestedCvOrders.visibility = View.VISIBLE
                     return@setOnClickListener
                 }
-                if (binding.nestedCvOrders.visibility == View.VISIBLE){
+                if (binding.nestedCvOrders.visibility == View.VISIBLE) {
                     binding.nestedCvOrders.visibility = View.GONE
                     return@setOnClickListener
                 }

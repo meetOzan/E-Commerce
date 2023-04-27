@@ -65,7 +65,7 @@ class ProductAdapter(
                         if (isChecked) {
                             val productHashMap = hashMapOf<Any, Any>(
                                 "id" to product.id,
-                                "name" to product.productName,
+                                "productName" to product.productName,
                                 "price" to product.price,
                                 "brand" to product.brand,
                                 "picUrl" to product.picUrl,
