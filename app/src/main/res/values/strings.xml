@@ -58,4 +58,5 @@
     <string name="shopping_cart">Shopping Cart</string>
     <string name="total_price">Total Price</string>
     <string name="confirm_cart">Confirm Cart</string>
+    <string name="_0">0</string>
 </resources>
