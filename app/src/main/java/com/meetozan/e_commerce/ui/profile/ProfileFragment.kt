@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +52,28 @@ class ProfileFragment : Fragment() {
         binding.btnGoHome.setOnClickListener {
             it.findNavController().navigate(R.id.homeFragment)
         }
+
+        binding.btnOpenOrders.setOnClickListener {
+            if (binding.expandableLayoutOrders.visibility == View.GONE) {
+                TransitionManager.beginDelayedTransition(
+                    binding.cvOrders,AutoTransition()
+                )
+                binding.expandableLayoutOrders.visibility = View.VISIBLE
+                binding.btnOpenOrders.animate().apply {
+                    duration = 500
+                    rotationX(180f)
+                }.start()
+                return@setOnClickListener
+            }
+            if (binding.expandableLayoutOrders.visibility == View.VISIBLE) {
+                binding.expandableLayoutOrders.visibility = View.GONE
+                binding.btnOpenOrders.animate().apply {
+                    duration = 500
+                    rotationX(-0f)
+                }.start()
+                return@setOnClickListener
+            }
+        }
     }
 
     private fun observer() {
@@ -74,17 +98,6 @@ class ProfileFragment : Fragment() {
                     gender.setTextColor(ContextCompat.getColor(requireContext(), R.color.pink))
                     binding.profileImageView.setBackgroundResource(R.drawable.pink_circle)
                     binding.profileImageView.setImageResource(R.drawable.ic_person_woman)
-                }
-            }
-
-            binding.btnOpenOrders.setOnClickListener {
-                if (binding.nestedCvOrders.visibility == View.GONE) {
-                    binding.nestedCvOrders.visibility = View.VISIBLE
-                    return@setOnClickListener
-                }
-                if (binding.nestedCvOrders.visibility == View.VISIBLE) {
-                    binding.nestedCvOrders.visibility = View.GONE
-                    return@setOnClickListener
                 }
             }
 

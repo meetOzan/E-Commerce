@@ -228,4 +228,58 @@ class ProductRepository @Inject constructor(
             }
         })
 
+    suspend fun addToBasket(product: Product, hashMap: HashMap<Any, Any>) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("basket")
+            .document(product.productName)
+            .set(hashMap).await()
+
+    fun getBasket(list: MutableLiveData<List<Product>>) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("basket")
+            .addSnapshotListener { querySnapshot, firestoreException ->
+                firestoreException?.let {
+                    Toast.makeText(appContext, it.message, Toast.LENGTH_LONG).show()
+                    return@addSnapshotListener
+                }
+                querySnapshot?.let {
+                    val basketList: ArrayList<Product> = ArrayList()
+                    for (document in it) {
+                        val basket = document.toObject<Product>()
+                        basketList.add(basket)
+                        list.postValue(basketList)
+                    }
+                }
+            }
+
+    fun getSingleBasketItem (productLiveData: MutableLiveData<Product>,product: Product) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("basket")
+            .document(product.productName)
+            .get()
+            .addOnSuccessListener {
+                if (it.exists()) {
+                    val _product = it.toObject<Product>()!!
+                    productLiveData.postValue(_product)
+                } else {
+                    Log.e("Get Single Basket Item Error: ", "Basket Item doesn't exist")
+                }
+            }
+            .addOnFailureListener {
+                Log.e("Single Basket Item Exception: ",it.message.orEmpty())
+            }
+
+    suspend fun updateBasketPiece(product: Product,piece: Int) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("basket")
+            .document(product.productName)
+            .update(
+                hashMapOf<String, Any>(
+                    "piece" to piece
+                )
+            ).await()
 }

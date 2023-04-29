@@ -64,6 +64,9 @@ data class Product(
     @SerializedName("stock")
     @ColumnInfo(name = "stock")
     @Expose
-    var stock: Int = 0
+    var stock: Int = 0,
+
+    @ColumnInfo("piece")
+    var piece : Int = 1,
 
 ) : Parcelable

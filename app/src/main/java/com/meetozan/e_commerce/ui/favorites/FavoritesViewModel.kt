@@ -46,4 +46,11 @@ class FavoritesViewModel @Inject constructor(
             productRepository.deleteFromFavorites(product)
         }
     }
+
+    fun addToBasket(product: Product,hashMap: HashMap<Any, Any>){
+        CoroutineScope(ioDispatcher).launch {
+            productRepository.addToBasket(product,hashMap)
+        }
+    }
+
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -52,39 +53,44 @@ class ProductAdapter(
                     view.findViewById<TextView>(R.id.tvDetailBrand).text = product.brand
                     view.findViewById<TextView>(R.id.tvDetailDescription).text = product.description
                     view.findViewById<ImageSlider>(R.id.imageSliderDetail).setImageList(imageList)
+                    val basketButton = view.findViewById<ImageButton>(R.id.btnAddToCart)
                     val favSwitch = view.findViewById<SwitchMaterial>(R.id.favoriteSwitch)
                     val stock = view.findViewById<TextView>(R.id.tvDetailStock)
                     stock.text = product.stock.toString()
+
+                    val productHashMap = hashMapOf<Any, Any>(
+                        "id" to product.id,
+                        "productName" to product.productName,
+                        "price" to product.price,
+                        "brand" to product.brand,
+                        "picUrl" to product.picUrl,
+                        "secondPicUrl" to product.secondPicUrl,
+                        "thirdPicUrl" to product.thirdPicUrl,
+                        "description" to product.description,
+                        "isFavorite" to true,
+                        "rate" to product.rate,
+                        "stock" to product.stock
+                    )
 
                     if (this.productCard?.stock!! <= 10) {
                         stock.visibility = View.VISIBLE
                         view.findViewById<TextView>(R.id.tvStock).visibility = View.VISIBLE
                     }
 
+                    basketButton.setOnClickListener {
+                        favoritesViewModel.addToBasket(product, productHashMap)
+                        Toast.makeText(context, "Added to Basket", Toast.LENGTH_SHORT).show()
+                    }
+
                     favSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
                         if (isChecked) {
-                            val productHashMap = hashMapOf<Any, Any>(
-                                "id" to product.id,
-                                "productName" to product.productName,
-                                "price" to product.price,
-                                "brand" to product.brand,
-                                "picUrl" to product.picUrl,
-                                "secondPicUrl" to product.secondPicUrl,
-                                "thirdPicUrl" to product.thirdPicUrl,
-                                "description" to product.description,
-                                "isFavorite" to true,
-                                "rate" to product.rate,
-                                "stock" to product.stock
-                            )
-
                             buttonView.text = "♥"
-
                             favoritesViewModel.addToFavorites(product, productHashMap)
                             Toast.makeText(context, "Added to Favs", Toast.LENGTH_SHORT).show()
-                        }else{
+                        } else {
                             favoritesViewModel.deleteFromFavorites(product)
                             buttonView.text = ""
-                            Toast.makeText(context,"Removed from Favs",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Removed from Favs", Toast.LENGTH_SHORT).show()
                         }
                     }
                     dialog.show()
@@ -102,5 +108,6 @@ class ProductAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(productList[position])
+
 
 }

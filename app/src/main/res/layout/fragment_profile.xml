@@ -9,7 +9,8 @@
         <RelativeLayout
             android:id="@+id/profileFragmentLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true">
 
             <View
                 android:id="@+id/profileTopPlaceholder"
@@ -46,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/profileImageView"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/alata"
                 android:text=""
                 android:textAlignment="center"
@@ -89,8 +90,10 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvOrders"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="expand"
+                android:clickable="false"
                 android:layout_below="@id/buttonProfileEditProfile"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="20dp"
@@ -99,17 +102,21 @@
                 android:elevation="8dp"
                 android:textColor="@android:color/white"
                 app:strokeColor="@color/primaryColor"
-                app:strokeWidth="0.5dp">
+                app:strokeWidth="0.5dp"
+                android:focusable="false">
 
                 <RelativeLayout
+                    android:id="@+id/cvOrdersLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <View
                         android:id="@+id/cvOrderView"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@color/lightGray" />
+                        android:layout_height="52dp"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/lightGray"
+                        android:focusable="false"/>
 
                     <ImageView
                         android:id="@+id/imageOrders"
@@ -119,7 +126,8 @@
                         android:layout_marginTop="6dp"
                         android:contentDescription="@string/imagehistory"
                         android:src="@drawable/ic_history_24"
-                        app:tint="@color/black" />
+                        app:tint="@color/black"
+                        android:focusable="false"/>
 
                     <TextView
                         android:id="@+id/tvOrders"
@@ -131,7 +139,8 @@
                         android:fontFamily="@font/alata"
                         android:text="@string/orders"
                         android:textColor="@color/secondaryColor"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:focusable="false"/>
 
                     <ImageView
                         android:id="@+id/btnOpenOrders"
@@ -147,8 +156,8 @@
                         android:src="@drawable/ic_arrow_circle_down" />
 
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/nestedCvOrders"
+                    <LinearLayout
+                        android:id="@+id/expandableLayoutOrders"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/imageOrders"
@@ -161,7 +170,7 @@
                             android:layout_marginHorizontal="8dp"
                             android:layout_marginTop="5dp" />
 
-                    </androidx.cardview.widget.CardView>
+                    </LinearLayout>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
