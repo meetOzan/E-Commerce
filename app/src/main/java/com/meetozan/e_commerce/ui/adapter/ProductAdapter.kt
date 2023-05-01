@@ -19,7 +19,7 @@ import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
 import com.squareup.picasso.Picasso
 
 class ProductAdapter(
-    private val productList: List<Product>,
+    private val productList: MutableList<Product>,
     private val context: Context,
     private val layoutInflater: LayoutInflater,
     private val favoritesViewModel: FavoritesViewModel
@@ -91,6 +91,10 @@ class ProductAdapter(
                         } else {
                             favoritesViewModel.deleteFromFavorites(product)
                             buttonView.text = ""
+                            val position = adapterPosition
+                            if (position != RecyclerView.NO_POSITION) {
+                                this@ProductAdapter.removeFromFavs(position)
+                            }
                             Toast.makeText(context, "Removed from Favs", Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -98,6 +102,11 @@ class ProductAdapter(
                 }
             }
         }
+    }
+
+    fun removeFromFavs(position: Int) {
+        productList.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

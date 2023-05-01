@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.meetozan.e_commerce.data.model.model.Product
 import com.meetozan.e_commerce.databinding.FragmentElectronicBinding
 import com.meetozan.e_commerce.ui.adapter.ProductAdapter
 import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
@@ -33,7 +34,7 @@ class HouseholdFragment : Fragment() {
 
     private fun observer() {
         viewModel.householdList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it,requireContext(),layoutInflater,favoritesViewModel)
+            adapter = ProductAdapter(it as MutableList<Product>,requireContext(),layoutInflater,favoritesViewModel)
             rv = binding.electronicRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter

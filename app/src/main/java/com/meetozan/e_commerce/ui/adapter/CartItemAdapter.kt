@@ -11,11 +11,10 @@ import com.meetozan.e_commerce.ui.shopping_cart.ShoppingCartViewModel
 import com.squareup.picasso.Picasso
 
 class CartItemAdapter(
-    private val cartList: List<Product>,
+    private var cartList: MutableList<Product>,
     private val cartViewModel: ShoppingCartViewModel,
     val context: Context,
 ) : RecyclerView.Adapter<CartItemAdapter.ViewHolder>() {
-
 
     inner class ViewHolder(private val binding: ItemCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -32,13 +31,13 @@ class CartItemAdapter(
                     var piece = Integer.parseInt(itemCount.text.toString())
                     piece += 1
                     itemCount.text = piece.toString()
-                    cartViewModel.updatePiece(piece,cartProduct)
+                    cartViewModel.updatePiece(piece, cartProduct)
                 }
 
                 removeItem.setOnClickListener {
                     var piece = Integer.parseInt(itemCount.text.toString())
 
-                    if (piece <= 1){
+                    if (piece <= 1) {
                         val builder = AlertDialog.Builder(context)
                         builder.setTitle("Product will be deleted")
 
@@ -46,6 +45,10 @@ class CartItemAdapter(
 
                         builder.setPositiveButton("OK") { dialog, _ ->
                             cartViewModel.deleteProduct(cartProduct)
+                            val position = adapterPosition
+                            if (position != RecyclerView.NO_POSITION) {
+                                this@CartItemAdapter.removeItem(position)
+                            }
                             dialog.dismiss()
                         }
 
@@ -60,12 +63,16 @@ class CartItemAdapter(
 
                     piece -= 1
                     itemCount.text = piece.toString()
-                    cartViewModel.updatePiece(piece,cartProduct)
+                    cartViewModel.updatePiece(piece, cartProduct)
                 }
             }
         }
     }
 
+    fun removeItem(position: Int) {
+        cartList.removeAt(position)
+        notifyItemRemoved(position)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemCartBinding.inflate(LayoutInflater.from(parent.context), parent, false)

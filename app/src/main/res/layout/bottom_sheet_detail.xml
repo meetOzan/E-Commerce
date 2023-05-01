@@ -2,6 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="productDetail"
+            type="com.meetozan.e_commerce.data.model.model.Product" />
+
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,7 +40,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="12dp"
-                android:checked="false"
+                android:checked="@{productDetail.isFavorite()}"
                 android:minHeight="50dp"
                 android:elevation="8dp"
                 android:text=""
@@ -140,7 +150,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/alata"
-                android:text=""
+                android:text="@{productDetail.description}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvStock" />
 

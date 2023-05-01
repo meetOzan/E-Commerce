@@ -8,6 +8,7 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.meetozan.e_commerce.data.model.model.Product
 import com.meetozan.e_commerce.databinding.FragmentSearchBinding
 import com.meetozan.e_commerce.ui.adapter.ProductAdapter
 import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
@@ -59,7 +60,7 @@ class SearchFragment : Fragment() {
 
                                 productAdapter =
                                     ProductAdapter(
-                                        it,
+                                        it as MutableList<Product>,
                                         requireContext(),
                                         layoutInflater,
                                         favoritesViewModel
@@ -83,7 +84,7 @@ class SearchFragment : Fragment() {
                     StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                 productAdapter =
                     ProductAdapter(
-                        list,
+                        list as MutableList<Product>,
                         requireContext(),
                         layoutInflater,
                         favoritesViewModel
