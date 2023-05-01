@@ -53,6 +53,10 @@ class ProfileFragment : Fragment() {
             it.findNavController().navigate(R.id.homeFragment)
         }
 
+        binding.cvOrderView.setOnClickListener {
+            return@setOnClickListener
+        }
+
         binding.btnOpenOrders.setOnClickListener {
             if (binding.expandableLayoutOrders.visibility == View.GONE) {
                 TransitionManager.beginDelayedTransition(

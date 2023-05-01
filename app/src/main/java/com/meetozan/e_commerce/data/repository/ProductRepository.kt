@@ -254,24 +254,6 @@ class ProductRepository @Inject constructor(
                 }
             }
 
-    fun getSingleBasketItem (productLiveData: MutableLiveData<Product>,product: Product) =
-        firebaseFirestore.collection("users")
-            .document(firebaseAuth.currentUser?.email.toString())
-            .collection("basket")
-            .document(product.productName)
-            .get()
-            .addOnSuccessListener {
-                if (it.exists()) {
-                    val _product = it.toObject<Product>()!!
-                    productLiveData.postValue(_product)
-                } else {
-                    Log.e("Get Single Basket Item Error: ", "Basket Item doesn't exist")
-                }
-            }
-            .addOnFailureListener {
-                Log.e("Single Basket Item Exception: ",it.message.orEmpty())
-            }
-
     suspend fun updateBasketPiece(product: Product,piece: Int) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
@@ -282,4 +264,11 @@ class ProductRepository @Inject constructor(
                     "piece" to piece
                 )
             ).await()
+
+    suspend fun deleteFromBasket(product: Product) =
+        firebaseFirestore.collection("users")
+        .document(firebaseAuth.currentUser?.email.toString())
+        .collection("basket")
+        .document(product.productName)
+        .delete().await()
 }

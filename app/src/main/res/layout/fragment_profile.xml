@@ -16,7 +16,10 @@
                 android:id="@+id/profileTopPlaceholder"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="@color/primaryColor" />
+                android:background="@color/primaryColor"
+                android:onClick="openOrders"
+                android:clickable="false"
+                android:focusable="false"/>
 
             <ImageView
                 android:id="@+id/btnSignOut"

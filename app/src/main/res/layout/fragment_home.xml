@@ -4,6 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.home.HomeFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/homeTabLayout"
+            style="@style/Widget.Material3.TabLayout.OnSurface"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabGravity="fill"
+            android:background="@color/lightGray"
+            app:tabIndicatorColor="@color/primaryDarkColor"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/primaryDarkColor"
+            app:tabTextColor="@color/gray"
+            tools:ignore="SpeakableTextPresentCheck"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -48,25 +70,10 @@
                     app:layout_constraintBottom_toTopOf="@id/brandRecyclerView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/homeTabLayout" />
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/homeTabLayout"
-                    style="@style/Widget.Material3.TabLayout.OnSurface"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:elevation="4dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tabGravity="fill"
-                    android:background="@color/lightGray"
-                    app:tabIndicatorColor="@color/primaryDarkColor"
-                    app:tabMode="scrollable"
-                    app:tabSelectedTextColor="@color/primaryDarkColor"
-                    app:tabTextColor="@color/gray"
-                    tools:ignore="SpeakableTextPresentCheck"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+    </LinearLayout>
+
 </layout>

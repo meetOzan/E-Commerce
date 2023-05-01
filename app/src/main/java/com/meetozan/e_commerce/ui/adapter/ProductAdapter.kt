@@ -68,6 +68,7 @@ class ProductAdapter(
                         "thirdPicUrl" to product.thirdPicUrl,
                         "description" to product.description,
                         "isFavorite" to true,
+                        "piece" to product.piece,
                         "rate" to product.rate,
                         "stock" to product.stock
                     )

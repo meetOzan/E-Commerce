@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.meetozan.e_commerce.R
 import com.meetozan.e_commerce.databinding.FragmentShoppingCartBinding
 import com.meetozan.e_commerce.ui.adapter.CartItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,11 +42,15 @@ class ShoppingCartFragment : Fragment() {
 
         observer()
 
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            view.findNavController().navigate(R.id.action_shoppingCartFragment_to_homeFragment)
+        }
+
     }
 
     private fun observer() {
         viewModel.basketList.observe(viewLifecycleOwner) {
-            adapter = CartItemAdapter(it, viewModel)
+            adapter = CartItemAdapter(it, viewModel, requireContext())
             rv.adapter = adapter
         }
     }
