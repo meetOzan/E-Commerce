@@ -35,9 +35,9 @@ class ShoppingCartViewModel @Inject constructor(
         }
     }
 
-    fun updatePiece(piece : Int,product: Product){
+    fun updateBasketItem(data : Any, product: Product, path: String){
         CoroutineScope(ioDispatcher).launch {
-            productRepository.updateBasketPiece(product,piece)
+            productRepository.updateBasketItem(product,data,path)
         }
     }
 

@@ -1,6 +1,7 @@
 package com.meetozan.e_commerce.ui.shopping_cart
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,15 +48,35 @@ class ShoppingCartFragment : Fragment() {
             view.findNavController().navigate(R.id.action_shoppingCartFragment_to_homeFragment)
         }
 
-
-
     }
 
     private fun observer() {
         viewModel.basketList.observe(viewLifecycleOwner) {
             adapter = CartItemAdapter(it as MutableList<Product>, viewModel, requireContext())
             rv.adapter = adapter
+
+            Log.e("Size: ", it.size.toString())
+
+            if (it.isNotEmpty()) {
+                binding.cvShoppingCartTotal.visibility = View.VISIBLE
+                binding.cvSearchNotFound.visibility = View.GONE
+                binding.shoppingCartRv.visibility = View.VISIBLE
+
+                var totalPrice = 0
+
+                for (index in it.indices) {
+                    totalPrice += it[index].price * it[index].piece
+                }
+
+                binding.tvTotalPrice.text = totalPrice.toString()
+
+            } else {
+                binding.cvSearchNotFound.visibility = View.VISIBLE
+
+                binding.btnGoHome.setOnClickListener {view ->
+                    view.findNavController().navigate(R.id.homeFragment)
+                }
+            }
         }
     }
-
 }

@@ -254,14 +254,14 @@ class ProductRepository @Inject constructor(
                 }
             }
 
-    suspend fun updateBasketPiece(product: Product,piece: Int) =
+    suspend fun updateBasketItem(product: Product, data: Any, path: String ) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("basket")
             .document(product.productName)
             .update(
                 hashMapOf<String, Any>(
-                    "piece" to piece
+                    path to data
                 )
             ).await()
 
@@ -271,4 +271,5 @@ class ProductRepository @Inject constructor(
         .collection("basket")
         .document(product.productName)
         .delete().await()
+
 }

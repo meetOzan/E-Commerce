@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 class CartItemAdapter(
     private var cartList: MutableList<Product>,
     private val cartViewModel: ShoppingCartViewModel,
-    val context: Context,
+    val context: Context
 ) : RecyclerView.Adapter<CartItemAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemCartBinding) :
@@ -31,7 +31,7 @@ class CartItemAdapter(
                     var piece = Integer.parseInt(itemCount.text.toString())
                     piece += 1
                     itemCount.text = piece.toString()
-                    cartViewModel.updatePiece(piece, cartProduct)
+                    cartViewModel.updateBasketItem(piece, cartProduct,"piece")
                 }
 
                 removeItem.setOnClickListener {
@@ -41,7 +41,7 @@ class CartItemAdapter(
                         val builder = AlertDialog.Builder(context)
                         builder.setTitle("Product will be deleted")
 
-                        builder.setMessage("Are you sure you want to delete the product from your cart? ")
+                        builder.setMessage("Are you sure you want to delete the product from your cart?")
 
                         builder.setPositiveButton("OK") { dialog, _ ->
                             cartViewModel.deleteProduct(cartProduct)
@@ -63,7 +63,7 @@ class CartItemAdapter(
 
                     piece -= 1
                     itemCount.text = piece.toString()
-                    cartViewModel.updatePiece(piece, cartProduct)
+                    cartViewModel.updateBasketItem(piece, cartProduct,"piece")
                 }
             }
         }

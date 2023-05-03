@@ -59,4 +59,5 @@
     <string name="total_price">Total Price</string>
     <string name="confirm_cart">Confirm Cart</string>
     <string name="_0">0</string>
+    <string name="you_haven_t_added_anything_to_the_cart">You haven\'t added anything to the cart, go shopping now!</string>
 </resources>
