@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class Brand(
-
     @SerializedName("id")
     @Expose
     val id: Int,
@@ -16,5 +15,4 @@ data class Brand(
     @SerializedName("picUrl")
     @Expose
     val picUrl: String,
-
 )

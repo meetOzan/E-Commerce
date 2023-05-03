@@ -2,6 +2,7 @@ package com.meetozan.e_commerce.ui.adapter
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -27,14 +28,35 @@ class CartItemAdapter(
                     .resize(500, 500)
                     .into(imageCartItem)
 
-                addItem.setOnClickListener {
-                    var piece = Integer.parseInt(itemCount.text.toString())
-                    piece += 1
-                    itemCount.text = piece.toString()
-                    cartViewModel.updateBasketItem(piece, cartProduct,"piece")
+                if (cartProduct.stock <= 5) {
+                    val strokeColor = Color.RED
+
+                    cvCartItem.strokeWidth = 4
+                    cvCartItem.strokeColor = strokeColor
                 }
 
-                removeItem.setOnClickListener {
+                addItem.setOnClickListener {
+                    var piece = Integer.parseInt(itemCount.text.toString())
+
+                    if (Integer.parseInt(itemCount.text.toString()) >= cartProduct.stock) {
+                        val builder = AlertDialog.Builder(context)
+                        builder.setTitle("No Stock")
+
+                        builder.setMessage("We don't have enough stock but will be soon")
+
+                        builder.setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        val dialog = builder.create()
+                        dialog.show()
+                    } else {
+                        piece += 1
+                        itemCount.text = piece.toString()
+                        cartViewModel.updateBasketItem(piece, cartProduct, "piece")
+                    }
+                }
+
+                removeItem.setOnClickListener { view ->
                     var piece = Integer.parseInt(itemCount.text.toString())
 
                     if (piece <= 1) {
@@ -60,10 +82,9 @@ class CartItemAdapter(
 
                         return@setOnClickListener
                     }
-
                     piece -= 1
                     itemCount.text = piece.toString()
-                    cartViewModel.updateBasketItem(piece, cartProduct,"piece")
+                    cartViewModel.updateBasketItem(piece, cartProduct, "piece")
                 }
             }
         }

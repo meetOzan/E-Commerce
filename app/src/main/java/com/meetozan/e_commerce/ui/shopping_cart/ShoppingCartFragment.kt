@@ -1,14 +1,14 @@
 package com.meetozan.e_commerce.ui.shopping_cart
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.meetozan.e_commerce.R
@@ -30,6 +30,7 @@ class ShoppingCartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShoppingCartBinding.inflate(inflater, container, false)
+        observer()
         return binding.root
     }
 
@@ -42,11 +43,21 @@ class ShoppingCartFragment : Fragment() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         rv.layoutManager = linearLayoutManager
 
-        observer()
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            view.findNavController().navigate(R.id.action_shoppingCartFragment_to_homeFragment)
+        val backPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_shoppingCartFragment_to_homeFragment)
+            }
         }
+
+        binding.btnGoHome.setOnClickListener {
+            it.findNavController().navigate(R.id.homeFragment)
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            backPressedCallback
+        )
 
     }
 
@@ -54,8 +65,6 @@ class ShoppingCartFragment : Fragment() {
         viewModel.basketList.observe(viewLifecycleOwner) {
             adapter = CartItemAdapter(it as MutableList<Product>, viewModel, requireContext())
             rv.adapter = adapter
-
-            Log.e("Size: ", it.size.toString())
 
             if (it.isNotEmpty()) {
                 binding.cvShoppingCartTotal.visibility = View.VISIBLE
@@ -72,10 +81,6 @@ class ShoppingCartFragment : Fragment() {
 
             } else {
                 binding.cvSearchNotFound.visibility = View.VISIBLE
-
-                binding.btnGoHome.setOnClickListener {view ->
-                    view.findNavController().navigate(R.id.homeFragment)
-                }
             }
         }
     }
