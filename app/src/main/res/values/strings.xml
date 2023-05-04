@@ -63,4 +63,5 @@
     <string name="plusitem">plusItem</string>
     <string name="removeitem">removeItem</string>
     <string name="imageproductview">imageProductView</string>
+    <string name="you_haven_t_added_anything_to_your_favorites">You haven\'t added anything to your favorites, go and add to favorites now!</string>
 </resources>
