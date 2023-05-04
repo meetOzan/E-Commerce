@@ -43,7 +43,6 @@ class ShoppingCartFragment : Fragment() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         rv.layoutManager = linearLayoutManager
 
-
         val backPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().navigate(R.id.action_shoppingCartFragment_to_homeFragment)

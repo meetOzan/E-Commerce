@@ -37,7 +37,14 @@ class FavoritesFragment : Fragment() {
             rv = binding.favoritesRv
             rv.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter
+
+            if (it.isNotEmpty()) {
+                binding.cvFavoritesNotFound.visibility = View.GONE
+                binding.favoritesRv.visibility = View.VISIBLE
+
+            } else {
+                binding.favoritesRv.visibility = View.VISIBLE
+            }
         }
     }
-
 }
