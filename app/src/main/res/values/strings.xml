@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">E-Commerce</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_in">Sign In</string>
     <string name="e_mail">E-Mail</string>
@@ -64,4 +63,14 @@
     <string name="removeitem">removeItem</string>
     <string name="imageproductview">imageProductView</string>
     <string name="you_haven_t_added_anything_to_your_favorites">You haven\'t added anything to your favorites, go and add to favorites now!</string>
+    <string name="payment">Payment</string>
+    <string name="slash">/</string>
+    <string name="card_number">Card Number</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="card_holder_name">Card Holder Name</string>
+    <string name="cvv">CVV</string>
+    <string name="buy">Buy!!</string>
+    <string name="chipimage">chipImage</string>
+    <string name="creditcardbrandimage">creditCardBrandImage</string>
 </resources>

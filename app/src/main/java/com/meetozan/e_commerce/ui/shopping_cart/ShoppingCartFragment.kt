@@ -53,6 +53,10 @@ class ShoppingCartFragment : Fragment() {
             it.findNavController().navigate(R.id.homeFragment)
         }
 
+        binding.btnConfirmCart.setOnClickListener {
+            it.findNavController().navigate(R.id.action_shoppingCartFragment_to_paymentFragment)
+        }
+
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             backPressedCallback

@@ -65,7 +65,7 @@ class CartItemAdapter(
 
                         builder.setMessage("Are you sure you want to delete the product from your cart?")
 
-                        builder.setPositiveButton("Gay furry porn") { dialog, _ ->
+                        builder.setPositiveButton("Ok") { dialog, _ ->
                             cartViewModel.deleteProduct(cartProduct)
                             val position = adapterPosition
                             if (position != RecyclerView.NO_POSITION) {
@@ -74,7 +74,7 @@ class CartItemAdapter(
                             dialog.dismiss()
                         }
 
-                        builder.setNegativeButton("Toyzan") { dialog, _ ->
+                        builder.setNegativeButton("Cancel") { dialog, _ ->
                             dialog.dismiss()
                         }
                         val dialog = builder.create()
