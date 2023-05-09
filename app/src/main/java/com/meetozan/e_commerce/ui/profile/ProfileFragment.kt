@@ -145,7 +145,7 @@ class ProfileFragment : Fragment() {
                         }
                         Toast.makeText(
                             requireContext(),
-                            "Furry Gay Porn",
+                            "Please Fill Blanks",
                             Toast.LENGTH_SHORT
                         ).show()
                     }

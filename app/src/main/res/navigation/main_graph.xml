@@ -36,7 +36,7 @@
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_shoppingCartFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
+            app:destination="@id/paymentFragment"  />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"

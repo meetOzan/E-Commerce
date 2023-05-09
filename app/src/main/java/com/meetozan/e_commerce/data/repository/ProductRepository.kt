@@ -254,7 +254,7 @@ class ProductRepository @Inject constructor(
                 }
             }
 
-    suspend fun updateBasketItem(product: Product, data: Any, path: String ) =
+    suspend fun updateBasketItem(product: Product, data: Any, path: String) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("basket")
@@ -267,9 +267,8 @@ class ProductRepository @Inject constructor(
 
     suspend fun deleteFromBasket(product: Product) =
         firebaseFirestore.collection("users")
-        .document(firebaseAuth.currentUser?.email.toString())
-        .collection("basket")
-        .document(product.productName)
-        .delete().await()
-
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("basket")
+            .document(product.productName)
+            .delete().await()
 }

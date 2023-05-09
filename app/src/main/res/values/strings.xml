@@ -70,7 +70,10 @@
     <string name="year">Year</string>
     <string name="card_holder_name">Card Holder Name</string>
     <string name="cvv">CVV</string>
-    <string name="buy">Buy!!</string>
+    <string name="buy">Buy Now !!</string>
     <string name="chipimage">chipImage</string>
     <string name="creditcardbrandimage">creditCardBrandImage</string>
+    <string name="confirm">Confirm</string>
+    <string name="ok">OK</string>
+    <string name="payment_completed">Payment Completed! Use with Happiness :)</string>
 </resources>

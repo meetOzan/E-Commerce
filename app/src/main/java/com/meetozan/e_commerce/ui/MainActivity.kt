@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun bottomBar() {
         val bottomBar = findViewById<BottomNavigationView>(R.id.bottomNav)
-        bottomBar.menu.getItem(2).isEnabled = false
+        bottomBar.menu.getItem(2).isEnabled = true
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener {
             navHostFragment.navController.navigate(R.id.shoppingCartFragment)
+            bottomBar.isSelected = false
         }
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->

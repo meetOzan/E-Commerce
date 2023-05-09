@@ -4,308 +4,310 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.payment.PaymentFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/paymentToolbar"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/secondaryColor"
-            android:fontFamily="@font/alata"
-            android:gravity="center"
-            android:text="@string/payment"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvViewCard"
-            android:layout_width="260dp"
-            android:layout_height="140dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/lightGray"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/paymentToolbar"
-            app:strokeColor="@color/black"
-            app:strokeWidth="2dp">
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/paymentToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/imageCvChip"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="30dp"
-                    android:src="@drawable/ic_chip"
-                    android:contentDescription="@string/chipimage" />
-
-                <TextView
-                    android:id="@+id/tvCreditCardNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/alata"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/tvCreditCardName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_toStartOf="@+id/tvCreditCardMonth"
-                    android:fontFamily="@font/alata"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tvCreditCardYear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/alata"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/tvCreditCardSlash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="48dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/alata"
-                    android:visibility="gone"
-                    android:text="@string/slash"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/tvCreditCardMonth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="60dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/alata"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:id="@+id/imageCreditCartBrand"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="12dp"
-                    android:contentDescription="@string/creditcardbrandimage" />
-
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/creditCartCardName"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="@string/card_holder_name"
-            android:maxLines="1"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvViewCard">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCreditCartCardName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryColor"
                 android:fontFamily="@font/alata"
-                android:inputType="textEmailAddress"
-                android:maxLength="30"
-                android:textColorHint="@color/secondaryDarkColor"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:gravity="center"
+                android:text="@string/payment"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/creditCartCardNumber"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/card_number"
-            android:maxLines="1"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/creditCartCardName">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvViewCard"
+                android:layout_width="260dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/lightGray"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/paymentToolbar"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCreditCartCardNumber"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageCvChip"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="30dp"
+                        android:contentDescription="@string/chipimage"
+                        android:src="@drawable/ic_chip" />
+
+                    <TextView
+                        android:id="@+id/tvCreditCardNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="40dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/alata"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvCreditCardName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toStartOf="@+id/tvCreditCardMonth"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/black"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvCreditCardYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/alata"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tvCreditCardSlash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="48dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/alata"
+                        android:text="@string/slash"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvCreditCardMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/alata"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/imageCreditCartBrand"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="12dp"
+                        android:contentDescription="@string/creditcardbrandimage" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/creditCartCardName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="@string/card_holder_name"
+                android:maxLines="1"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvViewCard">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/alata"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="30"
+                    android:textColorHint="@color/secondaryDarkColor"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/creditCartCardNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/card_number"
+                android:maxLines="1"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/creditCartCardName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/alata"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="16"
+                    android:textColorHint="@color/secondaryDarkColor"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/creditCartCardMonth"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/month"
+                android:maxLines="1"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toStartOf="@id/creditCartCardYear"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/creditCartCardNumber">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/alata"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColorHint="@color/secondaryDarkColor"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/creditCartCardYear"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/year"
+                android:maxLines="1"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toStartOf="@id/creditCartCardCvv"
+                app:layout_constraintStart_toEndOf="@id/creditCartCardMonth"
+                app:layout_constraintTop_toBottomOf="@id/creditCartCardNumber">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/alata"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColorHint="@color/secondaryDarkColor"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/creditCartCardCvv"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/cvv"
+                android:maxLines="1"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/creditCartCardYear"
+                app:layout_constraintTop_toBottomOf="@+id/creditCartCardNumber">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/alata"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textColorHint="@color/secondaryDarkColor"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvPaymentTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/alata"
-                android:inputType="textEmailAddress"
-                android:maxLength="16"
-                android:textColorHint="@color/secondaryDarkColor"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="@string/total_price"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/creditCartCardMonth"
+                app:layout_constraintTop_toBottomOf="@id/creditCartCardMonth" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/creditCartCardMonth"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/month"
-            android:maxLines="1"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toStartOf="@id/creditCartCardYear"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/creditCartCardNumber">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCreditCartCardMonth"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <TextView
+                android:id="@+id/paymentTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/alata"
-                android:inputType="number"
-                android:maxLength="2"
-                android:textColorHint="@color/secondaryDarkColor"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text=""
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="@+id/tvPaymentTotalPrice"
+                app:layout_constraintTop_toBottomOf="@id/tvPaymentTotalPrice" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/creditCartCardYear"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/year"
-            android:maxLines="1"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toStartOf="@id/creditCartCardCvv"
-            app:layout_constraintStart_toEndOf="@id/creditCartCardMonth"
-            app:layout_constraintTop_toBottomOf="@id/creditCartCardNumber">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCreditCartCardYear"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <TextView
+                android:id="@+id/tvPaymentLira"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/alata"
-                android:inputType="number"
-                android:maxLength="2"
-                android:textColorHint="@color/secondaryDarkColor"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="@string/turkish_lira"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paymentTotalPrice"
+                app:layout_constraintEnd_toEndOf="@+id/tvPaymentTotalPrice"
+                app:layout_constraintStart_toEndOf="@id/paymentTotalPrice"
+                app:layout_constraintTop_toTopOf="@+id/paymentTotalPrice" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/creditCartCardCvv"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/cvv"
-            android:maxLines="1"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/creditCartCardYear"
-            app:layout_constraintTop_toBottomOf="@+id/creditCartCardNumber">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCreditCartCardCvv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <Button
+                android:id="@+id/btnCompletePayment"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:backgroundTint="@color/lightGreen"
+                android:elevation="8dp"
                 android:fontFamily="@font/alata"
-                android:inputType="number"
-                android:maxLength="3"
-                android:textColorHint="@color/secondaryDarkColor"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:iconTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/paymentTotalPrice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@+id/tvPaymentLira"
+                app:layout_constraintTop_toBottomOf="@+id/tvPaymentTotalPrice"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp" />
 
-        <TextView
-            android:id="@+id/tvPaymentTotalPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/total_price"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@id/creditCartCardMonth"
-            app:layout_constraintTop_toBottomOf="@id/creditCartCardMonth" />
-
-        <TextView
-            android:id="@+id/paymentTotalPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/alata"
-            android:text=""
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="@+id/tvPaymentTotalPrice"
-            app:layout_constraintTop_toBottomOf="@id/tvPaymentTotalPrice" />
-
-        <TextView
-            android:id="@+id/tvPaymentLira"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/turkish_lira"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="@+id/tvPaymentTotalPrice"
-            app:layout_constraintStart_toEndOf="@id/paymentTotalPrice"
-            app:layout_constraintTop_toBottomOf="@id/tvPaymentTotalPrice" />
-
-        <Button
-            android:id="@+id/btnCompletePayment"
-            style="@style/Widget.Material3.Button.ElevatedButton"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/lightGreen"
-            android:elevation="8dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/buy"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:iconTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/paymentTotalPrice"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toEndOf="@+id/tvPaymentLira"
-            app:layout_constraintTop_toBottomOf="@+id/tvPaymentTotalPrice"
-            app:strokeColor="@color/black"
-            app:strokeWidth="1dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
