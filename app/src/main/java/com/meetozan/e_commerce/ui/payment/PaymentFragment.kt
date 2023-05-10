@@ -47,6 +47,8 @@ class PaymentFragment : Fragment() {
                     binding.creditCartCardName.editText?.text.toString().isNotEmpty()
                 ) {
 
+                    viewModel.deleteAllBasket()
+
                     val dialog = LayoutInflater.from(requireContext())
                         .inflate(R.layout.payment_done_dialog, null)
                     val builder = AlertDialog.Builder(context)
@@ -168,8 +170,8 @@ class PaymentFragment : Fragment() {
 
             var totalPrice = 0
 
-            for (index in it.indices) {
-                totalPrice += it[index].price * it[index].piece
+            for (indicex in it.indices) {
+                totalPrice += it[indicex].price * it[indicex].piece
             }
 
             binding.paymentTotalPrice.text = totalPrice.toString()

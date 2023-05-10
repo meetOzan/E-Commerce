@@ -228,6 +228,21 @@ class ProductRepository @Inject constructor(
             }
         })
 
+    fun updateStock(product_id: Int, product_stock: Int) =
+        retrofitService.updateProduct(product_id, product_stock)
+            .enqueue(object : Callback<ProductResponse> {
+                override fun onResponse(
+                    call: Call<ProductResponse>,
+                    response: Response<ProductResponse>
+                ) {
+                    Log.e("Update Stock Success: ", response.body()?.success.toString())
+                }
+
+                override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                    Log.e("Update Stock Exception: ", t.message.orEmpty())
+                }
+            })
+
     suspend fun addToBasket(product: Product, hashMap: HashMap<Any, Any>) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
@@ -271,4 +286,18 @@ class ProductRepository @Inject constructor(
             .collection("basket")
             .document(product.productName)
             .delete().await()
+
+    suspend fun deleteAllBasket() =
+        firebaseFirestore.collection("user")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("basket").get()
+            .addOnSuccessListener {
+                for(document in it){
+                    document.reference.delete()
+                }
+            }
+            .addOnFailureListener {
+                Log.e("Delete All Basket Exception: ",it.message.orEmpty())
+            }.await()!!
+
 }
