@@ -17,9 +17,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:background="@color/primaryColor"
-                android:onClick="openOrders"
                 android:clickable="false"
-                android:focusable="false"/>
+                android:focusable="false"
+                android:onClick="openOrders" />
 
             <ImageView
                 android:id="@+id/btnSignOut"
@@ -78,8 +78,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/primaryColor"
-                android:elevation="8dp"
                 android:clickable="true"
+                android:elevation="8dp"
+                android:focusable="true"
                 android:fontFamily="@font/alata"
                 android:text="@string/edit_profile"
                 android:textColor="@android:color/white"
@@ -88,25 +89,24 @@
                 app:iconSize="26dp"
                 app:iconTint="@color/white"
                 app:strokeColor="@color/black"
-                app:strokeWidth="0.5dp"
-                android:focusable="true" />
+                app:strokeWidth="0.5dp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvOrders"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="expand"
-                android:clickable="false"
                 android:layout_below="@id/buttonProfileEditProfile"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/secondaryDarkColor"
+                android:clickable="false"
                 android:elevation="8dp"
+                android:focusable="false"
+                android:onClick="expand"
                 android:textColor="@android:color/white"
                 app:strokeColor="@color/primaryColor"
-                app:strokeWidth="0.5dp"
-                android:focusable="false">
+                app:strokeWidth="0.5dp">
 
                 <RelativeLayout
                     android:id="@+id/cvOrdersLayout"
@@ -119,7 +119,7 @@
                         android:layout_height="52dp"
                         android:layout_alignParentTop="true"
                         android:background="@color/lightGray"
-                        android:focusable="false"/>
+                        android:focusable="false" />
 
                     <ImageView
                         android:id="@+id/imageOrders"
@@ -128,9 +128,9 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="6dp"
                         android:contentDescription="@string/imagehistory"
+                        android:focusable="false"
                         android:src="@drawable/ic_history_24"
-                        app:tint="@color/black"
-                        android:focusable="false"/>
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/tvOrders"
@@ -139,11 +139,11 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="3.5dp"
                         android:layout_toEndOf="@id/imageOrders"
+                        android:focusable="false"
                         android:fontFamily="@font/alata"
                         android:text="@string/orders"
                         android:textColor="@color/secondaryColor"
-                        android:textSize="24sp"
-                        android:focusable="false"/>
+                        android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/btnOpenOrders"
@@ -158,12 +158,12 @@
                         android:contentDescription="@string/buttonopenorders"
                         android:src="@drawable/ic_arrow_circle_down" />
 
-
                     <LinearLayout
                         android:id="@+id/expandableLayoutOrders"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/imageOrders"
+                        android:orientation="vertical"
                         android:visibility="gone">
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -171,8 +171,44 @@
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
                             android:layout_marginHorizontal="8dp"
-                            android:layout_marginTop="5dp" />
+                            android:layout_marginTop="5dp"
+                            android:visibility="gone" />
 
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cvOrderNotFound"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="25dp"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/imageNoOrderError"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_gravity="center"
+                                    android:alpha="0.8"
+                                    android:contentDescription="@string/imageerrornotfound"
+                                    android:src="@drawable/ic_error"
+                                    app:tint="@color/lightRed" />
+
+                                <TextView
+                                    android:id="@+id/tvNoOrderError"
+                                    android:layout_width="300dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:alpha="0.5"
+                                    android:fontFamily="@font/alata"
+                                    android:text="@string/you_haven_t_shopped_yet_when_you_shop_you_can_see_your_orders_here"
+                                    android:textColor="@color/gray"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
                     </LinearLayout>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -244,6 +280,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="64dp"
                 android:elevation="8dp"
+                android:visibility="visible"
                 app:strokeColor="@color/primaryDarkColor"
                 app:strokeWidth="0.5dp">
 

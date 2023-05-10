@@ -156,7 +156,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/alata"
                     android:inputType="textEmailAddress"
-                    android:maxLength="30"
+                    android:maxLength="20"
                     android:textColorHint="@color/secondaryDarkColor"
                     tools:ignore="TextContrastCheck,TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -178,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/alata"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number"
                     android:maxLength="16"
                     android:textColorHint="@color/secondaryDarkColor"
                     tools:ignore="TextContrastCheck,TextContrastCheck" />
@@ -282,7 +282,6 @@
                 android:text="@string/turkish_lira"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="@+id/paymentTotalPrice"
-                app:layout_constraintEnd_toEndOf="@+id/tvPaymentTotalPrice"
                 app:layout_constraintStart_toEndOf="@id/paymentTotalPrice"
                 app:layout_constraintTop_toTopOf="@+id/paymentTotalPrice" />
 

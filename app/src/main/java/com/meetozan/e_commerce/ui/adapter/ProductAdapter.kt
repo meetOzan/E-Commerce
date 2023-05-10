@@ -37,6 +37,11 @@ class ProductAdapter(
                     .resize(1000, 1000)
                     .into(productCardImage)
 
+                if(product.stock == 0){
+                    tvOutOfStock.visibility = View.VISIBLE
+                    viewOutOfStockGray.visibility = View.VISIBLE
+                }
+
                 cvProduct.setOnClickListener {
                     val imageList = ArrayList<SlideModel>()
                     val dialog = BottomSheetDialog(context)
@@ -118,6 +123,5 @@ class ProductAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(productList[position])
-
 
 }

@@ -76,4 +76,6 @@
     <string name="confirm">Confirm</string>
     <string name="ok">OK</string>
     <string name="payment_completed">Payment Completed! Use with Happiness :)</string>
+    <string name="you_haven_t_shopped_yet_when_you_shop_you_can_see_your_orders_here">You haven\'t shopped yet. When you shop, you can see your orders here.</string>
+    <string name="out_of_stock">Out Of Stock</string>
 </resources>
