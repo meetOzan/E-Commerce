@@ -287,17 +287,19 @@ class ProductRepository @Inject constructor(
             .document(product.productName)
             .delete().await()
 
-    suspend fun deleteAllBasket() =
+    fun deleteAllBasket() =
         firebaseFirestore.collection("user")
             .document(firebaseAuth.currentUser?.email.toString())
-            .collection("basket").get()
-            .addOnSuccessListener {
-                for(document in it){
-                    document.reference.delete()
+            .collection("basket")
+            .addSnapshotListener { querySnapshot , firestoreException ->
+                firestoreException?.let {
+                    Toast.makeText(appContext, it.message, Toast.LENGTH_LONG).show()
+                    return@addSnapshotListener
+                }
+                querySnapshot?.let {
+                    for (document in it) {
+                        document.reference.delete()
+                    }
                 }
             }
-            .addOnFailureListener {
-                Log.e("Delete All Basket Exception: ",it.message.orEmpty())
-            }.await()!!
-
 }

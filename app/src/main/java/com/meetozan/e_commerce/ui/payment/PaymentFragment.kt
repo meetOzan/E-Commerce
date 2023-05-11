@@ -34,7 +34,13 @@ class PaymentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observer()
+        shoppingCartViewModel.basketList.observe(viewLifecycleOwner) {
+            var totalPrice = 0
+            for (indicex in it.indices) {
+                totalPrice += it[indicex].price * it[indicex].piece
+            }
+            binding.paymentTotalPrice.text = totalPrice.toString()
+        }
 
         binding.btnCompletePayment.setOnClickListener {
 
@@ -48,6 +54,18 @@ class PaymentFragment : Fragment() {
                 ) {
 
                     viewModel.deleteAllBasket()
+
+                    shoppingCartViewModel.basketList.observe(viewLifecycleOwner){
+
+                        for (indices in it.indices){
+
+                            val liveStock = it[indices].stock - it[indices].piece
+
+                            viewModel.reduceStock(it[indices].id,liveStock)
+
+                        }
+
+                    }
 
                     val dialog = LayoutInflater.from(requireContext())
                         .inflate(R.layout.payment_done_dialog, null)
@@ -162,20 +180,6 @@ class PaymentFragment : Fragment() {
                     return@setOnClickListener
                 }
             }
-        }
-    }
-
-    private fun observer() {
-        shoppingCartViewModel.basketList.observe(viewLifecycleOwner) {
-
-            var totalPrice = 0
-
-            for (indicex in it.indices) {
-                totalPrice += it[indicex].price * it[indicex].piece
-            }
-
-            binding.paymentTotalPrice.text = totalPrice.toString()
-
         }
     }
 }
