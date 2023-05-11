@@ -37,9 +37,10 @@ class ProductAdapter(
                     .resize(1000, 1000)
                     .into(productCardImage)
 
-                if(product.stock == 0){
+                if (product.stock == 0) {
                     tvOutOfStock.visibility = View.VISIBLE
                     viewOutOfStockGray.visibility = View.VISIBLE
+                    cvProduct.isEnabled = false
                 }
 
                 cvProduct.setOnClickListener {
