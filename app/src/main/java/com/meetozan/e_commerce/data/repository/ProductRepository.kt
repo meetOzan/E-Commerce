@@ -280,26 +280,18 @@ class ProductRepository @Inject constructor(
                 )
             ).await()
 
-    suspend fun deleteFromBasket(product: Product) =
+    suspend fun deleteFromBasket(product_name: String) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("basket")
-            .document(product.productName)
+            .document(product_name)
             .delete().await()
 
-    fun deleteAllBasket() =
-        firebaseFirestore.collection("user")
+    suspend fun addToOrders(product_name: String,hashMap: HashMap<Any, Any>) =
+        firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
-            .collection("basket")
-            .addSnapshotListener { querySnapshot , firestoreException ->
-                firestoreException?.let {
-                    Toast.makeText(appContext, it.message, Toast.LENGTH_LONG).show()
-                    return@addSnapshotListener
-                }
-                querySnapshot?.let {
-                    for (document in it) {
-                        document.reference.delete()
-                    }
-                }
-            }
+            .collection("orders")
+            .document(product_name)
+            .set(hashMap).await()
+
 }

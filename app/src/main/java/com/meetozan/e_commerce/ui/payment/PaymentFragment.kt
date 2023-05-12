@@ -15,6 +15,8 @@ import com.meetozan.e_commerce.R
 import com.meetozan.e_commerce.databinding.FragmentPaymentBinding
 import com.meetozan.e_commerce.ui.shopping_cart.ShoppingCartViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class PaymentFragment : Fragment() {
@@ -22,6 +24,9 @@ class PaymentFragment : Fragment() {
     private lateinit var binding: FragmentPaymentBinding
     private val viewModel: PaymentViewModel by viewModels()
     private val shoppingCartViewModel: ShoppingCartViewModel by viewModels()
+
+    private val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    private val current = LocalDate.now()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,18 +58,33 @@ class PaymentFragment : Fragment() {
                     binding.creditCartCardName.editText?.text.toString().isNotEmpty()
                 ) {
 
-                    viewModel.deleteAllBasket()
+                    shoppingCartViewModel.basketList.observe(viewLifecycleOwner) {
 
-                    shoppingCartViewModel.basketList.observe(viewLifecycleOwner){
-
-                        for (indices in it.indices){
+                        for (indices in it.indices) {
 
                             val liveStock = it[indices].stock - it[indices].piece
 
-                            viewModel.reduceStock(it[indices].id,liveStock)
+                            val orderHashMap = hashMapOf<Any, Any>(
+                                "id" to it[indices].id,
+                                "productName" to it[indices].productName,
+                                "price" to it[indices].price,
+                                "brand" to it[indices].brand,
+                                "picUrl" to it[indices].picUrl,
+                                "secondPicUrl" to it[indices].secondPicUrl,
+                                "thirdPicUrl" to it[indices].thirdPicUrl,
+                                "description" to it[indices].description,
+                                "order_status" to "Preparing",
+                                "order_time" to current.format(formatter).toString(),
+                                "piece" to it[indices].piece,
+                                "rate" to it[indices].rate,
+                                "stock" to it[indices].stock
+                            )
+
+                            viewModel.reduceStock(it[indices].id, liveStock)
+                            viewModel.deleteFromBasket(it[indices].productName)
+                            viewModel.addToOrders(it[indices].productName, orderHashMap)
 
                         }
-
                     }
 
                     val dialog = LayoutInflater.from(requireContext())
@@ -89,34 +109,51 @@ class PaymentFragment : Fragment() {
                     alertDialog.show()
 
                 } else {
-                    if (binding.creditCartCardName.editText?.text.toString().isEmpty()) {
-                        binding.creditCartCardName.error = "Please Enter Your Name"
-                    } else {
-                        binding.creditCartCardName.error = null
+
+                    with(binding.creditCartCardName.editText?.text.toString()) {
+                        if (this.isEmpty()) {
+                            binding.creditCartCardName.error = "Please Enter Your Name"
+                        } else {
+                            binding.creditCartCardName.error = null
+                        }
                     }
 
-                    if (binding.creditCartCardNumber.editText?.text?.length!! < 16) {
-                        binding.creditCartCardNumber.error = "Please Enter Your Card Number"
-                    } else {
-                        binding.creditCartCardNumber.error = null
+                    with(binding.creditCartCardNumber.editText?.text) {
+                        if (this?.length!! < 16) {
+                            binding.creditCartCardNumber.error = "Please Enter Card Number"
+                        } else {
+                            binding.creditCartCardNumber.error = null
+                        }
                     }
 
-                    if (binding.creditCartCardMonth.editText?.text?.length!! < 2) {
-                        binding.creditCartCardMonth.error = "Please Enter Month"
-                    } else {
-                        binding.creditCartCardMonth.error = null
+                    with(binding.creditCartCardMonth.editText?.text) {
+                        if (this?.length!! < 2 || 13 < Integer.parseInt(this.toString()) || Integer.parseInt(
+                                this.toString()
+                            ) < 0
+                        ) {
+                            binding.creditCartCardNumber.error = "Please Enter Card Month"
+                        } else {
+                            binding.creditCartCardNumber.error = null
+                        }
                     }
 
-                    if (binding.creditCartCardYear.editText?.text?.length!! < 2) {
-                        binding.creditCartCardYear.error = "Please Enter Year"
-                    } else {
-                        binding.creditCartCardYear.error = null
+                    with(binding.creditCartCardYear.editText?.text) {
+                        if (this?.length!! < 2 || 30 < Integer.parseInt(this.toString()) || Integer.parseInt(
+                                this.toString()
+                            ) < 23
+                        ) {
+                            binding.creditCartCardNumber.error = "Please Enter Card Year"
+                        } else {
+                            binding.creditCartCardNumber.error = null
+                        }
                     }
 
-                    if (binding.creditCartCardCvv.editText?.text?.length!! < 3) {
-                        binding.creditCartCardCvv.error = "Please Enter CVV"
-                    } else {
-                        binding.creditCartCardCvv.error = null
+                    with(binding.creditCartCardCvv.editText?.text) {
+                        if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100) {
+                            binding.creditCartCardNumber.error = "Please Enter Cvv"
+                        } else {
+                            binding.creditCartCardNumber.error = null
+                        }
                     }
 
                     binding.btnCompletePayment.setText(R.string.confirm)
@@ -126,34 +163,50 @@ class PaymentFragment : Fragment() {
 
             if (binding.btnCompletePayment.text == "Confirm") {
 
-                if (binding.creditCartCardName.editText?.text.toString().isEmpty()) {
-                    binding.creditCartCardName.error = "Please Enter Your Name"
-                } else {
-                    binding.creditCartCardName.error = null
+                with(binding.creditCartCardName.editText?.text.toString()) {
+                    if (this.isEmpty()) {
+                        binding.creditCartCardName.error = "Please Enter Your Name"
+                    } else {
+                        binding.creditCartCardName.error = null
+                    }
                 }
 
-                if (binding.creditCartCardNumber.editText?.text?.length!! < 16) {
-                    binding.creditCartCardNumber.error = "Please Enter Your Card Number"
-                } else {
-                    binding.creditCartCardNumber.error = null
+                with(binding.creditCartCardNumber.editText?.text) {
+                    if (this?.length!! < 16) {
+                        binding.creditCartCardNumber.error = "Please Enter Card Number"
+                    } else {
+                        binding.creditCartCardNumber.error = null
+                    }
                 }
 
-                if (binding.creditCartCardMonth.editText?.text?.length!! < 2) {
-                    binding.creditCartCardMonth.error = "Please Enter Month"
-                } else {
-                    binding.creditCartCardMonth.error = null
+                with(binding.creditCartCardMonth.editText?.text) {
+                    if (this?.length!! < 2 || 13 < Integer.parseInt(this.toString()) || Integer.parseInt(
+                            this.toString()
+                        ) < 0
+                    ) {
+                        binding.creditCartCardNumber.error = "Please Enter Card Month"
+                    } else {
+                        binding.creditCartCardNumber.error = null
+                    }
                 }
 
-                if (binding.creditCartCardYear.editText?.text?.length!! < 2) {
-                    binding.creditCartCardYear.error = "Please Enter Year"
-                } else {
-                    binding.creditCartCardYear.error = null
+                with(binding.creditCartCardYear.editText?.text) {
+                    if (this?.length!! < 2 || 30 < Integer.parseInt(this.toString()) || Integer.parseInt(
+                            this.toString()
+                        ) < 23
+                    ) {
+                        binding.creditCartCardNumber.error = "Please Enter Card Year"
+                    } else {
+                        binding.creditCartCardNumber.error = null
+                    }
                 }
 
-                if (binding.creditCartCardCvv.editText?.text?.length!! < 3) {
-                    binding.creditCartCardCvv.error = "Please Enter CVV"
-                } else {
-                    binding.creditCartCardCvv.error = null
+                with(binding.creditCartCardCvv.editText?.text) {
+                    if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100) {
+                        binding.creditCartCardNumber.error = "Please Enter Cvv"
+                    } else {
+                        binding.creditCartCardNumber.error = null
+                    }
                 }
 
                 if (binding.creditCartCardCvv.editText?.text?.length!! == 3 &&

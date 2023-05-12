@@ -66,7 +66,7 @@ class CartItemAdapter(
                         builder.setMessage("Are you sure you want to delete the product from your cart?")
 
                         builder.setPositiveButton("Ok") { dialog, _ ->
-                            cartViewModel.deleteProduct(cartProduct)
+                            cartViewModel.deleteProduct(cartProduct.productName)
                             val position = adapterPosition
                             if (position != RecyclerView.NO_POSITION) {
                                 this@CartItemAdapter.removeItem(position)

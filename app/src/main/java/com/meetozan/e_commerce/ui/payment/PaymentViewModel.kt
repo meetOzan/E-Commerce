@@ -14,16 +14,21 @@ class PaymentViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ) : ViewModel() {
 
-    fun reduceStock(product_id : Int, product_stock: Int){
+    fun reduceStock(product_id: Int, product_stock: Int) {
         CoroutineScope(ioDispatcher).launch {
             productRepository.updateStock(product_id, product_stock)
         }
     }
 
-    fun deleteAllBasket(){
+    fun deleteFromBasket(product_name: String) {
         CoroutineScope(ioDispatcher).launch {
-            productRepository.deleteAllBasket()
+            productRepository.deleteFromBasket(product_name)
         }
     }
 
+    fun addToOrders(product_name: String, hashMap: HashMap<Any, Any>) {
+        CoroutineScope(ioDispatcher).launch {
+            productRepository.addToOrders(product_name, hashMap)
+        }
+    }
 }
