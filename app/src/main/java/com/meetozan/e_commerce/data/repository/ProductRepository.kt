@@ -294,4 +294,22 @@ class ProductRepository @Inject constructor(
             .document(product_name)
             .set(hashMap).await()
 
+    fun getOrders(orderList: MutableLiveData<List<Product>>) = firebaseFirestore.collection("users")
+        .document(firebaseAuth.currentUser?.email.toString())
+        .collection("orders")
+        .addSnapshotListener { querySnapshot, firestoreException ->
+            firestoreException?.let {
+                Toast.makeText(appContext, it.message, Toast.LENGTH_LONG).show()
+                return@addSnapshotListener
+            }
+            querySnapshot?.let {
+                val _orderList: ArrayList<Product> = ArrayList()
+                for (document in it) {
+                    val order = document.toObject<Product>()
+                    _orderList.add(order)
+                    orderList.postValue(_orderList)
+                }
+            }
+        }
+
 }

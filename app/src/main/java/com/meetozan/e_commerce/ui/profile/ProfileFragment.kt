@@ -16,9 +16,14 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 import com.meetozan.e_commerce.R
+import com.meetozan.e_commerce.data.model.model.Product
 import com.meetozan.e_commerce.databinding.FragmentProfileBinding
+import com.meetozan.e_commerce.ui.adapter.ProductAdapter
+import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,6 +31,11 @@ class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModels()
+    private val favoritesViewModel: FavoritesViewModel by viewModels()
+    private lateinit var adapterHistory: ProductAdapter
+    private lateinit var adapterCurrent: ProductAdapter
+    private lateinit var rvOrderCurrent: RecyclerView
+    private lateinit var rvOrderHistory: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +48,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observer()
+        userObserver()
+
+        orderObserver()
 
         binding.imageCurrentOrders.playAnimation()
 
@@ -60,7 +72,7 @@ class ProfileFragment : Fragment() {
         binding.btnOpenOrders.setOnClickListener {
             if (binding.expandableLayoutOrders.visibility == View.GONE) {
                 TransitionManager.beginDelayedTransition(
-                    binding.cvOrders,AutoTransition()
+                    binding.cvOrders, AutoTransition()
                 )
                 binding.expandableLayoutOrders.visibility = View.VISIBLE
                 binding.btnOpenOrders.animate().apply {
@@ -80,7 +92,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun observer() {
+    private fun userObserver() {
         viewModel.user.observe(viewLifecycleOwner) { user ->
 
             binding.tvProfileName.text = user.username
@@ -151,6 +163,48 @@ class ProfileFragment : Fragment() {
                     }
                 }
                 builder.show()
+            }
+        }
+    }
+
+    private fun orderObserver() {
+        viewModel.orderList.observe(viewLifecycleOwner) { orderList ->
+            with(binding) {
+                if (orderList.isNullOrEmpty()) {
+                    cvOrderNotFound.visibility = View.VISIBLE
+                    rvOrders.visibility = View.GONE
+                } else {
+                    cvOrderNotFound.visibility = View.GONE
+                    rvOrders.visibility = View.VISIBLE
+                    adapterHistory = ProductAdapter(
+                        orderList as MutableList<Product>,
+                        requireContext(),
+                        layoutInflater,
+                        favoritesViewModel
+                    )
+                    rvOrderHistory = rvOrders
+                    rvOrderHistory.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    rvOrderHistory.adapter = adapterHistory
+                }
+
+                if (orderList.isNullOrEmpty()) {
+                    cvNoCurrentOrder.visibility = View.VISIBLE
+                    cvCurrentOrder.visibility = View.GONE
+                }else{
+                    cvNoCurrentOrder.visibility = View.GONE
+                    cvCurrentOrder.visibility = View.VISIBLE
+                    adapterCurrent = ProductAdapter(
+                        orderList as MutableList<Product>,
+                        requireContext(),
+                        layoutInflater,
+                        favoritesViewModel
+                    )
+                    rvOrderCurrent = rvCurrentOrders
+                    rvOrderCurrent.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    rvOrderCurrent.adapter = adapterCurrent
+                }
             }
         }
     }
