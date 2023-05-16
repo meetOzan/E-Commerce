@@ -58,14 +58,21 @@ class ProfileFragment : Fragment() {
 
         binding.btnSignOut.setOnClickListener {
             viewModel.signOut()
-            it.findNavController().navigate(R.id.nav_graph)
+            it.findNavController().apply {
+                popBackStack(R.id.nav_graph,true)
+                navigate(R.id.nav_graph)
+            }
         }
 
         binding.btnGoHome.setOnClickListener {
             it.findNavController().navigate(R.id.homeFragment)
         }
 
-        binding.cvOrderView.setOnClickListener {
+        binding.profileTopPlaceholder.setOnClickListener {
+            return@setOnClickListener
+        }
+
+        binding.profileImageView.setOnClickListener {
             return@setOnClickListener
         }
 

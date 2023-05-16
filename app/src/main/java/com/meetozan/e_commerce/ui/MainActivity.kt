@@ -39,7 +39,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
-            if ((destination.id == R.id.signInFragment) || (destination.id == R.id.signUpFragment)) {
+            if ((destination.id == R.id.signInFragment) ||
+                (destination.id == R.id.signUpFragment) ||
+                (destination.id == R.id.splashFragment)
+            ) {
                 bottomBar.visibility = View.GONE
                 fab.visibility = View.GONE
             } else {

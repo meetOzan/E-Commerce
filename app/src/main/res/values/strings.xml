@@ -78,4 +78,6 @@
     <string name="payment_completed">Payment Completed! Use with Happiness :)</string>
     <string name="you_haven_t_shopped_yet_when_you_shop_you_can_see_your_orders_here">You haven\'t shopped yet. When you shop, you can see your orders here.</string>
     <string name="out_of_stock">Out Of Stock</string>
+    <string name="i_buy">I-Buy</string>
+    <string name="designed_by_meetozan">Designed by meetOzan</string>
 </resources>

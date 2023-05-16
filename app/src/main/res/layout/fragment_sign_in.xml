@@ -120,7 +120,7 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="30dp"
                 android:backgroundTint="#C3FFC107"
                 android:fontFamily="@font/alata"
                 android:text="@string/login"
