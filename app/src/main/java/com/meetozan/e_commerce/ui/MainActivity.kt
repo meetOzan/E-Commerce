@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab)
 
         fab.setOnClickListener {
-            navHostFragment.navController.navigate(R.id.shoppingCartFragment)
+            navHostFragment.navController.navigate(R.id.payment_graph)
             bottomBar.isSelected = false
         }
 

@@ -45,7 +45,7 @@ class ShoppingCartFragment : Fragment() {
 
         val backPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.action_shoppingCartFragment_to_homeFragment)
+                findNavController().navigate(R.id.main_graph)
             }
         }
 
@@ -54,7 +54,7 @@ class ShoppingCartFragment : Fragment() {
         }
 
         binding.btnConfirmCart.setOnClickListener {
-            it.findNavController().navigate(R.id.action_shoppingCartFragment_to_paymentFragment)
+            it.findNavController().navigate(R.id.action_shoppingCartFragment_to_addressFragment)
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(

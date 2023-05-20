@@ -41,13 +41,12 @@ class SignInFragment : Fragment() {
             signInViewModel.signInWithEmail(etMail, etPassword)
 
         }
-
     }
 
     private fun observer() {
         signInViewModel.checkCurrentUser.observe(viewLifecycleOwner) {
             if (it == true) {
-                findNavController().navigate(R.id.action_signInFragment_to_main_graph)
+                findNavController().navigate(R.id.main_graph)
             } else {
                 //
             }

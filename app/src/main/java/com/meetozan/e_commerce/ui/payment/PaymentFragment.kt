@@ -100,7 +100,7 @@ class PaymentFragment : Fragment() {
                     val buttonOk = dialog.findViewById<Button>(R.id.btnPaymentCompleted)
 
                     buttonOk.setOnClickListener {
-                        findNavController().navigate(R.id.action_paymentFragment_to_homeFragment)
+                        findNavController().navigate(R.id.main_graph)
                         alertDialog.dismiss()
                     }
 

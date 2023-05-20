@@ -56,7 +56,7 @@ class CartItemAdapter(
                     }
                 }
 
-                removeItem.setOnClickListener { view ->
+                removeItem.setOnClickListener {
                     var piece = Integer.parseInt(itemCount.text.toString())
 
                     if (piece <= 1) {

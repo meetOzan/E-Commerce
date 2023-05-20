@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import com.meetozan.e_commerce.data.model.model.Address
 import com.meetozan.e_commerce.data.model.model.Brand
 import com.meetozan.e_commerce.data.model.model.Product
 import com.meetozan.e_commerce.data.model.model.User
@@ -311,5 +312,37 @@ class ProductRepository @Inject constructor(
                 }
             }
         }
+
+    suspend fun addAddress(address : HashMap<Any,Any>,addressName : String) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("address")
+            .document(addressName)
+            .set(address).await()
+
+    suspend fun deleteAddress(addressName: String) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("address")
+            .document(addressName)
+            .delete().await()
+
+    fun getAddress(addressName: String,selectedAddress: MutableLiveData<Address>) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("address")
+            .document(addressName)
+            .get()
+            .addOnSuccessListener {
+                if (it.exists()) {
+                    val address = it.toObject<Address>()!!
+                    selectedAddress.postValue(address)
+                } else {
+                    Log.e("Get Address Error: ", "Address doesn't exist")
+                }
+            }
+            .addOnFailureListener {
+                Log.e("Get Address Error: ",it.message.orEmpty())
+            }
 
 }

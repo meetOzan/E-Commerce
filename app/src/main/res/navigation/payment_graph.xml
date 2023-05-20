@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/payment_graph"
+    app:startDestination="@id/shoppingCartFragment">
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.meetozan.e_commerce.ui.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.meetozan.e_commerce.ui.shopping_cart.ShoppingCartFragment"
+        android:label="fragment_shopping_cart"
+        tools:layout="@layout/fragment_shopping_cart" >
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_addressFragment"
+            app:destination="@id/addressFragment"
+            app:enterAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.meetozan.e_commerce.ui.address.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" >
+        <action
+            android:id="@+id/action_addressFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment"
+            app:enterAnim="@anim/to_right"
+            app:popExitAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_addressFragment_to_shoppingCartFragment"
+            app:destination="@id/shoppingCartFragment"
+            app:enterAnim="@anim/from_left"
+            app:popUpTo="@id/shoppingCartFragment" />
+    </fragment>
+</navigation>

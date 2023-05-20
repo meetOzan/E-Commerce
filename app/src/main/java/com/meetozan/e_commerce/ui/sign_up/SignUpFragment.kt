@@ -134,7 +134,7 @@ class SignUpFragment : Fragment() {
     private fun observer() {
         signUpViewModel.checkCurrentUser.observe(viewLifecycleOwner) {
             if (it == true) {
-                findNavController().navigate(R.id.action_signUpFragment_to_main_graph)
+                findNavController().navigate(R.id.main_graph)
             } else {
                 //
             }
