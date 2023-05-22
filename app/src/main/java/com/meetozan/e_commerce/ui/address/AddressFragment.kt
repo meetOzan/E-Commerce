@@ -178,7 +178,7 @@ class AddressFragment : Fragment() {
 
     private fun observer() {
         viewModel.addressList.observe(viewLifecycleOwner) {
-            adapter = AddressAdapter(it)
+            adapter = AddressAdapter(it, requireContext())
             rv = binding.rvSelectAddress
             rv.setHasFixedSize(true)
             val linearLayoutManager = LinearLayoutManager(requireContext())

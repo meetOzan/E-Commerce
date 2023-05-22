@@ -12,11 +12,12 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvAddressItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:backgroundTint="@color/transparent"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@color/transparent"
         android:elevation="5dp"
         android:padding="8dp"
         app:strokeColor="@color/lightGray"
@@ -57,7 +58,8 @@
                 android:layout_below="@id/tvAddressItemCity"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="12dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:textColor="@color/white">
 
 
                 <TextView
@@ -75,7 +77,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
-                    android:text="@string/comma" />
+                    android:text="@string/comma"
+                    android:textColor="@color/white" />
 
 
                 <TextView
@@ -86,14 +89,15 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@{addressItem.neighbourhood}"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
-                    android:text="@string/comma" />
+                    android:text="@string/comma"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/tvAddressItemStreet"
@@ -111,7 +115,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
-                    android:text="@string/comma" />
+                    android:text="@string/comma"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/tvAddressItemApartment"
@@ -129,7 +134,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
-                    android:text="@string/comma" />
+                    android:text="@string/comma"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/tvAddressItemFlat"
