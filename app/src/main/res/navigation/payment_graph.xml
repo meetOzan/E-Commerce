@@ -39,6 +39,7 @@
             android:id="@+id/action_addressFragment_to_shoppingCartFragment"
             app:destination="@id/shoppingCartFragment"
             app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
             app:popUpTo="@id/shoppingCartFragment" />
     </fragment>
 </navigation>

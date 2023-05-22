@@ -1,5 +1,6 @@
 package com.meetozan.e_commerce.ui.address
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.meetozan.e_commerce.data.model.model.Address
@@ -16,6 +17,20 @@ class AddressViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ) : ViewModel() {
 
+    private val _addressList = MutableLiveData<List<Address>>()
+    val addressList: LiveData<List<Address>>
+        get() = _addressList
+
+
+    init {
+        getAllAddresses()
+    }
+
+    private fun getAllAddresses(){
+        CoroutineScope(ioDispatcher).launch {
+            productRepository.getAllAddress(_addressList)
+        }
+    }
 
     fun getSelectedAddress(addressName: String, selectedAddress: MutableLiveData<Address>) {
         CoroutineScope(ioDispatcher).launch {
@@ -23,7 +38,7 @@ class AddressViewModel @Inject constructor(
         }
     }
 
-    fun addAdress(address: HashMap<Any, Any>, addressName: String) {
+    fun addAddress(address: HashMap<Any, Any>, addressName: String) {
         CoroutineScope(ioDispatcher).launch {
             productRepository.addAddress(address, addressName)
         }

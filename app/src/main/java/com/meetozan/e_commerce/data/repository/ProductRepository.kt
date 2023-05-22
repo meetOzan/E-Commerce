@@ -288,7 +288,7 @@ class ProductRepository @Inject constructor(
             .document(product_name)
             .delete().await()
 
-    suspend fun addToOrders(product_name: String,hashMap: HashMap<Any, Any>) =
+    suspend fun addToOrders(product_name: String, hashMap: HashMap<Any, Any>) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("orders")
@@ -313,7 +313,7 @@ class ProductRepository @Inject constructor(
             }
         }
 
-    suspend fun addAddress(address : HashMap<Any,Any>,addressName : String) =
+    suspend fun addAddress(address: HashMap<Any, Any>, addressName: String) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("address")
@@ -327,7 +327,7 @@ class ProductRepository @Inject constructor(
             .document(addressName)
             .delete().await()
 
-    fun getAddress(addressName: String,selectedAddress: MutableLiveData<Address>) =
+    fun getAddress(addressName: String, selectedAddress: MutableLiveData<Address>) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("address")
@@ -345,4 +345,22 @@ class ProductRepository @Inject constructor(
                 Log.e("Get Address Error: ",it.message.orEmpty())
             }
 
+    fun getAllAddress(addressList: MutableLiveData<List<Address>>) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("address")
+            .addSnapshotListener { querySnapshot, firestoreException ->
+                firestoreException?.let {
+                    Toast.makeText(appContext, it.message, Toast.LENGTH_LONG).show()
+                    return@addSnapshotListener
+                }
+                querySnapshot?.let {
+                    val _addressList: ArrayList<Address> = ArrayList()
+                    for (document in it) {
+                        val address = document.toObject<Address>()
+                        _addressList.add(address)
+                        addressList.postValue(_addressList)
+                    }
+                }
+            }
 }

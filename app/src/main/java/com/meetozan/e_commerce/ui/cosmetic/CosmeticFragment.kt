@@ -34,11 +34,15 @@ class CosmeticFragment : Fragment() {
 
     private fun observer() {
         viewModel.cosmeticList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it as MutableList<Product>,requireContext(),layoutInflater,favoritesViewModel)
+            adapter = ProductAdapter(
+                it as MutableList<Product>,
+                requireContext(),
+                layoutInflater,
+                favoritesViewModel
+            )
             rv = binding.cosmeticRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter
         }
     }
-
 }

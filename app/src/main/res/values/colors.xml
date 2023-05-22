@@ -28,5 +28,7 @@
     <color name="lightGreen">#8D8BC34A</color>
     <color name="lightRed">#9FFF0000</color>
     <color name="transparentBlue">#9200BCD4</color>
+    <color name="transparentDarkBlue">#DA0226F1</color>
+    <color name="transparentSecondaryBlue">#970226F1</color>
 
 </resources>

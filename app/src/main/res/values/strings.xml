@@ -95,4 +95,24 @@
     <string name="street">Street</string>
     <string name="back">Back</string>
     <string name="next">Next</string>
+    <string name="click_and_select_your_address">Click and select your address</string>
+    <string name="istanbul_anatolia">Istanbul-Anatolia</string>
+    <string name="comma">,</string>
+
+    <string-array name="cities">
+        <item>Istanbul-Anatolia</item>
+        <item>Istanbul-Europe</item>
+        <item>Ankara</item>
+        <item>Izmır</item>
+        <item>Adana</item>
+        <item>Antalya</item>
+        <item>Aydın</item>
+        <item>Trabzon</item>
+        <item>Ordu</item>
+        <item>Edirne</item>
+        <item>Tekirdag</item>
+        <item>Kırklareli</item>
+        <item>Canakkale</item>
+    </string-array>
+
 </resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="addressItem"
+            type="com.meetozan.e_commerce.data.model.model.Address" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/transparent"
+        android:layout_marginTop="8dp"
+        android:elevation="5dp"
+        android:padding="8dp"
+        app:strokeColor="@color/lightGray"
+        app:strokeWidth="0.5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvAddressItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/alata"
+                android:gravity="center"
+                android:text="@{addressItem.name}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAddressItemCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAddressItemName"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/alata"
+                android:text="@{addressItem.city}"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAddressItemCity"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tvAddressItemDistrict"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@{addressItem.district}"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@string/comma" />
+
+
+                <TextView
+                    android:id="@+id/tvAddressItemNeighbourhood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@{addressItem.neighbourhood}"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@string/comma" />
+
+                <TextView
+                    android:id="@+id/tvAddressItemStreet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@{addressItem.street}"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@string/comma" />
+
+                <TextView
+                    android:id="@+id/tvAddressItemApartment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@{addressItem.apartment}"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@string/comma" />
+
+                <TextView
+                    android:id="@+id/tvAddressItemFlat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@{addressItem.no}"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

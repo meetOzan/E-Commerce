@@ -41,4 +41,5 @@ interface RetrofitService {
     @POST("ecommerce/update_products.php")
     @FormUrlEncoded
     fun updateProduct(@Field("id") id: Int, @Field("stock") stock: Int) : Call<ProductResponse>
+
 }
