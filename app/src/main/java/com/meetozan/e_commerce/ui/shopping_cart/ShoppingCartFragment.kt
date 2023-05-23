@@ -61,7 +61,6 @@ class ShoppingCartFragment : Fragment() {
             viewLifecycleOwner,
             backPressedCallback
         )
-
     }
 
     private fun observer() {

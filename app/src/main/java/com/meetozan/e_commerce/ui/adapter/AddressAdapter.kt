@@ -1,6 +1,5 @@
 package com.meetozan.e_commerce.ui.adapter
 
-import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -22,7 +21,18 @@ class AddressAdapter(private val addressList: List<Address>, private val context
                 addressItem = address
 
                 cvAddressItem.setOnClickListener {
-                    if (!address.isDefault) {
+
+                    it.findNavController()
+                        .navigate(R.id.action_addressFragment_to_paymentFragment)
+                    Toast.makeText(
+                        context,
+                        address.name + " named address selected",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+
+                    /*
+                    if (!address.isDefault!!)  {
                         val builder = AlertDialog.Builder(context)
                         builder.setTitle("This address is not your default address !")
                         builder.setMessage("Are you wanted to continue ?")
@@ -36,12 +46,8 @@ class AddressAdapter(private val addressList: List<Address>, private val context
                             dialog.dismiss()
                         }
                         builder.show()
-                    } else {
-                        it.findNavController()
-                            .navigate(R.id.action_addressFragment_to_paymentFragment)
-                        Toast.makeText(context, "Default Address Selected", Toast.LENGTH_SHORT)
-                            .show()
-                    }
+
+                    }*/
                 }
             }
         }

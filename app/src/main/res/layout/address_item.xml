@@ -20,8 +20,8 @@
         android:backgroundTint="@color/transparent"
         android:elevation="5dp"
         android:padding="8dp"
-        app:strokeColor="@color/lightGray"
-        app:strokeWidth="0.5dp">
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvAddressItemCity"
                 android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginBottom="12dp"
                 android:orientation="horizontal"
                 android:textColor="@color/white">
@@ -69,7 +70,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@{addressItem.district}"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
 
                 <TextView
@@ -78,7 +80,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@string/comma"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
 
                 <TextView
@@ -89,7 +92,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@{addressItem.neighbourhood}"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -97,7 +101,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@string/comma"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvAddressItemStreet"
@@ -107,7 +112,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@{addressItem.street}"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
 
                 <TextView
@@ -116,7 +122,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@string/comma"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvAddressItemApartment"
@@ -126,7 +133,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@{addressItem.apartment}"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
 
                 <TextView
@@ -135,7 +143,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@string/comma"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvAddressItemFlat"
@@ -145,7 +154,8 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@{addressItem.no}"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
             </LinearLayout>
         </RelativeLayout>

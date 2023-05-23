@@ -63,10 +63,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="40dp"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/alata"
                         android:text=""
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -79,9 +79,9 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toStartOf="@+id/tvCreditCardMonth"
                         android:fontFamily="@font/alata"
-                        android:textColor="@color/black"
                         android:text=""
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="14sp" />
 
                     <TextView
@@ -140,9 +140,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/creditCartCardName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginEnd="100dp"
                 android:hint="@string/card_holder_name"
                 android:maxLines="1"
                 app:errorEnabled="true"
@@ -164,8 +166,10 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/creditCartCardNumber"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="100dp"
                 android:hint="@string/card_number"
                 android:maxLines="1"
                 app:errorEnabled="true"
@@ -187,13 +191,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/creditCartCardMonth"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="120dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/month"
                 android:maxLines="1"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toStartOf="@id/creditCartCardYear"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/creditCartCardNumber"
                 app:layout_constraintTop_toBottomOf="@id/creditCartCardNumber">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -209,8 +213,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/creditCartCardYear"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="120dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
                 android:hint="@string/year"
                 android:maxLines="1"
                 app:errorEnabled="true"
@@ -231,8 +236,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/creditCartCardCvv"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="120dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
                 android:hint="@string/cvv"
                 android:maxLines="1"
                 app:errorEnabled="true"
@@ -268,6 +274,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/alata"
+                app:layout_constraintBottom_toBottomOf="@id/btnCompletePayment"
                 android:text=""
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="@+id/tvPaymentTotalPrice"
@@ -281,16 +288,18 @@
                 android:fontFamily="@font/alata"
                 android:text="@string/turkish_lira"
                 android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="@+id/paymentTotalPrice"
+                app:layout_constraintBottom_toBottomOf="@+id/btnCompletePayment"
                 app:layout_constraintStart_toEndOf="@id/paymentTotalPrice"
                 app:layout_constraintTop_toTopOf="@+id/paymentTotalPrice" />
 
             <Button
                 android:id="@+id/btnCompletePayment"
                 style="@style/Widget.Material3.Button.ElevatedButton"
-                android:layout_width="180dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
                 android:layout_marginEnd="18dp"
+                android:layout_marginBottom="30dp"
                 android:backgroundTint="@color/lightGreen"
                 android:elevation="8dp"
                 android:fontFamily="@font/alata"

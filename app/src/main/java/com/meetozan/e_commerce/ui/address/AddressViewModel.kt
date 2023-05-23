@@ -26,15 +26,15 @@ class AddressViewModel @Inject constructor(
         getAllAddresses()
     }
 
-    private fun getAllAddresses(){
+    private fun getAllAddresses() {
         CoroutineScope(ioDispatcher).launch {
             productRepository.getAllAddress(_addressList)
         }
     }
 
-    fun getSelectedAddress(addressName: String, selectedAddress: MutableLiveData<Address>) {
+    fun updateAddress(addressName: String, path: String, data: Any) {
         CoroutineScope(ioDispatcher).launch {
-            productRepository.getAddress(addressName, selectedAddress)
+            productRepository.updateAddress(addressName, path, data)
         }
     }
 
@@ -49,5 +49,4 @@ class AddressViewModel @Inject constructor(
             productRepository.deleteAddress(addressName)
         }
     }
-
 }

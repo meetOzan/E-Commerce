@@ -29,9 +29,10 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSignInEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="70dp"
+                android:layout_marginHorizontal="80dp"
                 app:cardElevation="-2sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +41,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/signInEmail"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="280dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/e_mail"
                     android:maxLines="1"
@@ -65,9 +66,10 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardSignInPassword"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="80dp"
                 app:cardElevation="-2sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +78,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/signInPassword"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="280dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
                     android:maxLength="30"
@@ -118,9 +120,10 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogin"
                 style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginVertical="30dp"
+                android:layout_marginHorizontal="100dp"
                 android:backgroundTint="#C3FFC107"
                 android:fontFamily="@font/alata"
                 android:text="@string/login"

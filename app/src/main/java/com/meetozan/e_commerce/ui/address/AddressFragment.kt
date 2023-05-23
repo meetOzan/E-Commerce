@@ -107,6 +107,13 @@ class AddressFragment : Fragment() {
 
                 builder.setPositiveButton(android.R.string.ok) { _, _ ->
                     viewModel.addAddress(addressHashMap, addressName)
+                    if(isDefault){
+                        viewModel.addressList.observe(viewLifecycleOwner){
+                            for (index in it.indices){
+                                viewModel.updateAddress(it[index].name,"isDefault",false)
+                            }
+                        }
+                    }
                     it.findNavController().navigate(R.id.action_addressFragment_to_paymentFragment)
                 }
 

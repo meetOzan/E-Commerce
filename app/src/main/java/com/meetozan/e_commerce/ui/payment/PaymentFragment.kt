@@ -129,30 +129,30 @@ class PaymentFragment : Fragment() {
                     with(binding.creditCartCardMonth.editText?.text) {
                         if (this?.length!! < 2 || 13 < Integer.parseInt(this.toString()) || Integer.parseInt(
                                 this.toString()
-                            ) < 0
+                            ) < 0 || isEmpty()
                         ) {
-                            binding.creditCartCardNumber.error = "Please Enter Card Month"
+                            binding.creditCartCardMonth.error = "Please Enter Card Month"
                         } else {
-                            binding.creditCartCardNumber.error = null
+                            binding.creditCartCardMonth.error = null
                         }
                     }
 
                     with(binding.creditCartCardYear.editText?.text) {
                         if (this?.length!! < 2 || 30 < Integer.parseInt(this.toString()) || Integer.parseInt(
                                 this.toString()
-                            ) < 23
+                            ) < 23 || isEmpty()
                         ) {
-                            binding.creditCartCardNumber.error = "Please Enter Card Year"
+                            binding.creditCartCardYear.error = "Please Enter Card Year"
                         } else {
-                            binding.creditCartCardNumber.error = null
+                            binding.creditCartCardYear.error = null
                         }
                     }
 
                     with(binding.creditCartCardCvv.editText?.text) {
-                        if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100) {
-                            binding.creditCartCardNumber.error = "Please Enter Cvv"
+                        if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100 || isEmpty()) {
+                            binding.creditCartCardCvv   .error = "Please Enter Cvv"
                         } else {
-                            binding.creditCartCardNumber.error = null
+                            binding.creditCartCardCvv.error = null
                         }
                     }
 
@@ -182,30 +182,30 @@ class PaymentFragment : Fragment() {
                 with(binding.creditCartCardMonth.editText?.text) {
                     if (this?.length!! < 2 || 13 < Integer.parseInt(this.toString()) || Integer.parseInt(
                             this.toString()
-                        ) < 0
+                        ) < 0 || isEmpty()
                     ) {
-                        binding.creditCartCardNumber.error = "Please Enter Card Month"
+                        binding.creditCartCardMonth.error = "Please Enter Card Month"
                     } else {
-                        binding.creditCartCardNumber.error = null
+                        binding.creditCartCardMonth.error = null
                     }
                 }
 
                 with(binding.creditCartCardYear.editText?.text) {
                     if (this?.length!! < 2 || 30 < Integer.parseInt(this.toString()) || Integer.parseInt(
                             this.toString()
-                        ) < 23
+                        ) < 23 || isEmpty()
                     ) {
-                        binding.creditCartCardNumber.error = "Please Enter Card Year"
+                        binding.creditCartCardYear.error = "Please Enter Card Year"
                     } else {
-                        binding.creditCartCardNumber.error = null
+                        binding.creditCartCardYear.error = null
                     }
                 }
 
                 with(binding.creditCartCardCvv.editText?.text) {
-                    if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100) {
-                        binding.creditCartCardNumber.error = "Please Enter Cvv"
+                    if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100 || isEmpty()){
+                        binding.creditCartCardCvv.error = "Please Enter Cvv"
                     } else {
-                        binding.creditCartCardNumber.error = null
+                        binding.creditCartCardCvv.error = null
                     }
                 }
 

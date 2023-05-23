@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-10dp"
-            android:backgroundTint="@color/transparentDarkBlue"
+            android:backgroundTint="@color/secondaryDarkColor"
             android:elevation="8dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvSelectAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="160dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="8dp"
                     android:visibility="gone"/>
 
@@ -79,7 +79,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="24dp"
                     android:hint="@string/address_name"
                     android:maxLines="1"
@@ -116,9 +116,10 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etCity"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="195dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/city"
+                    android:layout_marginHorizontal="20dp"
                     app:layout_constraintBottom_toBottomOf="@id/etDistrict"
                     app:layout_constraintEnd_toStartOf="@id/etDistrict"
                     app:layout_constraintStart_toStartOf="parent"
@@ -136,13 +137,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etDistrict"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="195dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:hint="@string/district"
                     android:maxLines="1"
                     app:endIconScaleType="center"
                     app:errorEnabled="true"
+                    android:layout_marginHorizontal="20dp"
                     app:hintTextColor="@color/primaryDarkColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/etCity"
@@ -160,7 +162,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etNeighbourhood"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="195dp"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:hint="@string/neighbourhood"
@@ -184,7 +187,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etApartment"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="195dp"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:hint="@string/apartment"
@@ -208,7 +212,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etFlatNo"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="195dp"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/flat_no"
                     android:maxLines="1"
@@ -225,7 +230,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="textPersonName"
+                        android:inputType=""
                         android:maxLength="3"
                         android:textColorHint="@color/primaryDarkColor" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -233,7 +238,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etStreet"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="195dp"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/street"
                     android:maxLines="1"
@@ -298,9 +304,10 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnNextToPayment"
                     style="@style/Widget.Material3.Button.ElevatedButton"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
+                    android:layout_marginHorizontal="20dp"
                     android:backgroundTint="@color/primaryColor"
                     android:elevation="8dp"
                     android:fontFamily="@font/alata"
@@ -318,7 +325,8 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBackToCart"
                     style="@style/Widget.Material3.Button.ElevatedButton"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="48dp"

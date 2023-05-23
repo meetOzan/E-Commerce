@@ -342,7 +342,7 @@ class ProductRepository @Inject constructor(
                 }
             }
             .addOnFailureListener {
-                Log.e("Get Address Error: ",it.message.orEmpty())
+                Log.e("Get Address Error: ", it.message.orEmpty())
             }
 
     fun getAllAddress(addressList: MutableLiveData<List<Address>>) =
@@ -363,4 +363,15 @@ class ProductRepository @Inject constructor(
                     }
                 }
             }
+
+    suspend fun updateAddress(addressName: String,path: String,data: Any) =
+        firebaseFirestore.collection("users")
+            .document(firebaseAuth.currentUser?.email.toString())
+            .collection("address")
+            .document(addressName)
+            .update(
+                hashMapOf(
+                    path to data
+                ) as Map<String, Any>
+            ).await()
 }

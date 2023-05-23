@@ -8,5 +8,5 @@ data class Address(
     val street: String = "",
     val apartment: String = "",
     val no: String = "",
-    val isDefault: Boolean = false
+    val isDefault: Boolean? = false ,
 )
