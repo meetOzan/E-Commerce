@@ -18,7 +18,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
 
-    private lateinit var binding: FragmentSearchBinding
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
     private lateinit var productAdapter: ProductAdapter
     private val newestViewModel: NewestViewModel by viewModels()
     private val searchViewModel: SearchViewModel by viewModels()
@@ -28,7 +29,7 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         observer()
         return binding.root
     }
@@ -76,6 +77,11 @@ class SearchFragment : Fragment() {
         })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun observer() {
         newestViewModel.newestList.observe(viewLifecycleOwner) { list ->
             binding.searchRv.let {
@@ -93,5 +99,4 @@ class SearchFragment : Fragment() {
             }
         }
     }
-
 }

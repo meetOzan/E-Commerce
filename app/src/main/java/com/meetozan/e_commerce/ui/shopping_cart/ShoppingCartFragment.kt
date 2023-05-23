@@ -20,7 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ShoppingCartFragment : Fragment() {
 
-    private lateinit var binding: FragmentShoppingCartBinding
+    private var _binding: FragmentShoppingCartBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: CartItemAdapter
     private lateinit var rv: RecyclerView
     private val viewModel: ShoppingCartViewModel by viewModels()
@@ -29,7 +30,7 @@ class ShoppingCartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentShoppingCartBinding.inflate(inflater, container, false)
+        _binding = FragmentShoppingCartBinding.inflate(inflater, container, false)
         observer()
         return binding.root
     }
@@ -85,5 +86,10 @@ class ShoppingCartFragment : Fragment() {
                 binding.cvSearchNotFound.visibility = View.VISIBLE
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

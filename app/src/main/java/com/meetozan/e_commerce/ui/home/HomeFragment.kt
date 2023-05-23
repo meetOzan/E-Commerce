@@ -19,7 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var rv: RecyclerView
     private lateinit var adapter: BrandAdapter
     private val homeViewModel: HomeViewModel by viewModels()
@@ -28,7 +29,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -74,6 +75,11 @@ class HomeFragment : Fragment() {
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun observer() {
         homeViewModel.brandList.observe(viewLifecycleOwner) {
             adapter = BrandAdapter(it)
@@ -83,5 +89,4 @@ class HomeFragment : Fragment() {
             rv.adapter = adapter
         }
     }
-
 }

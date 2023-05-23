@@ -17,7 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ManFragment : Fragment() {
 
-    private lateinit var binding: FragmentManBinding
+    private var _binding: FragmentManBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter : ProductAdapter
     private lateinit var rv : RecyclerView
     private val viewModel : ManViewModel by viewModels()
@@ -27,9 +28,14 @@ class ManFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentManBinding.inflate(inflater, container, false)
+        _binding = FragmentManBinding.inflate(inflater, container, false)
         observer()
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun observer() {
@@ -40,6 +46,4 @@ class ManFragment : Fragment() {
             rv.adapter = adapter
         }
     }
-
-
 }

@@ -20,15 +20,22 @@ class FashionFragment : Fragment() {
     private val viewModel: FashionViewModel by viewModels()
     private lateinit var rv: RecyclerView
     private lateinit var adapter: ProductAdapter
-    private lateinit var binding: FragmentFashionBinding
+    private var _binding: FragmentFashionBinding? = null
+    private val binding get() = _binding!!
     private val favoritesViewModel: FavoritesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFashionBinding.inflate(inflater, container, false)
+        _binding = FragmentFashionBinding.inflate(inflater, container, false)
         observer()
         return binding.root
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun observer() {
@@ -39,5 +46,4 @@ class FashionFragment : Fragment() {
             rv.adapter = adapter
         }
     }
-
 }

@@ -183,6 +183,11 @@ class AddressFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun observer() {
         viewModel.addressList.observe(viewLifecycleOwner) {
             adapter = AddressAdapter(it, requireContext())

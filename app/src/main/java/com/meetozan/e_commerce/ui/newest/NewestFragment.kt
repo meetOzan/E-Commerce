@@ -17,7 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class NewestFragment : Fragment() {
 
-    private lateinit var binding: FragmentNewestBinding
+    private var _binding: FragmentNewestBinding? = null
+    private val binding get() = _binding!!
     private lateinit var rv: RecyclerView
     private lateinit var adapter: ProductAdapter
     private val viewModel: NewestViewModel by viewModels()
@@ -27,9 +28,14 @@ class NewestFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentNewestBinding.inflate(inflater, container, false)
+        _binding = FragmentNewestBinding.inflate(inflater, container, false)
         observer()
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun observer() {

@@ -19,7 +19,8 @@ class ElectronicFragment : Fragment() {
 
     private lateinit var rv: RecyclerView
     private lateinit var adapter: ProductAdapter
-    private lateinit var binding: FragmentElectronicBinding
+    private var _binding: FragmentElectronicBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: ElectronicViewModel by viewModels()
     private val favoritesViewModel: FavoritesViewModel by viewModels()
 
@@ -28,9 +29,14 @@ class ElectronicFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentElectronicBinding.inflate(inflater, container, false)
+        _binding = FragmentElectronicBinding.inflate(inflater, container, false)
         observer()
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun observer() {

@@ -19,7 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class SignUpFragment : Fragment() {
 
     private val signUpViewModel: SignUpViewModel by viewModels()
-    private lateinit var binding: FragmentSignUpBinding
+    private var _binding: FragmentSignUpBinding? = null
+    private val binding get() = _binding!!
     private var isFemaleClicked: Boolean = false
     private var isMaleClicked: Boolean = false
     private var gender: String = ""
@@ -28,7 +29,7 @@ class SignUpFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSignUpBinding.inflate(inflater, container, false)
+        _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         observer()
         return binding.root
     }
@@ -129,6 +130,11 @@ class SignUpFragment : Fragment() {
             signUpViewModel.signUpWithEmail(etMail, etPassword, user)
 
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun observer() {

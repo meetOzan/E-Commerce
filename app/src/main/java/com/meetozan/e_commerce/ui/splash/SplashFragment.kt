@@ -27,5 +27,4 @@ class SplashFragment : Fragment() {
             findNavController().navigate(R.id.action_splashFragment_to_signInFragment)
         }, ANIMATION_TIME)
     }
-
 }

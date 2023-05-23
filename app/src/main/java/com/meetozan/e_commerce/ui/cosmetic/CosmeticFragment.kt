@@ -19,7 +19,8 @@ class CosmeticFragment : Fragment() {
 
     private lateinit var rv: RecyclerView
     private lateinit var adapter: ProductAdapter
-    private lateinit var binding: FragmentCosmeticBinding
+    private var _binding: FragmentCosmeticBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: CosmeticViewModel by viewModels()
     private val favoritesViewModel: FavoritesViewModel by viewModels()
 
@@ -27,9 +28,14 @@ class CosmeticFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCosmeticBinding.inflate(inflater, container, false)
+        _binding = FragmentCosmeticBinding.inflate(inflater, container, false)
         observer()
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun observer() {

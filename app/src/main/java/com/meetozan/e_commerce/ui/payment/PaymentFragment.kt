@@ -21,7 +21,8 @@ import java.time.format.DateTimeFormatter
 @AndroidEntryPoint
 class PaymentFragment : Fragment() {
 
-    private lateinit var binding: FragmentPaymentBinding
+    private var _binding: FragmentPaymentBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: PaymentViewModel by viewModels()
     private val shoppingCartViewModel: ShoppingCartViewModel by viewModels()
 
@@ -32,7 +33,7 @@ class PaymentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPaymentBinding.inflate(inflater, container, false)
+        _binding = FragmentPaymentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -234,5 +235,10 @@ class PaymentFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

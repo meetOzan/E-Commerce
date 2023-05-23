@@ -17,7 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WomanFragment : Fragment() {
 
-    private lateinit var binding: FragmentWomanBinding
+    private var _binding: FragmentWomanBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: ProductAdapter
     private lateinit var rv: RecyclerView
     private val viewModel: WomanViewModel by viewModels()
@@ -27,7 +28,7 @@ class WomanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentWomanBinding.inflate(inflater, container, false)
+        _binding = FragmentWomanBinding.inflate(inflater, container, false)
         observer()
         return binding.root
     }
