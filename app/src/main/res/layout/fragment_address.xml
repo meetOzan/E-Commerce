@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_marginTop="8dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tvAddressTitle"
@@ -74,30 +74,91 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etAddressName"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvAddressOwnerName"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="24dp"
-                    android:hint="@string/address_name"
-                    android:maxLines="1"
-                    app:endIconScaleType="center"
-                    app:errorEnabled="true"
-                    app:hintTextColor="@color/primaryDarkColor"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:layout_constraintBottom_toTopOf="@id/addressDivider"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:startIconTint="@color/secondaryColor">
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPersonName"
-                        android:maxLength="20"
-                        android:textColorHint="@color/primaryDarkColor" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tvPersonalInformation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/alata"
+                            android:text="@string/personal_information"
+                            android:textColor="@color/secondaryDarkColor"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etAddressOwnerName"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="12dp"
+                            android:hint="@string/name_surname"
+                            android:maxLines="1"
+                            app:endIconScaleType="center"
+                            app:errorEnabled="true"
+                            app:hintTextColor="@color/primaryDarkColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvPersonalInformation"
+                            app:startIconTint="@color/secondaryColor">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textPersonName"
+                                android:maxLength="20"
+                                android:textColorHint="@color/primaryDarkColor" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etAddressOwnerPhoneNumber"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:hint="@string/phone_number"
+                            android:maxLines="1"
+                            app:endIconScaleType="center"
+                            app:errorEnabled="true"
+                            android:layout_marginBottom="8dp"
+                            app:hintTextColor="@color/primaryDarkColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etAddressOwnerName"
+                            app:startIconTint="@color/secondaryColor">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textPersonName"
+                                android:maxLength="10"
+                                android:textColorHint="@color/primaryDarkColor" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/addressDivider"
@@ -107,244 +168,295 @@
                     android:alpha="0.5"
                     android:elevation="10dp"
                     app:dividerColor="@color/black"
-                    app:layout_constraintBottom_toTopOf="@id/etCity"
+                    app:layout_constraintBottom_toTopOf="@id/cvAddressInformation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etAddressName" />
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etCity"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/city"
-                    android:layout_marginHorizontal="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/etDistrict"
-                    app:layout_constraintEnd_toStartOf="@id/etDistrict"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etDistrict"
-                    app:layout_constraintVertical_bias="0">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/autoCompleteTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:inputType="none" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etDistrict"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/district"
-                    android:maxLines="1"
-                    app:endIconScaleType="center"
-                    app:errorEnabled="true"
-                    android:layout_marginHorizontal="20dp"
-                    app:hintTextColor="@color/primaryDarkColor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/etCity"
-                    app:layout_constraintTop_toBottomOf="@id/addressDivider"
-                    app:startIconTint="@color/secondaryColor">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPersonName"
-                        android:maxLength="18"
-                        android:textColorHint="@color/primaryDarkColor" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etNeighbourhood"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:hint="@string/neighbourhood"
-                    android:maxLines="1"
-                    app:endIconScaleType="center"
-                    app:errorEnabled="true"
-                    app:hintTextColor="@color/primaryDarkColor"
-                    app:layout_constraintEnd_toStartOf="@id/etStreet"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etDistrict"
-                    app:startIconTint="@color/secondaryColor">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPersonName"
-                        android:maxLength="20"
-                        android:textColorHint="@color/primaryDarkColor" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etApartment"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:hint="@string/apartment"
-                    android:maxLines="1"
-                    app:endIconScaleType="center"
-                    app:errorEnabled="true"
-                    app:hintTextColor="@color/primaryDarkColor"
-                    app:layout_constraintEnd_toStartOf="@id/etFlatNo"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/etNeighbourhood"
-                    app:startIconTint="@color/secondaryColor">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPersonName"
-                        android:maxLength="20"
-                        android:textColorHint="@color/primaryDarkColor" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etFlatNo"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/flat_no"
-                    android:maxLines="1"
-                    app:endIconScaleType="center"
-                    app:errorEnabled="true"
-                    android:layout_marginTop="8dp"
-                    app:hintTextColor="@color/primaryDarkColor"
-                    app:layout_constraintBottom_toBottomOf="@+id/etApartment"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/etApartment"
-                    app:layout_constraintTop_toBottomOf="@+id/etNeighbourhood"
-                    app:startIconTint="@color/secondaryColor">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType=""
-                        android:maxLength="3"
-                        android:textColorHint="@color/primaryDarkColor" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etStreet"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/street"
-                    android:maxLines="1"
-                    app:endIconScaleType="center"
-                    app:errorEnabled="true"
-                    app:hintTextColor="@color/primaryDarkColor"
-                    app:layout_constraintBottom_toBottomOf="@+id/etNeighbourhood"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/etNeighbourhood"
-                    app:layout_constraintTop_toTopOf="@+id/etNeighbourhood"
-                    app:startIconTint="@color/secondaryColor">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPersonName"
-                        android:maxLength="20"
-                        android:textColorHint="@color/primaryDarkColor" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintTop_toBottomOf="@id/cvAddressOwnerName" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/isDefault"
-                    style="?attr/materialCardViewElevatedStyle"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/cvAddressInformation"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="16dp"
-                    android:backgroundTint="@color/transparentGray"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="10dp"
-                    app:layout_constraintBottom_toTopOf="@+id/btnNextToPayment"
+                    app:cardCornerRadius="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/etFlatNo"
-                    app:strokeColor="@color/black"
-                    app:strokeWidth="0.5dp">
+                    app:layout_constraintTop_toBottomOf="@id/addressDivider"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp">
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/tvAddressInformation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="3dp"
                             android:fontFamily="@font/alata"
-                            android:text="@string/default_address"
-                            android:textSize="18sp" />
+                            android:text="@string/address_information"
+                            android:textColor="@color/secondaryDarkColor"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <CheckBox
-                            android:id="@+id/checkBoxAddressDefaultAddress"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etCity"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="12dp"
+                            android:hint="@string/city"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvAddressInformation">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/autoCompleteTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:inputType="none" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etDistrict"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="8dp"
+                            android:hint="@string/district"
+                            android:maxLines="1"
+                            app:endIconScaleType="center"
+                            app:errorEnabled="true"
+                            app:hintTextColor="@color/primaryDarkColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etCity"
+                            app:startIconTint="@color/secondaryColor">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textPersonName"
+                                android:maxLength="18"
+                                android:textColorHint="@color/primaryDarkColor" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etNeighbourhood"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="3dp"
+                            android:hint="@string/neighbourhood"
+                            android:maxLines="1"
+                            app:endIconScaleType="center"
+                            app:errorEnabled="true"
+                            app:hintTextColor="@color/primaryDarkColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etDistrict">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textPersonName"
+                                android:maxLength="20"
+                                android:textColorHint="@color/primaryDarkColor" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etStreet"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="3dp"
+                            android:hint="@string/street"
+                            android:maxLines="1"
+                            app:endIconScaleType="center"
+                            app:errorEnabled="true"
+                            app:hintTextColor="@color/primaryDarkColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etNeighbourhood"
+                            app:startIconTint="@color/secondaryColor">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textPersonName"
+                                android:maxLength="20"
+                                android:textColorHint="@color/primaryDarkColor" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etApartment"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="3dp"
+                            android:hint="@string/apartment"
+                            android:maxLines="1"
+                            app:endIconScaleType="center"
+                            app:errorEnabled="true"
+                            app:hintTextColor="@color/primaryDarkColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/etStreet"
+                            app:startIconTint="@color/secondaryColor">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textPersonName"
+                                android:maxLength="20"
+                                android:textColorHint="@color/primaryDarkColor" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etFlatNo"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="3dp"
+                            android:hint="@string/flat_no"
+                            android:maxLines="1"
+                            app:endIconScaleType="center"
+                            app:errorEnabled="true"
+                            app:hintTextColor="@color/primaryDarkColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/etApartment"
+                            app:startIconTint="@color/secondaryColor">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType=""
+                                android:maxLength="3"
+                                android:textColorHint="@color/primaryDarkColor" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etAddressName"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="3dp"
+                            android:hint="@string/address_name"
+                            android:maxLines="1"
+                            app:endIconScaleType="center"
+                            app:errorEnabled="true"
+                            app:hintTextColor="@color/primaryDarkColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/etFlatNo"
+                            app:startIconTint="@color/secondaryColor">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType=""
+                                android:maxLength="3"
+                                android:textColorHint="@color/primaryDarkColor" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/isDefault"
+                            style="?attr/materialCardViewElevatedStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="3dp" />
+                            android:layout_marginVertical="16dp"
+                            android:backgroundTint="@color/transparentGray"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/etAddressName"
+                            app:strokeColor="@color/black"
+                            app:strokeWidth="0.5dp">
 
-                    </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="1dp"
+                                    android:fontFamily="@font/alata"
+                                    android:text="@string/default_address"
+                                    android:textSize="18sp" />
+
+                                <CheckBox
+                                    android:id="@+id/checkBoxAddressDefaultAddress"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="3dp" />
+
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
+
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnNextToPayment"
-                    style="@style/Widget.Material3.Button.ElevatedButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:backgroundTint="@color/primaryColor"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="20dp"
+                    android:drawableEnd="@drawable/ic_arrow_right"
                     android:elevation="8dp"
-                    android:fontFamily="@font/alata"
                     android:text="@string/next"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:iconTint="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:cornerRadius="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/btnBackToCart"
-                    app:layout_constraintTop_toBottomOf="@id/isDefault"
-                    app:strokeColor="@color/black"
-                    app:strokeWidth="1dp" />
+                    app:layout_constraintTop_toBottomOf="@id/cvAddressInformation"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="0.7dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBackToCart"
-                    style="@style/Widget.Material3.Button.ElevatedButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="0dp"
-                    android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginBottom="48dp"
-                    android:backgroundTint="@color/secondaryColor"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="20dp"
                     android:elevation="8dp"
-                    android:fontFamily="@font/alata"
                     android:text="@string/back"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:iconTint="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:cornerRadius="5dp"
+                    app:icon="@drawable/ic_arrow_left"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnNextToPayment"
-                    app:layout_constraintStart_toEndOf="@id/isDefault"
+                    app:layout_constraintEnd_toStartOf="@id/btnNextToPayment"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/isDefault"
-                    app:strokeColor="@color/black"
-                    app:strokeWidth="1dp" />
+                    app:layout_constraintTop_toBottomOf="@id/cvAddressInformation"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="0.7dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

@@ -98,6 +98,9 @@
     <string name="click_and_select_your_address">Click and select your address</string>
     <string name="istanbul_anatolia">Istanbul-Anatolia</string>
     <string name="comma">,</string>
+    <string name="name_surname">Name Surname</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="address_information">Address Information</string>
 
     <string-array name="cities">
         <item>Istanbul-Anatolia</item>

@@ -32,7 +32,7 @@
                 android:layout_height="140dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="12dp"
-                android:backgroundTint="@color/lightGray"
+                android:backgroundTint="@color/realGray"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/paymentToolbar"
@@ -261,58 +261,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="80dp"
                 android:fontFamily="@font/alata"
                 android:text="@string/total_price"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/tvPaymentLira"
                 app:layout_constraintStart_toStartOf="@id/creditCartCardMonth"
-                app:layout_constraintTop_toBottomOf="@id/creditCartCardMonth" />
+                app:layout_constraintTop_toBottomOf="@+id/creditCartCardMonth" />
 
             <TextView
                 android:id="@+id/paymentTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/alata"
-                app:layout_constraintBottom_toBottomOf="@id/btnCompletePayment"
                 android:text=""
-                android:textSize="30sp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/btnCompletePayment"
                 app:layout_constraintStart_toStartOf="@+id/tvPaymentTotalPrice"
-                app:layout_constraintTop_toBottomOf="@id/tvPaymentTotalPrice" />
+                app:layout_constraintTop_toTopOf="@id/btnCompletePayment" />
 
             <TextView
                 android:id="@+id/tvPaymentLira"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/alata"
                 android:text="@string/turkish_lira"
-                android:textSize="30sp"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/btnCompletePayment"
                 app:layout_constraintStart_toEndOf="@id/paymentTotalPrice"
-                app:layout_constraintTop_toTopOf="@+id/paymentTotalPrice" />
+                app:layout_constraintTop_toTopOf="@+id/btnCompletePayment" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCompletePayment"
                 style="@style/Widget.Material3.Button.ElevatedButton"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="200dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginBottom="30dp"
                 android:backgroundTint="@color/lightGreen"
                 android:elevation="8dp"
                 android:fontFamily="@font/alata"
                 android:text="@string/confirm"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:iconTint="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/paymentTotalPrice"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.9"
-                app:layout_constraintStart_toEndOf="@+id/tvPaymentLira"
-                app:layout_constraintTop_toBottomOf="@+id/tvPaymentTotalPrice"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/creditCartCardCvv"
+                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintStart_toStartOf="@+id/creditCartCardYear"
                 app:strokeColor="@color/black"
                 app:strokeWidth="1dp" />
 

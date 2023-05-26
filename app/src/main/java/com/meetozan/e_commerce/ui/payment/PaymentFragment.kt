@@ -90,7 +90,7 @@ class PaymentFragment : Fragment() {
 
                     val dialog = LayoutInflater.from(requireContext())
                         .inflate(R.layout.payment_done_dialog, null)
-                    val builder = AlertDialog.Builder(context)
+                    val builder = AlertDialog.Builder(context,R.style.MyDialogStyle)
                     builder.setView(dialog)
                     dialog.setBackgroundColor(Color.TRANSPARENT)
 
@@ -151,7 +151,7 @@ class PaymentFragment : Fragment() {
 
                     with(binding.creditCartCardCvv.editText?.text) {
                         if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100 || isEmpty()) {
-                            binding.creditCartCardCvv   .error = "Please Enter Cvv"
+                            binding.creditCartCardCvv.error = "Please Enter Cvv"
                         } else {
                             binding.creditCartCardCvv.error = null
                         }
@@ -174,7 +174,8 @@ class PaymentFragment : Fragment() {
 
                 with(binding.creditCartCardNumber.editText?.text) {
                     if (this?.length!! < 16) {
-                        binding.creditCartCardNumber.error = "Please Enter Card Number"
+                        binding.creditCartCardNumber.error =
+                            "Please enter a valid credit card number"
                     } else {
                         binding.creditCartCardNumber.error = null
                     }
@@ -203,7 +204,7 @@ class PaymentFragment : Fragment() {
                 }
 
                 with(binding.creditCartCardCvv.editText?.text) {
-                    if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100 || isEmpty()){
+                    if (this?.length!! < 3 || Integer.parseInt(this.toString()) < 100 || isEmpty()) {
                         binding.creditCartCardCvv.error = "Please Enter Cvv"
                     } else {
                         binding.creditCartCardCvv.error = null
@@ -211,11 +212,47 @@ class PaymentFragment : Fragment() {
                 }
 
                 if (binding.creditCartCardCvv.editText?.text?.length!! == 3 &&
+                    Integer.parseInt(binding.creditCartCardCvv.editText?.text.toString()) > 100 &&
                     binding.creditCartCardYear.editText?.text?.length!! == 2 &&
+                    30 > Integer.parseInt(binding.creditCartCardYear.editText?.text.toString()) &&
+                    23 < Integer.parseInt(binding.creditCartCardYear.editText?.text.toString()) &&
                     binding.creditCartCardMonth.editText?.text?.length!! == 2 &&
+                    13 > Integer.parseInt(binding.creditCartCardMonth.editText?.text.toString()) &&
+                    0 < Integer.parseInt(binding.creditCartCardMonth.editText?.text.toString()) &&
                     binding.creditCartCardNumber.editText?.text?.length!! == 16 &&
                     binding.creditCartCardName.editText?.text.toString().isNotEmpty()
                 ) {
+
+                    with(binding.creditCartCardNumber.editText?.text.toString()) {
+                        if (this[0].toString() == "5") {
+                            com.squareup.picasso.Picasso.get()
+                                .load("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/800px-Mastercard_2019_logo.svg.png")
+                                .resize(1400, 1000)
+                                .into(binding.imageCreditCartBrand)
+                        }
+                        if (this[0].toString() == "4") {
+                            com.squareup.picasso.Picasso.get()
+                                .load("https://cdn.freebiesupply.com/logos/large/2x/visa-1-logo-png-transparent.png")
+                                .resize(2000, 700)
+                                .into(binding.imageCreditCartBrand)
+                        }
+                        if (this[0].toString() == "9") {
+                            com.squareup.picasso.Picasso.get()
+                                .load("https://upload.wikimedia.org/wikipedia/commons/2/25/Troy_logo.png")
+                                .resize(1000, 500)
+                                .into(binding.imageCreditCartBrand)
+                        }
+                        if (this[0].toString() == "3") {
+                            com.squareup.picasso.Picasso.get()
+                                .load("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/2052px-American_Express_logo_%282018%29.svg.png")
+                                .resize(2000, 2000)
+                                .into(binding.imageCreditCartBrand)
+                        }/*
+                        else{
+                            binding.creditCartCardNumber.error = "Please Enter Valid Card Number"
+                            return@setOnClickListener
+                        }*/
+                    }
 
                     binding.tvCreditCardName.text =
                         binding.creditCartCardName.editText?.text.toString()

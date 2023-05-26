@@ -125,6 +125,20 @@ class AddressFragment : Fragment() {
 
             } else {
 
+                with(binding.etAddressOwnerName.editText?.text) {
+                    if (this?.isEmpty()!!) {
+                        binding.etAddressOwnerName.error = "Please Enter Name"
+                    } else {
+                        binding.etAddressOwnerName.error = null
+                    }
+                }
+                with(binding.etAddressOwnerPhoneNumber.editText?.text) {
+                    if (this?.isEmpty()!!) {
+                        binding.etAddressOwnerPhoneNumber.error = "Please Enter Phone Number"
+                    } else {
+                        binding.etAddressOwnerPhoneNumber.error = null
+                    }
+                }
                 with(binding.etAddressName.editText?.text) {
                     if (this?.isEmpty()!!) {
                         binding.etAddressName.error = "Please Enter Address Name"
