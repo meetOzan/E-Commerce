@@ -92,7 +92,7 @@
                 app:strokeWidth="0.5dp" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvOrders"
+                android:id="@+id/cvProfileAddresses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/buttonProfileEditProfile"
@@ -109,7 +109,7 @@
                 app:strokeWidth="0.5dp">
 
                 <RelativeLayout
-                    android:id="@+id/cvOrdersLayout"
+                    android:id="@+id/cvAddressesLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -129,11 +129,11 @@
                         android:layout_marginTop="6dp"
                         android:contentDescription="@string/imagehistory"
                         android:focusable="false"
-                        android:src="@drawable/ic_history_24"
-                        app:tint="@color/black" />
+                        android:src="@drawable/ic_apartment"
+                        app:tint="@color/gray" />
 
                     <TextView
-                        android:id="@+id/tvOrders"
+                        android:id="@+id/tvAddresses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -141,12 +141,12 @@
                         android:layout_toEndOf="@id/imageOrders"
                         android:focusable="false"
                         android:fontFamily="@font/alata"
-                        android:text="@string/orders"
-                        android:textColor="@color/secondaryColor"
+                        android:text="@string/addresses"
+                        android:textColor="@color/black"
                         android:textSize="24sp" />
 
                     <ImageView
-                        android:id="@+id/btnOpenOrders"
+                        android:id="@+id/btnOpenAddresses"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_alignParentTop="true"
@@ -159,7 +159,7 @@
                         android:src="@drawable/ic_arrow_circle_down" />
 
                     <LinearLayout
-                        android:id="@+id/expandableLayoutOrders"
+                        android:id="@+id/expandableLayoutAddresses"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/imageOrders"
@@ -167,7 +167,7 @@
                         android:visibility="gone">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvOrders"
+                            android:id="@+id/rvAddresses"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="8dp"
@@ -176,7 +176,7 @@
                             android:visibility="gone" />
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cvOrderNotFound"
+                            android:id="@+id/cvAddressesNotFound"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:visibility="visible">
@@ -188,7 +188,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:id="@+id/imageNoOrderError"
+                                    android:id="@+id/imageNoAddressError"
                                     android:layout_width="48dp"
                                     android:layout_height="48dp"
                                     android:layout_gravity="center"
@@ -198,13 +198,13 @@
                                     app:tint="@color/lightRed" />
 
                                 <TextView
-                                    android:id="@+id/tvNoOrderError"
+                                    android:id="@+id/tvNoAddressError"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:alpha="0.5"
                                     android:fontFamily="@font/alata"
-                                    android:text="@string/you_haven_t_shopped_yet_when_you_shop_you_can_see_your_orders_here"
+                                    android:text="@string/you_haven_t_added_address_yet_when_you_shop_you_can_add_address"
                                     android:textColor="@color/gray"
                                     android:textSize="20sp" />
 
@@ -216,13 +216,15 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvCurrentOrder"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cvOrders"
+                android:layout_below="@id/cvProfileAddresses"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="64dp"
                 android:elevation="8dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:visibility="gone"
                 app:strokeColor="@color/secondaryDarkColor"
                 app:strokeWidth="0.5dp">
@@ -274,14 +276,16 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvNoCurrentOrder"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cvOrders"
+                android:layout_below="@id/cvProfileAddresses"
                 android:layout_marginHorizontal="50dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="64dp"
                 android:elevation="8dp"
                 android:visibility="visible"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 app:strokeColor="@color/primaryDarkColor"
                 app:strokeWidth="0.5dp">
 

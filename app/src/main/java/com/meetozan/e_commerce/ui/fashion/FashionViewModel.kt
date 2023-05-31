@@ -2,8 +2,8 @@ package com.meetozan.e_commerce.ui.fashion
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.model.model.Product
-import com.meetozan.e_commerce.data.repository.ProductRepository
+import com.meetozan.e_commerce.data.dto.ProductDto
+import com.meetozan.e_commerce.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -16,8 +16,8 @@ class FashionViewModel @Inject constructor(
     private val ioDispatcher: CoroutineContext
 ) : ViewModel() {
 
-    private val _fashionList = MutableLiveData<List<Product>>()
-    val fashionList: MutableLiveData<List<Product>>
+    private val _fashionList = MutableLiveData<List<ProductDto>>()
+    val fashionList: MutableLiveData<List<ProductDto>>
         get() = _fashionList
 
     init {

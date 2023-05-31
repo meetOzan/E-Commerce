@@ -1,9 +1,9 @@
-package com.meetozan.e_commerce.data.model.model
+package com.meetozan.e_commerce.data.dto
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Brand(
+data class BrandDto(
     @SerializedName("id")
     @Expose
     val id: Int,

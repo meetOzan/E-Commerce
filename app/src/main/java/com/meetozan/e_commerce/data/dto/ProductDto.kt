@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.data.model.model
+package com.meetozan.e_commerce.data.dto
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 
 @Entity
 @Parcelize
-data class Product(
+data class ProductDto(
 
     @SerializedName("id")
     @ColumnInfo(name = "id")

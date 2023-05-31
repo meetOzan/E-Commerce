@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.meetozan.e_commerce.R
-import com.meetozan.e_commerce.data.model.model.Product
+import com.meetozan.e_commerce.data.dto.ProductDto
 import com.meetozan.e_commerce.databinding.FragmentShoppingCartBinding
 import com.meetozan.e_commerce.ui.adapter.CartItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,7 +66,7 @@ class ShoppingCartFragment : Fragment() {
 
     private fun observer() {
         viewModel.basketList.observe(viewLifecycleOwner) {
-            adapter = CartItemAdapter(it as MutableList<Product>, viewModel, requireContext())
+            adapter = CartItemAdapter(it as MutableList<ProductDto>, viewModel, requireContext())
             rv.adapter = adapter
 
             if (it.isNotEmpty()) {

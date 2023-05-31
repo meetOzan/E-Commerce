@@ -3,8 +3,8 @@ package com.meetozan.e_commerce.ui.search
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.model.model.Product
-import com.meetozan.e_commerce.data.repository.ProductRepository
+import com.meetozan.e_commerce.data.dto.ProductDto
+import com.meetozan.e_commerce.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -17,8 +17,8 @@ class SearchViewModel @Inject constructor(
     private val ioDispatcher: CoroutineContext
 ) : ViewModel() {
 
-    private val _searchList = MutableLiveData<List<Product>>()
-    val searchList: LiveData<List<Product>>
+    private val _searchList = MutableLiveData<List<ProductDto>>()
+    val searchList: LiveData<List<ProductDto>>
         get() = _searchList
 
     fun searchProduct(productName: String) {

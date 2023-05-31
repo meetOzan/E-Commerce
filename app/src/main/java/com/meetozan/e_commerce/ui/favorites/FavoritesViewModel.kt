@@ -3,8 +3,8 @@ package com.meetozan.e_commerce.ui.favorites
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.model.model.Product
-import com.meetozan.e_commerce.data.repository.ProductRepository
+import com.meetozan.e_commerce.data.dto.ProductDto
+import com.meetozan.e_commerce.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -17,12 +17,12 @@ class FavoritesViewModel @Inject constructor(
     private val ioDispatcher: CoroutineContext,
 ) : ViewModel() {
 
-    private val _favoritesList = MutableLiveData<List<Product>>()
-    val favoritesList: LiveData<List<Product>>
+    private val _favoritesList = MutableLiveData<List<ProductDto>>()
+    val favoritesList: LiveData<List<ProductDto>>
         get() = _favoritesList
 
-    private val _product = MutableLiveData<Product>()
-    val product: LiveData<Product>
+    private val _product = MutableLiveData<ProductDto>()
+    val product: LiveData<ProductDto>
         get() = _product
 
     init {
@@ -35,21 +35,21 @@ class FavoritesViewModel @Inject constructor(
         }
     }
 
-    fun addToFavorites(product: Product, hashMap: HashMap<Any, Any>) {
+    fun addToFavorites(productDto: ProductDto, hashMap: HashMap<Any, Any>) {
         CoroutineScope(ioDispatcher).launch {
-            productRepository.addToFavorites(product, hashMap)
+            productRepository.addToFavorites(productDto, hashMap)
         }
     }
 
-    fun deleteFromFavorites(product: Product) {
+    fun deleteFromFavorites(productDto: ProductDto) {
         CoroutineScope(ioDispatcher).launch {
-            productRepository.deleteFromFavorites(product)
+            productRepository.deleteFromFavorites(productDto)
         }
     }
 
-    fun addToBasket(product: Product,hashMap: HashMap<Any, Any>){
+    fun addToBasket(productDto: ProductDto, hashMap: HashMap<Any, Any>){
         CoroutineScope(ioDispatcher).launch {
-            productRepository.addToBasket(product,hashMap)
+            productRepository.addToBasket(productDto,hashMap)
         }
     }
 

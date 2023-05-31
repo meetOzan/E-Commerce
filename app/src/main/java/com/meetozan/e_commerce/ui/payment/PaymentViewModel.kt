@@ -1,7 +1,7 @@
 package com.meetozan.e_commerce.ui.payment
 
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.repository.ProductRepository
+import com.meetozan.e_commerce.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

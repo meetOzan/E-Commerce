@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.meetozan.e_commerce.data.model.model.Product
+import com.meetozan.e_commerce.data.dto.ProductDto
 import com.meetozan.e_commerce.databinding.FragmentFavoritesBinding
 import com.meetozan.e_commerce.ui.adapter.ProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +39,7 @@ class FavoritesFragment : Fragment() {
 
     private fun observer(){
         viewModel.favoritesList.observe(viewLifecycleOwner){
-            adapter = ProductAdapter(it as MutableList<Product>,requireContext(),layoutInflater,this.viewModel)
+            adapter = ProductAdapter(it as MutableList<ProductDto>,requireContext(),layoutInflater,this.viewModel)
             rv = binding.favoritesRv
             rv.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter

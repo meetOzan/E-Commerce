@@ -20,9 +20,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 import com.meetozan.e_commerce.R
-import com.meetozan.e_commerce.data.model.model.Product
+import com.meetozan.e_commerce.data.dto.ProductDto
 import com.meetozan.e_commerce.databinding.FragmentProfileBinding
 import com.meetozan.e_commerce.ui.adapter.ProductAdapter
+import com.meetozan.e_commerce.ui.adapter.ProfileAddressAdapter
+import com.meetozan.e_commerce.ui.address.AddressViewModel
 import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,11 +34,12 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ProfileViewModel by viewModels()
+    private val addressViewModel: AddressViewModel by viewModels()
     private val favoritesViewModel: FavoritesViewModel by viewModels()
-    private lateinit var adapterHistory: ProductAdapter
     private lateinit var adapterCurrent: ProductAdapter
-    private lateinit var rvOrderCurrent: RecyclerView
-    private lateinit var rvOrderHistory: RecyclerView
+    private lateinit var addressAdapter: ProfileAddressAdapter
+    private lateinit var rvOrders: RecyclerView
+    private lateinit var rvAddress: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,8 +53,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         userObserver()
-
         orderObserver()
+        addressObserver()
 
         binding.imageCurrentOrders.playAnimation()
 
@@ -60,7 +63,7 @@ class ProfileFragment : Fragment() {
         binding.btnSignOut.setOnClickListener {
             viewModel.signOut()
             it.findNavController().apply {
-                popBackStack(R.id.nav_graph,true)
+                popBackStack(R.id.nav_graph, true)
                 navigate(R.id.nav_graph)
             }
         }
@@ -73,25 +76,45 @@ class ProfileFragment : Fragment() {
             return@setOnClickListener
         }
 
+        binding.cvOrderView.setOnClickListener {
+            return@setOnClickListener
+        }
+
         binding.profileImageView.setOnClickListener {
             return@setOnClickListener
         }
 
-        binding.btnOpenOrders.setOnClickListener {
-            if (binding.expandableLayoutOrders.visibility == View.GONE) {
+        (binding.btnOpenAddresses).setOnClickListener {
+            if (binding.expandableLayoutAddresses.visibility == View.GONE) {
                 TransitionManager.beginDelayedTransition(
-                    binding.cvOrders, AutoTransition()
+                    binding.cvProfileAddresses, AutoTransition()
                 )
-                binding.expandableLayoutOrders.visibility = View.VISIBLE
-                binding.btnOpenOrders.animate().apply {
+                TransitionManager.beginDelayedTransition(
+                    binding.cvCurrentOrder, AutoTransition()
+                )
+                TransitionManager.beginDelayedTransition(
+                    binding.cvNoCurrentOrder, AutoTransition()
+                )
+
+                binding.expandableLayoutAddresses.visibility = View.VISIBLE
+                binding.btnOpenAddresses.animate().apply {
                     duration = 500
                     rotationX(180f)
                 }.start()
                 return@setOnClickListener
             }
-            if (binding.expandableLayoutOrders.visibility == View.VISIBLE) {
-                binding.expandableLayoutOrders.visibility = View.GONE
-                binding.btnOpenOrders.animate().apply {
+            if (binding.expandableLayoutAddresses.visibility == View.VISIBLE) {
+                binding.expandableLayoutAddresses.visibility = View.GONE
+                TransitionManager.beginDelayedTransition(
+                    binding.cvProfileAddresses, AutoTransition()
+                )
+                TransitionManager.beginDelayedTransition(
+                    binding.cvCurrentOrder, AutoTransition()
+                )
+                TransitionManager.beginDelayedTransition(
+                    binding.cvNoCurrentOrder, AutoTransition()
+                )
+                binding.btnOpenAddresses.animate().apply {
                     duration = 500
                     rotationX(-0f)
                 }.start()
@@ -175,43 +198,44 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private fun addressObserver() {
+        addressViewModel.addressList.observe(viewLifecycleOwner) { addressList ->
+            with(binding){
+                if (addressList.isNullOrEmpty()) {
+                    cvAddressesNotFound.visibility = View.VISIBLE
+                    rvAddresses.visibility = View.GONE
+                } else {
+                    cvAddressesNotFound.visibility = View.GONE
+                    rvAddresses.visibility = View.VISIBLE
+                    addressAdapter = ProfileAddressAdapter(addressList,requireContext(),addressViewModel)
+                    rvAddress = rvAddresses
+                    rvAddress.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    rvAddress.adapter = addressAdapter
+                }
+            }
+        }
+    }
+
     private fun orderObserver() {
         viewModel.orderList.observe(viewLifecycleOwner) { orderList ->
             with(binding) {
                 if (orderList.isNullOrEmpty()) {
-                    cvOrderNotFound.visibility = View.VISIBLE
-                    rvOrders.visibility = View.GONE
-                } else {
-                    cvOrderNotFound.visibility = View.GONE
-                    rvOrders.visibility = View.VISIBLE
-                    adapterHistory = ProductAdapter(
-                        orderList as MutableList<Product>,
-                        requireContext(),
-                        layoutInflater,
-                        favoritesViewModel
-                    )
-                    rvOrderHistory = rvOrders
-                    rvOrderHistory.layoutManager =
-                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                    rvOrderHistory.adapter = adapterHistory
-                }
-
-                if (orderList.isNullOrEmpty()) {
                     cvNoCurrentOrder.visibility = View.VISIBLE
                     cvCurrentOrder.visibility = View.GONE
-                }else{
+                } else {
                     cvNoCurrentOrder.visibility = View.GONE
                     cvCurrentOrder.visibility = View.VISIBLE
                     adapterCurrent = ProductAdapter(
-                        orderList as MutableList<Product>,
+                        orderList as MutableList<ProductDto>,
                         requireContext(),
                         layoutInflater,
                         favoritesViewModel
                     )
-                    rvOrderCurrent = rvCurrentOrders
-                    rvOrderCurrent.layoutManager =
+                    rvOrders = rvCurrentOrders
+                    rvOrders.layoutManager =
                         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                    rvOrderCurrent.adapter = adapterCurrent
+                    rvOrders.adapter = adapterCurrent
                 }
             }
         }

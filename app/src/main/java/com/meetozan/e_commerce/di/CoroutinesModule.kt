@@ -14,6 +14,6 @@ class CoroutinesModule {
 
     @Provides
     @Singleton
-    fun provideCoroutineContext(): CoroutineContext = Dispatchers.IO
+    fun provideCoroutineContext() : CoroutineContext = Dispatchers.IO
 
 }

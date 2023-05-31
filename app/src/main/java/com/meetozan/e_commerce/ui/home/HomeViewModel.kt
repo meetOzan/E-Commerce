@@ -3,8 +3,8 @@ package com.meetozan.e_commerce.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.model.model.Brand
-import com.meetozan.e_commerce.data.repository.ProductRepository
+import com.meetozan.e_commerce.data.dto.BrandDto
+import com.meetozan.e_commerce.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -17,9 +17,9 @@ class HomeViewModel @Inject constructor(
     private val ioDispatcher: CoroutineContext
 ) : ViewModel() {
 
-    private var _brandList = MutableLiveData<List<Brand>>()
-    val brandList: LiveData<List<Brand>>
-        get() = _brandList
+    private var _brandDtoList = MutableLiveData<List<BrandDto>>()
+    val brandDtoList: LiveData<List<BrandDto>>
+        get() = _brandDtoList
 
     init {
         getBrands()
@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getBrands() {
         CoroutineScope(ioDispatcher).launch {
-            productRepository.getBrands(_brandList)
+            productRepository.getBrands(_brandDtoList)
         }
     }
 }

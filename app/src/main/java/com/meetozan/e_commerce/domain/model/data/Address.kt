@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.data.model.model
+package com.meetozan.e_commerce.domain.model.data
 
 data class Address(
     val name: String = "",

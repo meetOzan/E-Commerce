@@ -13,13 +13,13 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.meetozan.e_commerce.R
-import com.meetozan.e_commerce.data.model.model.Product
+import com.meetozan.e_commerce.data.dto.ProductDto
 import com.meetozan.e_commerce.databinding.ProductCardBinding
 import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
 import com.squareup.picasso.Picasso
 
 class ProductAdapter(
-    private val productList: MutableList<Product>,
+    private val productDtoList: MutableList<ProductDto>,
     private val context: Context,
     private val layoutInflater: LayoutInflater,
     private val favoritesViewModel: FavoritesViewModel
@@ -28,16 +28,16 @@ class ProductAdapter(
     inner class ViewHolder(private var binding: ProductCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product) {
+        fun bind(productDto: ProductDto) {
             with(binding) {
-                productCard = product
+                productCard = productDto
 
-                Picasso.get().load(product.picUrl)
+                Picasso.get().load(productDto.picUrl)
                     .centerCrop()
                     .resize(1000, 1000)
                     .into(productCardImage)
 
-                if (product.stock == 0) {
+                if (productDto.stock == 0) {
                     tvOutOfStock.visibility = View.VISIBLE
                     viewOutOfStockGray.visibility = View.VISIBLE
                     cvProduct.isEnabled = false
@@ -48,35 +48,35 @@ class ProductAdapter(
                     val dialog = BottomSheetDialog(context)
                     val view = layoutInflater.inflate(R.layout.bottom_sheet_detail, null)
 
-                    imageList.add(SlideModel(product.picUrl))
-                    imageList.add(SlideModel(product.secondPicUrl))
-                    imageList.add(SlideModel(product.thirdPicUrl))
+                    imageList.add(SlideModel(productDto.picUrl))
+                    imageList.add(SlideModel(productDto.secondPicUrl))
+                    imageList.add(SlideModel(productDto.thirdPicUrl))
 
                     dialog.setContentView(view)
 
-                    view.findViewById<TextView>(R.id.tvDetailName).text = product.productName
-                    view.findViewById<TextView>(R.id.tvDetailPrice).text = product.price.toString()
-                    view.findViewById<TextView>(R.id.tvDetailBrand).text = product.brand
-                    view.findViewById<TextView>(R.id.tvDetailDescription).text = product.description
+                    view.findViewById<TextView>(R.id.tvDetailName).text = productDto.productName
+                    view.findViewById<TextView>(R.id.tvDetailPrice).text = productDto.price.toString()
+                    view.findViewById<TextView>(R.id.tvDetailBrand).text = productDto.brand
+                    view.findViewById<TextView>(R.id.tvDetailDescription).text = productDto.description
                     view.findViewById<ImageSlider>(R.id.imageSliderDetail).setImageList(imageList)
                     val basketButton = view.findViewById<ImageButton>(R.id.btnAddToCart)
                     val favSwitch = view.findViewById<SwitchMaterial>(R.id.favoriteSwitch)
                     val stock = view.findViewById<TextView>(R.id.tvDetailStock)
-                    stock.text = product.stock.toString()
+                    stock.text = productDto.stock.toString()
 
                     val productHashMap = hashMapOf<Any, Any>(
-                        "id" to product.id,
-                        "productName" to product.productName,
-                        "price" to product.price,
-                        "brand" to product.brand,
-                        "picUrl" to product.picUrl,
-                        "secondPicUrl" to product.secondPicUrl,
-                        "thirdPicUrl" to product.thirdPicUrl,
-                        "description" to product.description,
+                        "id" to productDto.id,
+                        "productName" to productDto.productName,
+                        "price" to productDto.price,
+                        "brand" to productDto.brand,
+                        "picUrl" to productDto.picUrl,
+                        "secondPicUrl" to productDto.secondPicUrl,
+                        "thirdPicUrl" to productDto.thirdPicUrl,
+                        "description" to productDto.description,
                         "isFavorite" to true,
-                        "piece" to product.piece,
-                        "rate" to product.rate,
-                        "stock" to product.stock
+                        "piece" to productDto.piece,
+                        "rate" to productDto.rate,
+                        "stock" to productDto.stock
                     )
 
                     if (this.productCard?.stock!! <= 10) {
@@ -85,17 +85,17 @@ class ProductAdapter(
                     }
 
                     basketButton.setOnClickListener {
-                        favoritesViewModel.addToBasket(product, productHashMap)
+                        favoritesViewModel.addToBasket(productDto, productHashMap)
                         Toast.makeText(context, "Added to Basket", Toast.LENGTH_SHORT).show()
                     }
 
                     favSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
                         if (isChecked) {
                             buttonView.text = "♥"
-                            favoritesViewModel.addToFavorites(product, productHashMap)
+                            favoritesViewModel.addToFavorites(productDto, productHashMap)
                             Toast.makeText(context, "Added to Favs", Toast.LENGTH_SHORT).show()
                         } else {
-                            favoritesViewModel.deleteFromFavorites(product)
+                            favoritesViewModel.deleteFromFavorites(productDto)
                             buttonView.text = ""
                             val position = adapterPosition
                             if (position != RecyclerView.NO_POSITION) {
@@ -111,7 +111,7 @@ class ProductAdapter(
     }
 
     fun removeFromFavs(position: Int) {
-        productList.removeAt(position)
+        productDtoList.removeAt(position)
         notifyItemRemoved(position)
     }
 
@@ -120,9 +120,9 @@ class ProductAdapter(
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = productList.size
+    override fun getItemCount(): Int = productDtoList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(productList[position])
+        holder.bind(productDtoList[position])
 
 }

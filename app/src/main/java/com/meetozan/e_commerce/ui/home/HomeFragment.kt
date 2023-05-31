@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun observer() {
-        homeViewModel.brandList.observe(viewLifecycleOwner) {
+        homeViewModel.brandDtoList.observe(viewLifecycleOwner) {
             adapter = BrandAdapter(it)
             rv = binding.brandRecyclerView
             rv.layoutManager =

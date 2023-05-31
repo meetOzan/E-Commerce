@@ -3,8 +3,8 @@ package com.meetozan.e_commerce.ui.address
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.model.model.Address
-import com.meetozan.e_commerce.data.repository.ProductRepository
+import com.meetozan.e_commerce.domain.model.data.Address
+import com.meetozan.e_commerce.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

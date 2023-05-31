@@ -1,14 +1,14 @@
-package com.meetozan.e_commerce.data.retrofit
+package com.meetozan.e_commerce.data.source
 
-import com.meetozan.e_commerce.data.model.response.BrandResponse
-import com.meetozan.e_commerce.data.model.response.ProductResponse
+import com.meetozan.e_commerce.domain.model.response.BrandResponse
+import com.meetozan.e_commerce.domain.model.response.ProductResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface RetrofitService {
+interface ProductService {
 
     @GET("ecommerce/all_products.php")
     fun allProducts(): Call<ProductResponse>

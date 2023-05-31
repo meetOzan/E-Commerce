@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.meetozan.e_commerce.data.model.model.Product
+import com.meetozan.e_commerce.data.dto.ProductDto
 import com.meetozan.e_commerce.databinding.FragmentCosmeticBinding
 import com.meetozan.e_commerce.ui.adapter.ProductAdapter
 import com.meetozan.e_commerce.ui.favorites.FavoritesViewModel
@@ -41,7 +41,7 @@ class CosmeticFragment : Fragment() {
     private fun observer() {
         viewModel.cosmeticList.observe(viewLifecycleOwner) {
             adapter = ProductAdapter(
-                it as MutableList<Product>,
+                it as MutableList<ProductDto>,
                 requireContext(),
                 layoutInflater,
                 favoritesViewModel

@@ -3,11 +3,11 @@ package com.meetozan.e_commerce.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.meetozan.e_commerce.data.model.model.Brand
+import com.meetozan.e_commerce.data.dto.BrandDto
 import com.meetozan.e_commerce.databinding.BrandItemBinding
 import com.squareup.picasso.Picasso
 
-class BrandAdapter(private val brandList: List<Brand>) :
+class BrandAdapter(private val brandDtoList: List<BrandDto>) :
     RecyclerView.Adapter<BrandAdapter.ViewHolder>() {
 
     class ViewHolder(binding: BrandItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -19,11 +19,11 @@ class BrandAdapter(private val brandList: List<Brand>) :
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = brandList.size
+    override fun getItemCount(): Int = brandDtoList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val brandItem = brandList[position]
+        val brandItem = brandDtoList[position]
         holder.brandItemCard.brandItemCard = brandItem
 
         Picasso.get().load(brandItem.picUrl)

@@ -2,8 +2,8 @@ package com.meetozan.e_commerce.ui.shopping_cart
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.model.model.Product
-import com.meetozan.e_commerce.data.repository.ProductRepository
+import com.meetozan.e_commerce.data.dto.ProductDto
+import com.meetozan.e_commerce.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -16,8 +16,8 @@ class ShoppingCartViewModel @Inject constructor(
     private val ioDispatcher: CoroutineContext
 ) : ViewModel() {
 
-    private val _basketList = MutableLiveData<List<Product>>()
-    val basketList: MutableLiveData<List<Product>>
+    private val _basketList = MutableLiveData<List<ProductDto>>()
+    val basketList: MutableLiveData<List<ProductDto>>
         get() = _basketList
 
     init {
@@ -30,9 +30,9 @@ class ShoppingCartViewModel @Inject constructor(
         }
     }
 
-    fun updateBasketItem(data: Any, product: Product, path: String) {
+    fun updateBasketItem(data: Any, productDto: ProductDto, path: String) {
         CoroutineScope(ioDispatcher).launch {
-            productRepository.updateBasketItem(product, data, path)
+            productRepository.updateBasketItem(productDto, data, path)
         }
     }
 

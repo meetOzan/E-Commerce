@@ -7,7 +7,7 @@
 
         <variable
             name="cartItem"
-            type="com.meetozan.e_commerce.data.model.model.Product" />
+            type="com.meetozan.e_commerce.data.dto.ProductDto" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

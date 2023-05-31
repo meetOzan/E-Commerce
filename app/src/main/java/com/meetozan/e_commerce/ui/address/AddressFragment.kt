@@ -53,9 +53,14 @@ class AddressFragment : Fragment() {
         binding.cvAddresses.setOnClickListener {
             if (binding.rvSelectAddress.visibility == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(
+                    binding.cvAddresses, AutoTransition()
+                )
+
+                binding.rvSelectAddress.visibility = View.GONE
+
+                TransitionManager.beginDelayedTransition(
                     binding.addressScrollView, AutoTransition()
                 )
-                binding.rvSelectAddress.visibility = View.GONE
                 return@setOnClickListener
             }
             if (binding.rvSelectAddress.visibility == View.GONE) {

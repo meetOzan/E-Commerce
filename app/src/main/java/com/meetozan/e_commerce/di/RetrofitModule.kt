@@ -1,7 +1,7 @@
 package com.meetozan.e_commerce.di
 
 import com.meetozan.e_commerce.common.Constants.BASE_URL
-import com.meetozan.e_commerce.data.retrofit.RetrofitService
+import com.meetozan.e_commerce.data.source.ProductService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,10 +16,10 @@ class RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitService(): RetrofitService = Retrofit.Builder()
+    fun provideRetrofitService(): ProductService = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(RetrofitService::class.java)
+        .create(ProductService::class.java)
 
 }

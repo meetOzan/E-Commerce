@@ -6,29 +6,29 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.meetozan.e_commerce.data.model.model.Product
+import com.meetozan.e_commerce.data.dto.ProductDto
 import com.meetozan.e_commerce.databinding.ItemCartBinding
 import com.meetozan.e_commerce.ui.shopping_cart.ShoppingCartViewModel
 import com.squareup.picasso.Picasso
 
 class CartItemAdapter(
-    private var cartList: MutableList<Product>,
+    private var cartList: MutableList<ProductDto>,
     private val cartViewModel: ShoppingCartViewModel,
     val context: Context
 ) : RecyclerView.Adapter<CartItemAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(cartProduct: Product) {
+        fun bind(cartProductDto: ProductDto) {
             with(binding) {
-                cartItem = cartProduct
+                cartItem = cartProductDto
 
-                Picasso.get().load(cartProduct.picUrl)
+                Picasso.get().load(cartProductDto.picUrl)
                     .centerCrop()
                     .resize(500, 500)
                     .into(imageCartItem)
 
-                if (cartProduct.stock <= 5) {
+                if (cartProductDto.stock <= 5) {
                     val strokeColor = Color.RED
 
                     cvCartItem.strokeWidth = 4
@@ -38,7 +38,7 @@ class CartItemAdapter(
                 addItem.setOnClickListener {
                     var piece = Integer.parseInt(itemCount.text.toString())
 
-                    if (Integer.parseInt(itemCount.text.toString()) >= cartProduct.stock) {
+                    if (Integer.parseInt(itemCount.text.toString()) >= cartProductDto.stock) {
                         val builder = AlertDialog.Builder(context)
                         builder.setTitle("No Stock")
 
@@ -52,7 +52,7 @@ class CartItemAdapter(
                     } else {
                         piece += 1
                         itemCount.text = piece.toString()
-                        cartViewModel.updateBasketItem(piece, cartProduct, "piece")
+                        cartViewModel.updateBasketItem(piece, cartProductDto, "piece")
                     }
                 }
 
@@ -66,7 +66,7 @@ class CartItemAdapter(
                         builder.setMessage("Are you sure you want to delete the product from your cart?")
 
                         builder.setPositiveButton("Ok") { dialog, _ ->
-                            cartViewModel.deleteProduct(cartProduct.productName)
+                            cartViewModel.deleteProduct(cartProductDto.productName)
                             val position = adapterPosition
                             if (position != RecyclerView.NO_POSITION) {
                                 this@CartItemAdapter.removeItem(position)
@@ -84,7 +84,7 @@ class CartItemAdapter(
                     }
                     piece -= 1
                     itemCount.text = piece.toString()
-                    cartViewModel.updateBasketItem(piece, cartProduct, "piece")
+                    cartViewModel.updateBasketItem(piece, cartProductDto, "piece")
                 }
             }
         }

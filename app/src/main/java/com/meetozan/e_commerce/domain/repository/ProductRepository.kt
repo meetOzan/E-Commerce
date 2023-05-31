@@ -1,4 +1,4 @@
-package com.meetozan.e_commerce.data.repository
+package com.meetozan.e_commerce.domain.repository
 
 import android.content.Context
 import android.util.Log
@@ -7,13 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
-import com.meetozan.e_commerce.data.model.model.Address
-import com.meetozan.e_commerce.data.model.model.Brand
-import com.meetozan.e_commerce.data.model.model.Product
-import com.meetozan.e_commerce.data.model.model.User
-import com.meetozan.e_commerce.data.model.response.BrandResponse
-import com.meetozan.e_commerce.data.model.response.ProductResponse
-import com.meetozan.e_commerce.data.retrofit.RetrofitService
+import com.meetozan.e_commerce.domain.model.data.Address
+import com.meetozan.e_commerce.data.dto.BrandDto
+import com.meetozan.e_commerce.data.dto.ProductDto
+import com.meetozan.e_commerce.domain.model.data.User
+import com.meetozan.e_commerce.domain.model.response.BrandResponse
+import com.meetozan.e_commerce.domain.model.response.ProductResponse
+import com.meetozan.e_commerce.data.source.ProductService
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.tasks.await
 import retrofit2.Call
@@ -24,21 +24,21 @@ import javax.inject.Inject
 class ProductRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
-    private val retrofitService: RetrofitService,
+    private val productService: ProductService,
     @ApplicationContext val appContext: Context
 ) {
 
-    suspend fun addToFavorites(product: Product, hashMap: HashMap<Any, Any>) =
+    suspend fun addToFavorites(productDto: ProductDto, hashMap: HashMap<Any, Any>) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("favorites")
-            .document(product.productName)
+            .document(productDto.productName)
             .set(hashMap).await()
 
-    suspend fun deleteFromFavorites(product: Product) = firebaseFirestore.collection("users")
+    suspend fun deleteFromFavorites(productDto: ProductDto) = firebaseFirestore.collection("users")
         .document(firebaseAuth.currentUser?.email.toString())
         .collection("favorites")
-        .document(product.productName)
+        .document(productDto.productName)
         .delete().await()
 
     suspend fun updateUser(hashMap: HashMap<String, Any>) =
@@ -46,14 +46,14 @@ class ProductRepository @Inject constructor(
             .document(firebaseAuth.currentUser?.email.toString())
             .update(hashMap).await()
 
-    fun getCosmetic(list: MutableLiveData<List<Product>>) =
-        retrofitService.cosmeticProducts().enqueue(object :
+    fun getCosmetic(list: MutableLiveData<List<ProductDto>>) =
+        productService.cosmeticProducts().enqueue(object :
             Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
-                response.body()?.productResponse.let {
+                response.body()?.productDtoResponse.let {
                     list.value = it
                 }
             }
@@ -63,13 +63,13 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getElectronic(list: MutableLiveData<List<Product>>) =
-        retrofitService.electronicProducts().enqueue(object : Callback<ProductResponse> {
+    fun getElectronic(list: MutableLiveData<List<ProductDto>>) =
+        productService.electronicProducts().enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
-                response.body()?.productResponse.let {
+                response.body()?.productDtoResponse.let {
                     list.value = it
                 }
             }
@@ -79,13 +79,13 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getFashion(list: MutableLiveData<List<Product>>) =
-        retrofitService.fashionProducts().enqueue(object : Callback<ProductResponse> {
+    fun getFashion(list: MutableLiveData<List<ProductDto>>) =
+        productService.fashionProducts().enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
-                response.body()?.productResponse.let {
+                response.body()?.productDtoResponse.let {
                     list.value = it
                 }
             }
@@ -95,10 +95,10 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getBrands(list: MutableLiveData<List<Brand>>) =
-        retrofitService.allBrands().enqueue(object : Callback<BrandResponse> {
+    fun getBrands(list: MutableLiveData<List<BrandDto>>) =
+        productService.allBrands().enqueue(object : Callback<BrandResponse> {
             override fun onResponse(call: Call<BrandResponse>, response: Response<BrandResponse>) {
-                response.body()?.brandResponse.let {
+                response.body()?.brandDtoResponse.let {
                     list.value = it
                 }
             }
@@ -108,13 +108,13 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getHousehold(list: MutableLiveData<List<Product>>) =
-        retrofitService.householdProducts().enqueue(object : Callback<ProductResponse> {
+    fun getHousehold(list: MutableLiveData<List<ProductDto>>) =
+        productService.householdProducts().enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
-                response.body()?.productResponse.let {
+                response.body()?.productDtoResponse.let {
                     list.value = it
                 }
             }
@@ -124,13 +124,13 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getMan(list: MutableLiveData<List<Product>>) =
-        retrofitService.manProducts().enqueue(object : Callback<ProductResponse> {
+    fun getMan(list: MutableLiveData<List<ProductDto>>) =
+        productService.manProducts().enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
-                response.body()?.productResponse.let {
+                response.body()?.productDtoResponse.let {
                     list.value = it
 
                 }
@@ -141,13 +141,13 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getNewest(list: MutableLiveData<List<Product>>) =
-        retrofitService.allProducts().enqueue(object : Callback<ProductResponse> {
+    fun getNewest(list: MutableLiveData<List<ProductDto>>) =
+        productService.allProducts().enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
-                response.body()?.productResponse.let {
+                response.body()?.productDtoResponse.let {
                     list.value = it
                 }
             }
@@ -157,13 +157,13 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getWoman(list: MutableLiveData<List<Product>>) =
-        retrofitService.womanProducts().enqueue(object : Callback<ProductResponse> {
+    fun getWoman(list: MutableLiveData<List<ProductDto>>) =
+        productService.womanProducts().enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
-                response.body()?.productResponse.let {
+                response.body()?.productDtoResponse.let {
                     list.value = it
                 }
             }
@@ -173,7 +173,7 @@ class ProductRepository @Inject constructor(
             }
         })
 
-    fun getFavorites(list: MutableLiveData<List<Product>>, product: MutableLiveData<Product>) =
+    fun getFavorites(list: MutableLiveData<List<ProductDto>>, productDto: MutableLiveData<ProductDto>) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("favorites")
@@ -183,11 +183,11 @@ class ProductRepository @Inject constructor(
                     return@addSnapshotListener
                 }
                 querySnapshot?.let {
-                    val favoritesList: ArrayList<Product> = ArrayList()
+                    val favoritesList: ArrayList<ProductDto> = ArrayList()
                     for (document in it) {
-                        val favorites = document.toObject<Product>()
+                        val favorites = document.toObject<ProductDto>()
                         favoritesList.add(favorites)
-                        product.postValue(favorites)
+                        productDto.postValue(favorites)
                         list.postValue(favoritesList)
                     }
                 }
@@ -213,13 +213,13 @@ class ProductRepository @Inject constructor(
         firebaseAuth.signOut()
     }
 
-    fun searchProducts(productName: String, list: MutableLiveData<List<Product>>) =
-        retrofitService.searchProducts(productName).enqueue(object : Callback<ProductResponse> {
+    fun searchProducts(productName: String, list: MutableLiveData<List<ProductDto>>) =
+        productService.searchProducts(productName).enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>
             ) {
-                response.body()?.productResponse.let {
+                response.body()?.productDtoResponse.let {
                     list.postValue(it)
                 }
             }
@@ -230,7 +230,7 @@ class ProductRepository @Inject constructor(
         })
 
     fun updateStock(product_id: Int, product_stock: Int) =
-        retrofitService.updateProduct(product_id, product_stock)
+        productService.updateProduct(product_id, product_stock)
             .enqueue(object : Callback<ProductResponse> {
                 override fun onResponse(
                     call: Call<ProductResponse>,
@@ -244,14 +244,14 @@ class ProductRepository @Inject constructor(
                 }
             })
 
-    suspend fun addToBasket(product: Product, hashMap: HashMap<Any, Any>) =
+    suspend fun addToBasket(productDto: ProductDto, hashMap: HashMap<Any, Any>) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("basket")
-            .document(product.productName)
+            .document(productDto.productName)
             .set(hashMap).await()
 
-    fun getBasket(list: MutableLiveData<List<Product>>) =
+    fun getBasket(list: MutableLiveData<List<ProductDto>>) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("basket")
@@ -261,20 +261,20 @@ class ProductRepository @Inject constructor(
                     return@addSnapshotListener
                 }
                 querySnapshot?.let {
-                    val basketList: ArrayList<Product> = ArrayList()
+                    val basketList: ArrayList<ProductDto> = ArrayList()
                     for (document in it) {
-                        val basket = document.toObject<Product>()
+                        val basket = document.toObject<ProductDto>()
                         basketList.add(basket)
                         list.postValue(basketList)
                     }
                 }
             }
 
-    suspend fun updateBasketItem(product: Product, data: Any, path: String) =
+    suspend fun updateBasketItem(productDto: ProductDto, data: Any, path: String) =
         firebaseFirestore.collection("users")
             .document(firebaseAuth.currentUser?.email.toString())
             .collection("basket")
-            .document(product.productName)
+            .document(productDto.productName)
             .update(
                 hashMapOf<String, Any>(
                     path to data
@@ -295,7 +295,7 @@ class ProductRepository @Inject constructor(
             .document(product_name)
             .set(hashMap).await()
 
-    fun getOrders(orderList: MutableLiveData<List<Product>>) = firebaseFirestore.collection("users")
+    fun getOrders(orderList: MutableLiveData<List<ProductDto>>) = firebaseFirestore.collection("users")
         .document(firebaseAuth.currentUser?.email.toString())
         .collection("orders")
         .addSnapshotListener { querySnapshot, firestoreException ->
@@ -304,9 +304,9 @@ class ProductRepository @Inject constructor(
                 return@addSnapshotListener
             }
             querySnapshot?.let {
-                val _orderList: ArrayList<Product> = ArrayList()
+                val _orderList: ArrayList<ProductDto> = ArrayList()
                 for (document in it) {
-                    val order = document.toObject<Product>()
+                    val order = document.toObject<ProductDto>()
                     _orderList.add(order)
                     orderList.postValue(_orderList)
                 }

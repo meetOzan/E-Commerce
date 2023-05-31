@@ -8,7 +8,7 @@
 
         <variable
             name="addressItem"
-            type="com.meetozan.e_commerce.data.model.model.Address" />
+            type="com.meetozan.e_commerce.domain.model.data.Address" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -17,10 +17,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/transparent"
         android:elevation="5dp"
         android:padding="8dp"
-        app:strokeColor="@color/white"
+        app:cardBackgroundColor="@color/transparentBlue"
+        app:strokeColor="@color/black"
         app:strokeWidth="1dp">
 
         <RelativeLayout
@@ -53,15 +53,14 @@
                 android:textSize="18sp" />
 
             <LinearLayout
+                android:id="@+id/linear_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvAddressItemCity"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="12dp"
                 android:orientation="horizontal"
                 android:textColor="@color/white">
-
 
                 <TextView
                     android:id="@+id/tvAddressItemDistrict"
@@ -73,7 +72,6 @@
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -82,7 +80,6 @@
                     android:text="@string/comma"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
-
 
                 <TextView
                     android:id="@+id/tvAddressItemNeighbourhood"
@@ -94,15 +91,17 @@
                     android:text="@{addressItem.neighbourhood}"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
+            </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="@font/alata"
-                    android:text="@string/comma"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_layout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:textColor="@color/white">
 
                 <TextView
                     android:id="@+id/tvAddressItemStreet"
@@ -114,7 +113,6 @@
                     android:text="@{addressItem.street}"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -136,10 +134,9 @@
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
-
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="15dp"
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/alata"
                     android:text="@string/comma"
@@ -156,7 +153,6 @@
                     android:text="@{addressItem.no}"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
-
             </LinearLayout>
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>

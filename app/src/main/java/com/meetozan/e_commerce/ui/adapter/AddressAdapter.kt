@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.meetozan.e_commerce.R
-import com.meetozan.e_commerce.data.model.model.Address
+import com.meetozan.e_commerce.domain.model.data.Address
 import com.meetozan.e_commerce.databinding.AddressItemBinding
 
 class AddressAdapter(private val addressList: List<Address>, private val context: Context) :

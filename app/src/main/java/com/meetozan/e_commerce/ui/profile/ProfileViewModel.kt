@@ -3,9 +3,9 @@ package com.meetozan.e_commerce.ui.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meetozan.e_commerce.data.model.model.Product
-import com.meetozan.e_commerce.data.model.model.User
-import com.meetozan.e_commerce.data.repository.ProductRepository
+import com.meetozan.e_commerce.data.dto.ProductDto
+import com.meetozan.e_commerce.domain.model.data.User
+import com.meetozan.e_commerce.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -23,8 +23,8 @@ class ProfileViewModel @Inject constructor(
     val user: LiveData<User>
         get() = _user
 
-    private val _orderList = MutableLiveData<List<Product>>()
-    val orderList : LiveData<List<Product>>
+    private val _orderList = MutableLiveData<List<ProductDto>>()
+    val orderList : LiveData<List<ProductDto>>
         get() = _orderList
 
     init {
