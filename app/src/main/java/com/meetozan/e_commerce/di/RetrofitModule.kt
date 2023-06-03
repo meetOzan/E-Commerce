@@ -21,5 +21,4 @@ class RetrofitModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(ProductService::class.java)
-
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout android:id="@+id/shoppingCartLayout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shoppingCartLayout"
     tools:context=".ui.shopping_cart.ShoppingCartFragment">
 
     <RelativeLayout
@@ -15,39 +15,39 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/secondaryColor"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/white"
             android:fontFamily="@font/alata"
-            android:text="@string/shopping_cart" />
+            android:gravity="center"
+            android:text="@string/shopping_cart"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shoppingCartRv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_below="@id/shoppingCartToolBar"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:visibility="gone" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvSearchNotFound"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"
+            android:layout_below="@id/shoppingCartToolBar"
             android:layout_alignParentBottom="true"
             android:backgroundTint="@color/lightGray"
-            android:layout_below="@id/shoppingCartToolBar">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -96,14 +96,14 @@
             android:id="@+id/cvShoppingCartTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0.7dp"
-            android:elevation="10dp"
+            android:layout_alignParentBottom="true"
             android:layout_marginBottom="-8dp"
-            app:strokeColor="@color/black"
+            android:backgroundTint="@color/realGray"
+            android:elevation="10dp"
             android:visibility="invisible"
-            android:backgroundTint="@color/gray"
-            android:layout_alignParentBottom="true">
+            app:cardCornerRadius="10dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="0.7dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -113,14 +113,14 @@
                     android:id="@+id/tvTotalPriceText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="8dp"
-                    android:textSize="14sp"
                     android:fontFamily="@font/alata"
                     android:text="@string/total_price"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvTotalPrice"
@@ -128,23 +128,23 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvTotalPriceText"
                     android:layout_alignParentStart="true"
-                    android:text=""
-                    android:textSize="28sp"
-                    android:fontFamily="@font/alata"
-                    android:layout_marginTop="1dp"
                     android:layout_marginStart="12dp"
-                    android:textStyle="bold"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/alata"
+                    android:text=""
                     android:textColor="@color/white"
-                    android:layout_marginBottom="8dp"/>
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvTotalPriceLira"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvTotalPriceText"
-                    android:layout_toEndOf="@id/tvTotalPrice"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="16dp"
+                    android:layout_toEndOf="@id/tvTotalPrice"
                     android:fontFamily="@font/alata"
                     android:text="@string/turkish_lira"
                     android:textColor="@color/white"
@@ -152,21 +152,21 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnConfirmCart"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:elevation="12dp"
                     android:layout_marginEnd="12dp"
-                    android:text="@string/confirm_cart"
-                    android:textSize="16sp"
+                    android:elevation="12dp"
                     android:fontFamily="@font/alata"
+                    android:text="@string/confirm_cart"
                     android:textColor="@color/secondaryDarkColor"
+                    android:textSize="16sp"
                     app:icon="@drawable/ic_shopping_cart"
                     app:iconTint="@color/secondaryDarkColor"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="@color/black"/>
+                    app:strokeColor="@color/black"
+                    app:strokeWidth="1dp" />
 
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>

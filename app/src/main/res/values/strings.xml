@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">E-Commerce</string>
+    <string name="app_name">Buy-Buy</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_in">Sign In</string>
     <string name="e_mail">E-Mail</string>
@@ -55,7 +55,7 @@
     <string name="not_found_text_message">We didn\'t find what you want. What you are looking for will be in stock one day</string>
     <string name="imageerrornotfound">imageErrorNotFound</string>
     <string name="shopping_cart">Shopping Cart</string>
-    <string name="total_price">Total Price</string>
+    <string name="total_price">Total Amount</string>
     <string name="confirm_cart">Confirm Cart</string>
     <string name="_0">0</string>
     <string name="you_haven_t_added_anything_to_the_cart">You haven\'t added anything to the cart, go shopping now!</string>
@@ -102,6 +102,8 @@
     <string name="address_information">Address Information</string>
     <string name="addresses">Addresses</string>
     <string name="you_haven_t_added_address_yet_when_you_shop_you_can_add_address">You haven\'t added address yet. When you shop, you can add address.</string>
+    <string name="buy_buy">Buy-Buy</string>
+    <string name="splashlogoimage">splashLogoImage</string>
 
     <string-array name="cities">
         <item>Istanbul-Anatolia</item>

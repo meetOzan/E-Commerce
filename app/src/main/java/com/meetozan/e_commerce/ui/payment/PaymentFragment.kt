@@ -1,18 +1,30 @@
 package com.meetozan.e_commerce.ui.payment
 
+import android.Manifest
 import android.app.AlertDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.TaskStackBuilder
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.meetozan.e_commerce.R
 import com.meetozan.e_commerce.databinding.FragmentPaymentBinding
+import com.meetozan.e_commerce.ui.MainActivity
 import com.meetozan.e_commerce.ui.shopping_cart.ShoppingCartViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
@@ -28,6 +40,10 @@ class PaymentFragment : Fragment() {
 
     private val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
     private val current = LocalDate.now()
+
+    private val CHANNEL_ID = "channelID"
+    private val CHANNEL_NAME = "channelName"
+    private val NOTIF_ID = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,7 +106,7 @@ class PaymentFragment : Fragment() {
 
                     val dialog = LayoutInflater.from(requireContext())
                         .inflate(R.layout.payment_done_dialog, null)
-                    val builder = AlertDialog.Builder(context,R.style.MyDialogStyle)
+                    val builder = AlertDialog.Builder(context, R.style.MyDialogStyle)
                     builder.setView(dialog)
                     dialog.setBackgroundColor(Color.TRANSPARENT)
 
@@ -99,6 +115,41 @@ class PaymentFragment : Fragment() {
                     val anim =
                         dialog.findViewById<LottieAnimationView>(R.id.paymentCompletedAnim)
                     val buttonOk = dialog.findViewById<Button>(R.id.btnPaymentCompleted)
+
+
+                    createNotificationChannel()
+
+                    val intent = Intent(requireContext(), MainActivity::class.java)
+                    val pendingIntent = TaskStackBuilder.create(requireContext()).run {
+                        addNextIntentWithParentStack(intent)
+                        getPendingIntent(0, PendingIntent.FLAG_MUTABLE)
+                    }
+
+                    val notification = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+                        .setContentTitle("We have received your order")
+                        .setContentText("It will be on its way to be delivered to you as soon as possible")
+                        .setSmallIcon(R.drawable.ic_logo_24)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setContentIntent(pendingIntent)
+                        .build()
+
+                    val notificationManager = NotificationManagerCompat.from(requireContext())
+
+                    if (ActivityCompat.checkSelfPermission(
+                            requireContext(),
+                            Manifest.permission.POST_NOTIFICATIONS
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return@setOnClickListener
+                    }
+                    notificationManager.notify(NOTIF_ID, notification)
 
                     buttonOk.setOnClickListener {
                         findNavController().navigate(R.id.main_graph)
@@ -173,11 +224,20 @@ class PaymentFragment : Fragment() {
                 }
 
                 with(binding.creditCartCardNumber.editText?.text) {
-                    if (this?.length!! < 16) {
+                    if (this?.length!! == 16 ) {
+                        binding.creditCartCardNumber.error = null
+                    }
+                    else if(this.toString()[0].toString() == "5" ||
+                        this.toString()[0].toString() == "4" ||
+                        this.toString()[0].toString() == "9" ||
+                        this.toString()[0].toString() == "3" ){
+
+                        binding.creditCartCardNumber.error = null
+                    }
+                    else {
+
                         binding.creditCartCardNumber.error =
                             "Please enter a valid credit card number"
-                    } else {
-                        binding.creditCartCardNumber.error = null
                     }
                 }
 
@@ -211,16 +271,11 @@ class PaymentFragment : Fragment() {
                     }
                 }
 
-                if (binding.creditCartCardCvv.editText?.text?.length!! == 3 &&
-                    Integer.parseInt(binding.creditCartCardCvv.editText?.text.toString()) > 100 &&
-                    binding.creditCartCardYear.editText?.text?.length!! == 2 &&
-                    30 > Integer.parseInt(binding.creditCartCardYear.editText?.text.toString()) &&
-                    23 < Integer.parseInt(binding.creditCartCardYear.editText?.text.toString()) &&
-                    binding.creditCartCardMonth.editText?.text?.length!! == 2 &&
-                    13 > Integer.parseInt(binding.creditCartCardMonth.editText?.text.toString()) &&
-                    0 < Integer.parseInt(binding.creditCartCardMonth.editText?.text.toString()) &&
-                    binding.creditCartCardNumber.editText?.text?.length!! == 16 &&
-                    binding.creditCartCardName.editText?.text.toString().isNotEmpty()
+                if (binding.creditCartCardNumber.error == null &&
+                    binding.creditCartCardName.error == null &&
+                    binding.creditCartCardMonth.error == null &&
+                    binding.creditCartCardYear.error == null &&
+                    binding.creditCartCardCvv.error == null
                 ) {
 
                     with(binding.creditCartCardNumber.editText?.text.toString()) {
@@ -247,8 +302,7 @@ class PaymentFragment : Fragment() {
                                 .load("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/2052px-American_Express_logo_%282018%29.svg.png")
                                 .resize(2000, 2000)
                                 .into(binding.imageCreditCartBrand)
-                        }/*
-                        else{
+                        } /*else {
                             binding.creditCartCardNumber.error = "Please Enter Valid Card Number"
                             return@setOnClickListener
                         }*/
@@ -272,6 +326,19 @@ class PaymentFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun createNotificationChannel() {
+        val channel = NotificationChannel(
+            CHANNEL_ID, CHANNEL_NAME,
+            NotificationManager.IMPORTANCE_DEFAULT
+        ).apply {
+            lightColor = Color.GREEN
+            enableLights(true)
+        }
+        val manager =
+            ContextCompat.getSystemService(requireContext(), NotificationManager::class.java)
+        manager?.createNotificationChannel(channel)
     }
 
     override fun onDestroyView() {

@@ -40,11 +40,15 @@ class NewestFragment : Fragment() {
 
     private fun observer() {
         viewModel.newestList.observe(viewLifecycleOwner) {
-            adapter = ProductAdapter(it as MutableList<ProductDto>,requireContext(),layoutInflater,favoritesViewModel)
+            adapter = ProductAdapter(
+                it as MutableList<ProductDto>,
+                requireContext(),
+                layoutInflater,
+                favoritesViewModel
+            )
             rv = binding.newestRv
             rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rv.adapter = adapter
         }
     }
-
 }

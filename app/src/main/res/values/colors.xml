@@ -20,12 +20,13 @@
     <color name="transparent">#00000000</color>
     <color name="gray">#6E6D6D</color>
     <color name="lightGray">#E2E6E6E6</color>
-    <color name="realGray">#DCB6B5B5</color>
+    <color name="realGray">#B6B5B5</color>
     <color name="transparentGray">#FBFBFB</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#9C27B0</color>
     <color name="lightGreen">#8D8BC34A</color>
+    <color name="green">#4CAF50</color>
     <color name="lightRed">#9FFF0000</color>
     <color name="transparentBlue">#9200BCD4</color>
     <color name="transparentDarkBlue">#DA0226F1</color>

@@ -150,6 +150,7 @@ class ProfileFragment : Fragment() {
 
             binding.buttonProfileEditProfile.setOnClickListener {
 
+
                 val dialog =
                     LayoutInflater.from(context).inflate(R.layout.dialog_edit_profile, null)
                 val builder = AlertDialog.Builder(context).setView(dialog).create()
@@ -200,14 +201,15 @@ class ProfileFragment : Fragment() {
 
     private fun addressObserver() {
         addressViewModel.addressList.observe(viewLifecycleOwner) { addressList ->
-            with(binding){
+            with(binding) {
                 if (addressList.isNullOrEmpty()) {
                     cvAddressesNotFound.visibility = View.VISIBLE
                     rvAddresses.visibility = View.GONE
                 } else {
                     cvAddressesNotFound.visibility = View.GONE
                     rvAddresses.visibility = View.VISIBLE
-                    addressAdapter = ProfileAddressAdapter(addressList,requireContext(),addressViewModel)
+                    addressAdapter =
+                        ProfileAddressAdapter(addressList, requireContext(), addressViewModel)
                     rvAddress = rvAddresses
                     rvAddress.layoutManager =
                         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
