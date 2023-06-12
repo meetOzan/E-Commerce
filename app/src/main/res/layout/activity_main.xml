@@ -36,7 +36,7 @@
         android:contentDescription="@string/app_name"
         android:elevation="10dp"
         android:src="@drawable/ic_shopping_cart"
-        android:backgroundTint="@color/secondaryDarkColor"
+        android:backgroundTint="@color/primaryDarkColor"
         app:strokeColor="@color/black"
         android:translationZ="90dp"
         app:elevation="8sp"

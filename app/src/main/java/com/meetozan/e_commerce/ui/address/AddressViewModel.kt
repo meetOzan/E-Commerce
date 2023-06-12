@@ -17,10 +17,9 @@ class AddressViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ) : ViewModel() {
 
-    private val _addressList = MutableLiveData<List<Address>>()
+    private var _addressList = MutableLiveData<List<Address>>()
     val addressList: LiveData<List<Address>>
         get() = _addressList
-
 
     init {
         getAllAddresses()

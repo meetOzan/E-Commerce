@@ -17,7 +17,7 @@ class SearchViewModel @Inject constructor(
     private val ioDispatcher: CoroutineContext
 ) : ViewModel() {
 
-    private val _searchList = MutableLiveData<List<ProductDto>>()
+    private var _searchList = MutableLiveData<List<ProductDto>>()
     val searchList: LiveData<List<ProductDto>>
         get() = _searchList
 

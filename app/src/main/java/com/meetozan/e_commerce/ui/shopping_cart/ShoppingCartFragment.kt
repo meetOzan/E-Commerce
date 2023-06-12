@@ -64,7 +64,7 @@ class ShoppingCartFragment : Fragment() {
         )
     }
 
-    private fun observer() {
+    fun observer() {
         viewModel.basketList.observe(viewLifecycleOwner) {
             adapter = CartItemAdapter(it as MutableList<ProductDto>, viewModel, requireContext())
             rv.adapter = adapter

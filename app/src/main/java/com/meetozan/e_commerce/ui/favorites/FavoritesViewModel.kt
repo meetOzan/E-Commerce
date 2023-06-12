@@ -21,17 +21,13 @@ class FavoritesViewModel @Inject constructor(
     val favoritesList: LiveData<List<ProductDto>>
         get() = _favoritesList
 
-    private val _product = MutableLiveData<ProductDto>()
-    val product: LiveData<ProductDto>
-        get() = _product
-
     init {
         getFavorites()
     }
 
     private fun getFavorites() {
         CoroutineScope(ioDispatcher).launch {
-            productRepository.getFavorites(_favoritesList, _product)
+            productRepository.getFavorites(_favoritesList)
         }
     }
 
@@ -52,5 +48,4 @@ class FavoritesViewModel @Inject constructor(
             productRepository.addToBasket(productDto,hashMap)
         }
     }
-
 }

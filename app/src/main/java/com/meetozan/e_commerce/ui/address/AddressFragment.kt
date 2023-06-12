@@ -52,10 +52,6 @@ class AddressFragment : Fragment() {
 
         binding.cvAddresses.setOnClickListener {
             if (binding.rvSelectAddress.visibility == View.VISIBLE) {
-                TransitionManager.beginDelayedTransition(
-                    binding.cvAddresses, AutoTransition()
-                )
-
                 binding.rvSelectAddress.visibility = View.GONE
 
                 TransitionManager.beginDelayedTransition(
@@ -112,10 +108,10 @@ class AddressFragment : Fragment() {
 
                 builder.setPositiveButton(android.R.string.ok) { _, _ ->
                     viewModel.addAddress(addressHashMap, addressName)
-                    if(isDefault){
-                        viewModel.addressList.observe(viewLifecycleOwner){
-                            for (index in it.indices){
-                                viewModel.updateAddress(it[index].name,"isDefault",false)
+                    if (isDefault) {
+                        viewModel.addressList.observe(viewLifecycleOwner) {
+                            for (index in it.indices) {
+                                viewModel.updateAddress(it[index].name, "isDefault", false)
                             }
                         }
                     }

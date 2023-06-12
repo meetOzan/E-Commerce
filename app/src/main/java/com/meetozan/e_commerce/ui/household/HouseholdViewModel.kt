@@ -17,7 +17,7 @@ class HouseholdViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ) : ViewModel() {
 
-    private val _householdList = MutableLiveData<List<ProductDto>>()
+    private var _householdList = MutableLiveData<List<ProductDto>>()
     val householdList: LiveData<List<ProductDto>>
         get() = _householdList
 

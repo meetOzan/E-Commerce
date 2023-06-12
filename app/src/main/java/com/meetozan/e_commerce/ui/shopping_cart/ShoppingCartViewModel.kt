@@ -39,6 +39,7 @@ class ShoppingCartViewModel @Inject constructor(
     fun deleteProduct(product_name: String) {
         CoroutineScope(ioDispatcher).launch {
             productRepository.deleteFromBasket(product_name)
+            getBasket()
         }
     }
 

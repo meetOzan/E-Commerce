@@ -17,7 +17,7 @@ class NewestViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ) : ViewModel() {
 
-    private val _newestList = MutableLiveData<List<ProductDto>>()
+    private var _newestList = MutableLiveData<List<ProductDto>>()
     val newestList: LiveData<List<ProductDto>>
         get() = _newestList
 

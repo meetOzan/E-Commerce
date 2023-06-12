@@ -17,7 +17,7 @@ class WomanViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ) : ViewModel() {
 
-    private val _womanList = MutableLiveData<List<ProductDto>>()
+    private var _womanList = MutableLiveData<List<ProductDto>>()
     val womanList: LiveData<List<ProductDto>>
         get() = _womanList
 
