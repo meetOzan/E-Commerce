@@ -18,17 +18,20 @@ E-Commerce App named Buy-Buy with Kotlin
 | ------ | ---- | ------ |
 |<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/9f63c237-a7f2-4306-90b6-4bb35b3f4671" width="250" height="550"/>|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/dd03f2ab-047a-4663-9144-fa273ff161f7" width="250" height="550"/>|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/07b5442a-8ada-48b9-8c3e-10b063b46a50" width="250" height="550"/>|
 
-
-
-
 </br>
 
-| Bag | Payment | Success |
+| Cart | Address | Payment |
 | --- | ------- | ------- |
-|<img src="https://user-images.githubusercontent.com/29903779/178735674-e5bc7522-b658-4378-8889-80ddcd40f0e4.jpeg" width="250" height="500"/>|<img src="https://user-images.githubusercontent.com/29903779/178735688-0fb83c14-65c1-4f3a-8a94-0f6527e29b1a.jpeg" width="250" height="500"/>|<img src="https://user-images.githubusercontent.com/29903779/178735692-b37d1357-7df7-41d5-b1be-350bcdc87bcc.jpeg" width="250" height="500"/>|
+|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/ee7fe131-8450-467a-969f-e538144e7393" width="250" height="550"/>|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/6b5bef05-a9b9-4e7c-8ac4-42db95d72070" width="250" height="550"/>|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/8d58d111-cb23-43d1-bd4a-a2ca74fc86d5" width="250" height="550"/>|
 
 </br>
 
 | Favorites | Search | Profile |
 | --------- | ------ | ------- |
-|<img src="https://user-images.githubusercontent.com/29903779/178732712-00cbc7eb-106a-40d1-80d5-8760f3f16e5c.jpeg" width="250" height="500"/>|<img src="https://user-images.githubusercontent.com/29903779/178732793-ece04a7c-2809-4ee3-a21a-4c502f2c4fd7.jpeg" width="250" height="500"/>|<img src="https://user-images.githubusercontent.com/29903779/178732899-aeded36f-c90b-4dcd-a9e6-fdb6469b9cf1.jpeg" width="250" height="500"/>|
+|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/ae3e444d-40d5-4555-8aa6-ef66c7c6057f" width="250" height="550"/>|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/b5d40595-5432-4ba9-a325-b4f21f8d0407" width="250" height="550"/>|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/77a6721f-335d-4397-ac07-005d102453a5" width="250" height="550"/>|
+
+</br>
+
+| Home | Detail |
+| --------- | ------- |
+|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/cdd81779-b5aa-4e15-97ce-84f65764d717" width="250" height="550"/>|<img src="https://github.com/meetOzan/E-Commerce/assets/99891928/49dd9308-94b3-4788-b022-311d9195d8dd" width="250" height="550"/> |
