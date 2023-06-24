@@ -6,25 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/homeTabLayout"
-            style="@style/Widget.Material3.TabLayout.OnSurface"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:elevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabGravity="fill"
-            android:background="@color/lightGray"
-            app:tabIndicatorColor="@color/primaryDarkColor"
-            app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/primaryDarkColor"
-            app:tabTextColor="@color/gray"
-            tools:ignore="SpeakableTextPresentCheck"/>
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -39,12 +21,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/brandRecyclerView" />
+                    app:layout_constraintTop_toBottomOf="@id/homeTabLayout" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/brandRecyclerView"
@@ -57,12 +39,31 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/adImageSlider" />
 
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/homeTabLayout"
+                    style="@style/Widget.Material3.TabLayout.OnSurface"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/transparentGray"
+                    android:elevation="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/brandRecyclerView"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/primaryDarkColor"
+                    app:tabMode="scrollable"
+                    app:tabSelectedTextColor="@color/primaryDarkColor"
+                    app:tabTextColor="@color/gray"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/adImageSlider"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
                     android:elevation="100dp"
                     app:iss_auto_cycle="true"
                     app:iss_period="5000"
@@ -75,5 +76,4 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </LinearLayout>
-
 </layout>

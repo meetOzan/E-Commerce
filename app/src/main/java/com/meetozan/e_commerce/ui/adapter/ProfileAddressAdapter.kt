@@ -27,7 +27,7 @@ class ProfileAddressAdapter(private val addressList : List<Address>, private val
                     dialog.setTitle(address.name)
                     dialog.setMessage("You can delete or make default address" + address.name)
 
-                    dialog.setPositiveButton("Make Default"){alertDialog,a ->
+                    dialog.setPositiveButton("Make Default"){ alertDialog, _ ->
                         for (index in addressList.indices){
                             addressViewModel.updateAddress(addressList[index].name,"isDefault",false)
                         }

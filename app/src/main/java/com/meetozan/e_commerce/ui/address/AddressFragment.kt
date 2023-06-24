@@ -206,6 +206,8 @@ class AddressFragment : Fragment() {
     private fun observer() {
         viewModel.addressList.observe(viewLifecycleOwner) {
             adapter = AddressAdapter(it, requireContext())
+            if(it.isNullOrEmpty()) binding.cvAddresses.visibility = View.GONE
+            else  binding.cvAddresses.visibility = View.VISIBLE
             rv = binding.rvSelectAddress
             rv.setHasFixedSize(true)
             val linearLayoutManager = LinearLayoutManager(requireContext())

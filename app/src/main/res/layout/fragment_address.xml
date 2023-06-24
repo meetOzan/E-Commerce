@@ -230,7 +230,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="20dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="20dp"
                             android:hint="@string/district"
                             android:maxLines="1"
                             app:endIconScaleType="center"
@@ -369,7 +369,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:inputType=""
-                                android:maxLength="3"
+                                android:maxLength="16"
                                 android:textColorHint="@color/primaryDarkColor" />
                         </com.google.android.material.textfield.TextInputLayout>
 

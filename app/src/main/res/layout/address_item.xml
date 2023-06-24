@@ -19,7 +19,7 @@
         android:layout_marginTop="8dp"
         android:elevation="5dp"
         android:padding="8dp"
-        app:cardBackgroundColor="@color/transparentBlue"
+        app:cardBackgroundColor="@color/transparent"
         app:strokeColor="@color/black"
         app:strokeWidth="1dp">
 

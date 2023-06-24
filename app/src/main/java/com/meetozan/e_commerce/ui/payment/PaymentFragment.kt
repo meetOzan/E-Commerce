@@ -58,8 +58,8 @@ class PaymentFragment : Fragment() {
 
         shoppingCartViewModel.basketList.observe(viewLifecycleOwner) {
             var totalPrice = 0
-            for (indicex in it.indices) {
-                totalPrice += it[indicex].price * it[indicex].piece
+            for (indices in it.indices) {
+                totalPrice += it[indices].price * it[indices].piece
             }
             binding.paymentTotalPrice.text = totalPrice.toString()
         }
@@ -140,13 +140,6 @@ class PaymentFragment : Fragment() {
                             Manifest.permission.POST_NOTIFICATIONS
                         ) != PackageManager.PERMISSION_GRANTED
                     ) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
                         return@setOnClickListener
                     }
                     notificationManager.notify(NOTIF_ID, notification)
@@ -287,8 +280,8 @@ class PaymentFragment : Fragment() {
                         }
                         if (this[0].toString() == "4") {
                             com.squareup.picasso.Picasso.get()
-                                .load("https://cdn.freebiesupply.com/logos/large/2x/visa-1-logo-png-transparent.png")
-                                .resize(2000, 700)
+                                .load("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png")
+                                .resize(2560, 829)
                                 .into(binding.imageCreditCartBrand)
                         }
                         if (this[0].toString() == "9") {
