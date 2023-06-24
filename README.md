@@ -2,7 +2,8 @@
 E-Commerce App named Buy-Buy with Kotlin
 
 ## Project Features
- - MVVM with Clean Architecture
+ - MVVM
+ - Data Binding
  - Coroutines
  - Navigation Components
  - Hilt for Dependency Injection
